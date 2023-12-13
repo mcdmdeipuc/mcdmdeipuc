@@ -16,12 +16,24 @@ layout="wide",
 # front end elements of the web page
 html_temp = """
 <div style ="background-color:white;padding:13px">
-<h1 style ="color:black;text-align:center;">PROJETO MCDM - MCDM</h1></div>
+<h1 style ="color:black;text-align:center;">PROJETO MCDM - PATENTE</h1></div>
+"""
+with st.container():
+  st.write("---")
+
+  st.subheader("Informações gerais")
+
+# display the front end aspect
+st.markdown(html_temp, unsafe_allow_html = True)
+st.caption('Mestrado acadêmico em Engenharia de Produção - PUC - Rio')
+st.caption('DEI - Departamento de Engenharia Industrial')
+st.caption('by Jackeline Alves, Rodrigo Caiado, Renan Santos')
+st.caption('Em 2023')
+
 """
 # display the front end aspect
 st.markdown(html_temp, unsafe_allow_html = True)
 st.caption('by Jackeline Alves')
-
 
 
 #02 FUNCAO SAATY
