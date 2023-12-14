@@ -20,11 +20,6 @@ html_temp = """
 
 
 
-# display the front end aspect
-st.markdown(html_temp, unsafe_allow_html = True)
-st.caption('by Jackeline Alves')
-
-
 #02 FUNCAO SAATY
 def DadosSaaty(lamb, N):
     ri = np.array([0, 0, 0.58, 0.9, 1.12, 1.32, 1.35, 1.41, 1.45, 1.49, 1.52, 1.54, 1.56, 1.58, 1.59])
@@ -1168,10 +1163,10 @@ ConsistenciaOEE
 
 st.write("TResultado consistencia critério 03 OEE NAO FUNCIONA")
 #00
-'''
+
 Obtém o autovetor e autovalor
 Calcula a consistência
-'''
+
 l, v = VV(ConsistenciaOEE)
 
 print('Autovalor: %.2f' %l)
@@ -1553,10 +1548,10 @@ ConsistenciaOEE
 
 st.write("TResultado consistencia critério 03 OEE NAO FUNCIONA")
 #00
-'''
-Obtém o autovetor e autovalor
-Calcula a consistência
-'''
+
+#Obtém o autovetor e autovalor
+#Calcula a consistência
+
 l, v = VV(ConsistenciaOEE)
 
 print('Autovalor: %.2f' %l)
