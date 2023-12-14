@@ -17,11 +17,15 @@ layout="wide",
 html_temp = """
 <div style ="background-color:white;padding:13px">
 <h1 style ="color:black;text-align:center;">PROJETO PARA PATENTE</h1></div>
-<h1 style ="color:black;text-align:center;">-MCDMDEIPUC-</h1></div>
+<h1 style ="color:black;text-align:center;">-MCDM DEI PUC-</h1></div>
 """
 # display the front end aspect
 st.markdown(html_temp, unsafe_allow_html = True)
-st.caption('by Jackeline Alves, Rodrigo Caiado, Renan Xxxx')
+t.caption('Mestrado acadêmico em Engenharia de Produção - PUC - Rio')
+st.caption('DEI - Departamento de Engenharia Industrial')
+st.caption('by Jackeline Alves, Rodrigo Caiado, Renan Santos')
+st.caption('mcdmdeipuc@gmail.com)
+st.caption('Em 2023')
 
 
 
@@ -126,7 +130,7 @@ with st.container():
   st.subheader("Abrindo dados dos decisores")
 
 # Carregar uma planilha Excel
-desafioFile = st.file_uploader("Informe o caminho da planilha em Excel com as respostas dos decisores", type="xlsx")
+desafioFile = st.file_uploader("Informe o caminho da planilha em Excel com as respostas dos decisores. Dados_decisores.xlsx.", type="xlsx")
 
 if desafioFile is not None:
     try:
