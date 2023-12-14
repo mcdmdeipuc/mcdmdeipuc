@@ -1,4 +1,3 @@
-%%writefile app.py
 # 1° importa a biblioteca pandas
 import streamlit as st
 import numpy as np
