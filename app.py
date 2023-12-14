@@ -24,7 +24,7 @@ st.markdown(html_temp, unsafe_allow_html = True)
 t.caption('Mestrado acadêmico em Engenharia de Produção - PUC - Rio')
 st.caption('DEI - Departamento de Engenharia Industrial')
 st.caption('by Jackeline Alves, Rodrigo Caiado, Renan Santos')
-st.caption('mcdmdeipuc@gmail.com)
+st.caption('mcdmdeipuc@gmail.com')
 st.caption('Em 2023')
 
 
