@@ -25,8 +25,7 @@ st.write("DEI - Departamento de Engenharia Industrial")
 st.write("Em 2023")
 st.caption("by Jackeline Alves, Rodrigo Caiado, Renan Santos")
 st.write("---- Para usar é obrigatório subir a planilha contendo os dados dos decisores---")
-st.write("---- No MOORA, seção 2.1 - existe a interação com usuário para seleçao dos Critérios de Maximização ou Minimização" 
-  ---")
+st.write("---- No MOORA, seção 2.1 - existe a interação com usuário para seleçao dos Critérios de Maximização ou Minimização---")
 
 #02 FUNCAO SAATY
 def DadosSaaty(lamb, N):
