@@ -1,3 +1,4 @@
+%%writefile app.py
 # 1° importa a biblioteca pandas
 import streamlit as st
 import numpy as np
@@ -16,7 +17,12 @@ layout="wide",
 # front end elements of the web page
 html_temp = """
 <div style ="background-color:white;padding:13px">
-<h1 style ="color:black;text-align:center;">PROJETO MCDM - PATENTE</h1></div>
+<h1 style ="color:black;text-align:center;">PROJETO PARA PATENTE</h1></div>
+<h1 style ="color:black;text-align:center;">-MCDMDEIPUC-</h1></div>
+"""
+# display the front end aspect
+st.markdown(html_temp, unsafe_allow_html = True)
+st.caption('by Jackeline Alves, Rodrigo Caiado, Renan Xxxx')
 
 
 
@@ -118,7 +124,7 @@ desafioLabels = ['Par_criterios_gerente','Cr01_Falhas_gerente','Cr02_Seguranca_g
 with st.container():
   st.write("---")
 
-  st.subheader("Abrindo dados do primeiro decisor entrevistado - Gerente")
+  st.subheader("Abrindo dados dos decisores")
 
 # Carregar uma planilha Excel
 desafioFile = st.file_uploader("Informe o caminho da planilha em Excel com as respostas dos decisores", type="xlsx")
@@ -1163,10 +1169,10 @@ ConsistenciaOEE
 
 st.write("TResultado consistencia critério 03 OEE NAO FUNCIONA")
 #00
-
+'''
 Obtém o autovetor e autovalor
 Calcula a consistência
-
+'''
 l, v = VV(ConsistenciaOEE)
 
 print('Autovalor: %.2f' %l)
@@ -1548,10 +1554,10 @@ ConsistenciaOEE
 
 st.write("TResultado consistencia critério 03 OEE NAO FUNCIONA")
 #00
-
-#Obtém o autovetor e autovalor
-#Calcula a consistência
-
+'''
+Obtém o autovetor e autovalor
+Calcula a consistência
+'''
 l, v = VV(ConsistenciaOEE)
 
 print('Autovalor: %.2f' %l)
@@ -2468,3 +2474,4 @@ borda_inicio_df = borda_inicio_df.iloc[:, [0, -1]]
 # Renomeando a coluna
 borda_inicio_df = borda_inicio_df.rename(columns={'Ranking_Borda': 'Ranking_Final'})
 st.write(borda_inicio_df)
+
