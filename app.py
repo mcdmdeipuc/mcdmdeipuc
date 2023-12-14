@@ -22,8 +22,9 @@ html_temp = """
 # display the front end aspect
 st.markdown(html_temp, unsafe_allow_html = True)
 st.caption('Mestrado acadêmico em Engenharia de Produção - PUC - Rio')
-
-
+st.write("DEI - Departamento de Engenharia Industrial")
+st.write("by Jackeline Alves, Rodrigo Caiado, Renan Santos")
+st.write("Em 2023")
 
 #02 FUNCAO SAATY
 def DadosSaaty(lamb, N):
