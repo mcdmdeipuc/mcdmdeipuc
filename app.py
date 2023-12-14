@@ -16,11 +16,12 @@ layout="wide",
 # front end elements of the web page
 html_temp = """
 <div style ="background-color:white;padding:13px">
-<h1 style ="color:black;text-align:center;">PROJETO PARA PATENTE - MCDM DEI PUC</h1></div>
 # URL da imagem
 url_imagem = "https://www.puc-rio.br/imagens/bras_83x140_reduzido.png"
 # Exibe a imagem usando st.image()
 st.image(url_imagem, caption='Logo PUC-Rio', use_column_width=True)
+<h1 style ="color:black;text-align:center;">PROJETO PARA PATENTE - MCDM DEI PUC</h1></div>
+
 """
 # display the front end aspect
 st.markdown(html_temp, unsafe_allow_html = True)
