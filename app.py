@@ -123,6 +123,7 @@ desafioLabels = ['Par_criterios_gerente','Cr01_Falhas_gerente','Cr02_Seguranca_g
 
 with st.container():
   st.write("---")
+  st.markdown("[Ir para a Seção 1](#secao1)")
 
   st.subheader("Abrindo dados dos decisores")
 
@@ -153,6 +154,11 @@ print(desafioLabels[sheetNr])
 desafioData = ReadSheetByNr(desafioFile, sheetNr);
 desafioData
 
+# Seção 1
+st.header("Seção 1")
+st.write("Conteúdo da Seção 1")
+# Criação de uma âncora para a Seção 1
+st.markdown("<a name='secao1'></a>", unsafe_allow_html=True)
 
 #08
 #2.4
