@@ -27,8 +27,9 @@ st.image(url_imagem, caption='Logo PUC-Rio', use_column_width=True)
 st.markdown(html_temp, unsafe_allow_html = True)
 st.write('Mestrado acadêmico em Engenharia de Produção - PUC - Rio')
 st.write("DEI - Departamento de Engenharia Industrial")
-st.write("Em 2023")
+st.write("2023 - Todos os direitos reservados")
 st.caption("by Jackeline Alves, Rodrigo Caiado, Renan Santos")
+st.caption("Em construção")
 st.write("---- Para usar é obrigatório subir a planilha contendo os dados dos decisores---")
 st.write("---- No MOORA, seção 2.1 - existe a interação com usuário para seleçao dos Critérios de Maximização ou Minimização---")
 
@@ -146,9 +147,8 @@ if desafioFile is not None:
 else:
     st.info("Por favor, faça o upload do arquivo Dados_decisores.xlsx.")
 
-    st.markdown("<h1 style='text-align: center;'>Método 01 AHP</h1>", unsafe_allow_html=True)
-    st.subheader('Brauers e Zavadskas')
-
+with st.container():
+st.markdown("<h1 style='text-align: center;'>Método 01 AHP</h1>", unsafe_allow_html=True)
 #07
 st.subheader("1.1 - Gerando a Matriz de comparação dos 5 critérios - Decisor Gerente:")
 sheetNr = 0
@@ -158,11 +158,6 @@ print(desafioLabels[sheetNr])
 desafioData = ReadSheetByNr(desafioFile, sheetNr);
 desafioData
 
-# Seção 1
-st.header("Seção 1")
-st.write("Conteúdo da Seção 1")
-# Criação de uma âncora para a Seção 1
-st.markdown("<a name='secao1'></a>", unsafe_allow_html=True)
 
 #08
 #2.4
@@ -1766,12 +1761,8 @@ st.write(Ranking_final_AHP)
 
 ################
 with st.container():
-
-
     st.markdown("<h1 style='text-align: center;'>Método 02 MOORA</h1>", unsafe_allow_html=True)
     st.subheader('Brauers e Zavadskas')
-    st.write("xxxx do AHP")
-
 
 dataframes = [MatrizDePesoGerenteParaAHP, MatrizDePesoSupervisorParaAHP, MatrizDePesoTec1ParaAHP, MatrizDePesoTec2ParaAHP]
 
