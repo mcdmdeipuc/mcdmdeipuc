@@ -22,9 +22,7 @@ html_temp = """
 """
 # display the front end aspect
 st.markdown(html_temp, unsafe_allow_html = True)
-st.write('Mestrado acadêmico em Engenharia de Produção - PUC - Rio')
-st.title("DEI - Departamento de Engenharia Industrial")
-st.write("DEI - Departamento de Engenharia Industrial")
+st.write('Mestrado acadêmico em Engenharia de Produção - PUC - Rio | DEI - Departamento de Engenharia Industrial')
 st.write("2023 - Todos os direitos reservados")
 st.caption("by Jackeline Alves, Rodrigo Caiado, Renan Santos")
 st.caption("Em construção")
