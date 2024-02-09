@@ -12,6 +12,7 @@ sns.set(style="whitegrid")
 #page_title= "MESTRADO",
 #layout="wide")
 
+html_code = """
 #<div style ="background-color:cornflowerblue;padding:10px;text-align:center">
 <div style ="background-color:cornflowerblue;padding:13px">
 <h2 style ="color:black;text-align:center;">PROJETO PARA PATENTE - MCDM DEI PUC</h2></div>
