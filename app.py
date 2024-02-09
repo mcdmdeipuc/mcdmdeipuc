@@ -188,14 +188,12 @@ def tratando_erro():
         # Verificação de consistência
         N = len(array_ahp)
         lamb = np.sum(array_ahp, axis=1)
-    except NameError: 
-        return "erro"
-
-result = DadosSaaty(lamb, N)
+        result = DadosSaaty(lamb, N)
 # Exibindo o resultado na tela
 st.write("Resultado da Verificação de Consistência:")
 st.markdown(result)
-
+    except NameError: 
+        return "erro"
 # Realizando o cálculo VV se os dados são consistentes
 if "Consistente" in result:
     l, v = VV(array_ahp)
