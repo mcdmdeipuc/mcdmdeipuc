@@ -25,7 +25,6 @@ st.markdown(html_temp, unsafe_allow_html = True)
 st.write('Mestrado acadêmico em Engenharia de Produção - PUC - Rio | DEI - Departamento de Engenharia Industrial')
 st.write("2023 - Todos os direitos reservados")
 st.caption("by Jackeline Alves, Rodrigo Caiado, Renan Santos")
-st.caption("Em construção")
 st.write("---- Para usar é obrigatório subir a planilha contendo os dados dos decisores---")
 st.write("---- No MOORA, seção 2.1 - existe a interação com usuário para seleçao dos Critérios de Maximização ou Minimização---")
 
@@ -147,6 +146,7 @@ with st.container():
     st.markdown("<h1 style='text-align: center;'>Método 01 AHP</h1>", unsafe_allow_html=True)
 #07
 st.subheader("1.1 - Gerando a Matriz de comparação dos 5 critérios - Decisor Gerente:")
+if desafioFile is not None:
 sheetNr = 0
 print(desafioLabels[sheetNr])
 
