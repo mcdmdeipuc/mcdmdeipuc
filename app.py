@@ -1800,7 +1800,7 @@ matriz_moora = novo_dataframe.copy()
 matriz_moora = matriz_moora.drop(index='MatrizdePeso')
 
 # Exibindo o DataFrame atualizado
-st.write("2.4 Novo DataFrame sem a Linha "MatrizdePeso")
+st.write("2.4 Novo DataFrame sem a Linha MatrizdePeso")
 st.write(matriz_moora)
 
 # Criando uma cópia do DataFrame para usar depois
