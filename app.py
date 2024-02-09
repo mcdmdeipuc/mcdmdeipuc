@@ -143,15 +143,15 @@ if desafioFile is not None:
 else:
     st.info("Por favor, faça o upload do arquivo Dados_decisores.xlsx.")
 #with st.container():
-def tratando_erro(): 
-    try: 
+
         st.markdown("<h1 style='text-align: center;'>Método 01 AHP</h1>", unsafe_allow_html=True)
         
         #07
         st.subheader("1.1 - Gerando a Matriz de comparação dos 5 critérios - Decisor Gerente:")
         sheetNr = 0
         print(desafioLabels[sheetNr])
-        
+def tratando_erro(): 
+    try:         
         # Busca dados da planilha
 
         desafioData = ReadSheetByNr(desafioFile, sheetNr);
