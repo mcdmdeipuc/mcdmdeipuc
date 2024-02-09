@@ -149,14 +149,16 @@ with st.container():
 #07
 st.subheader("1.1 - Gerando a Matriz de comparação dos 5 critérios - Decisor Gerente:")
 
-sheetNr = 0
-print(desafioLabels[sheetNr])
+
 
 # Busca dados da planilha
-desafioData = ReadSheetByNr(desafioFile, sheetNr);
+
 if desafioData is None:
         st.error("Erro: Não foi possível ler a planilha.")
 else:
+    sheetNr = 0
+    print(desafioLabels[sheetNr])
+    desafioData = ReadSheetByNr(desafioFile, sheetNr);
     desafioData
 
 
