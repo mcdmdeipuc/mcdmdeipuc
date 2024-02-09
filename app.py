@@ -157,7 +157,7 @@ desafioData = ReadSheetByNr(desafioFile, sheetNr);
 if desafioData is None:
         st.error("Erro: Não foi possível ler a planilha.")
 else:
-desafioData
+    desafioData
 
 
 
