@@ -1,5 +1,6 @@
 # 1° importa a biblioteca pandas
 import streamlit as st
+import logging
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import Normalizer
@@ -8,6 +9,9 @@ import seaborn as sns
 sns.set(style="whitegrid")
 
 # set page configuration
+# Configuração do logger para suprimir mensagens de log com nível de logging menor que ERROR
+logging.basicConfig(level=logging.ERROR)
+
 st.set_page_config(
 page_title= "MESTRADO",
 layout="wide",
@@ -148,20 +152,13 @@ with st.container():
 #07
 st.subheader("1.1 - Gerando a Matriz de comparação dos 5 critérios - Decisor Gerente:")
 
-#sheetNr = 0
-#print(desafioLabels[sheetNr])
+sheetNr = 0
+print(desafioLabels[sheetNr])
 
-    if desafioFile is not None:
-        sheetNr = 0
-        # Verifique se desafioData existe antes de exibi-lo
-        desafioData = ReadSheetByNr(desafioFile, sheetNr);
-        if desafioData is not None:
-            st.write("Desafio Data:", desafioData)
-        else:
-            st.info("Desafio Data ainda não está disponível.")
+# Busca dados da planilha
+desafioData = ReadSheetByNr(desafioFile, sheetNr);
+desafioData
 
-#desafioData = ReadSheetByNr(desafioFile, sheetNr);
-#desafioData
 
 
 #08
