@@ -149,8 +149,10 @@ st.subheader("1.1 - Gerando a Matriz de comparação dos 5 critérios - Decisor 
 
 if desafioFile is not None:
     sheetNr = 0
-print(desafioLabels[sheetNr])
-
+    print(desafioLabels[sheetNr])
+else:
+    st.info("Esperando Planilha")
+    
 # Busca dados da planilha
 desafioData = ReadSheetByNr(desafioFile, sheetNr);
 desafioData
