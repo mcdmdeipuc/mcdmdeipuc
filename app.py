@@ -144,33 +144,32 @@ else:
     st.info("Por favor, faça o upload do arquivo Dados_decisores.xlsx.")
 
 with st.container():
-    st.markdown("<h1 style='text-align: center;'>Método 01 AHP</h1>", unsafe_allow_html=True)
-
-#07
-st.subheader("1.1 - Gerando a Matriz de comparação dos 5 critérios - Decisor Gerente:")
-
-
-sheetNr = 0
-print(desafioLabels[sheetNr])
-
-# Busca dados da planilha
-try:
-    desafioData = ReadSheetByNr(desafioFile, sheetNr);
-    desafioData
-except ValueError:
-    print("esperando info")
-
-
-#08
-#2.4
-st.subheader("1.2 Normalizando os valores dos critérios - Decisor Gerente")
-# Normaliza dados
-
-
-#normalizandocriterio = NormalizingConsistency(desafioData);
-#normalizandocriterio
-def tratando_erro(): 
+    def tratando_erro(): 
     try: 
+            st.markdown("<h1 style='text-align: center;'>Método 01 AHP</h1>", unsafe_allow_html=True)
+        
+        #07
+        st.subheader("1.1 - Gerando a Matriz de comparação dos 5 critérios - Decisor Gerente:")
+        sheetNr = 0
+        print(desafioLabels[sheetNr])
+        
+        # Busca dados da planilha
+        try:
+            desafioData = ReadSheetByNr(desafioFile, sheetNr);
+            desafioData
+        except ValueError:
+            print("esperando info")
+        
+        
+        #08
+        #2.4
+        st.subheader("1.2 Normalizando os valores dos critérios - Decisor Gerente")
+        # Normaliza dados
+        
+        
+        #normalizandocriterio = NormalizingConsistency(desafioData);
+        #normalizandocriterio
+
         normalizandocriterio = NormalizingConsistency(desafioData);
         normalizandocriterio
   
