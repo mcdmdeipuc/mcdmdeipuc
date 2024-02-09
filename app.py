@@ -8,7 +8,17 @@ import seaborn as sns
 sns.set(style="whitegrid")
 
 # set page configuration
-
+class CustomErrorHandler(logging.Handler):
+    def emit(self, record):
+        try:
+            # Filtra mensagens que começam com "ValueError:"
+            if record.levelname == 'ERROR' and record.msg.startswith('ValueError:'):
+                return
+            # Emite todas as outras mensagens de erro
+            logging.StreamHandler.emit(self, record)
+        except Exception:
+            self.handleError(record)
+logging.basicConfig(level=logging.ERROR, handlers=[CustomErrorHandler(stream=sys.stderr)])
 
 
 st.set_page_config(
