@@ -150,17 +150,15 @@ with st.container():
 st.subheader("1.1 - Gerando a Matriz de comparação dos 5 critérios - Decisor Gerente:")
 
 
+sheetNr = 0
+print(desafioLabels[sheetNr])
 
 # Busca dados da planilha
-
-if desafioLabels is None:
-        st.error("Erro: Não foi possível ler a planilha.")
-else:
-    sheetNr = 0
-    print(desafioLabels[sheetNr])
+try:
     desafioData = ReadSheetByNr(desafioFile, sheetNr);
     desafioData
-
+except ValueError:
+    print("Numero digitado inválido")
 
 
 #08
