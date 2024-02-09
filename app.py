@@ -391,7 +391,7 @@ def tratando_erro():
         del ajustetabelaCusto['MatrizdePeso']
         ajustetabelaCusto
     except NameError: 
-    return "erro"
+    return "erro":
     
 st.write("1.9.3 Transformando para array")
 array_criterio4 = ajustetabelaCusto.to_numpy()
