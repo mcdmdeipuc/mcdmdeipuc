@@ -175,10 +175,8 @@ def tratando_erro():
         normalizandocriterio
   
 #09
-st.subheader("1.3 - Consistencia (01) dos dados de critério vs objetivo (LOCAL) onde é comparado os 6 critérios par a par - Decisor Gerente")
-st.write("transformando em array")
-def tratando_erro(): 
-    try: 
+        st.subheader("1.3 - Consistencia (01) dos dados de critério vs objetivo (LOCAL) onde é comparado os 6 critérios par a par - Decisor Gerente")
+        st.write("transformando em array")
         array_ahp = normalizandocriterio.to_numpy()
         array_ahp
         # Verificação de consistência
