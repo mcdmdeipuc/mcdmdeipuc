@@ -12,7 +12,7 @@ sns.set(style="whitegrid")
 #page_title= "MESTRADO",
 #layout="wide")
 
-<div style ="background-color:cornflowerblue;padding:13px;text-align:center">
+<div style ="background-color:cornflowerblue;padding:10px;text-align:center">
 <h2 style ="color:black;text-align:center;">PROJETO PARA PATENTE - MCDM DEI PUC</h2></div>
 <h3 style ="color:black;text-align:center;">Metodologia de apoio à decisão para manutenção inteligente </h3></div>
 <h3 style ="color:black;text-align:center;">combinando abordagens multicritério</h3></div>
@@ -118,7 +118,7 @@ desafioLabels = ['Par_criterios_gerente','Cr01_Falhas_gerente','Cr02_Seguranca_g
   'Par_criteriosTec2_21','Cr01_FalhasTec2_22','Cr02_SegurancaTec2_23','Cr03_OEETec2_24','Cr04_CustoTec2_25','Cr05_PreventivaTec2_26','Cr06_TreinamentoTec2_27']
 
 #........................
-
+<h3 style ="color:black;text-align:center;">Abrindo dados dos decisores </h3></div>
 with st.container():
   st.subheader("Abrindo dados dos decisores")
 
