@@ -19,7 +19,7 @@ html_temp = """
 <h2 style ="color:black;text-align:center;">PROJETO PARA PATENTE - MCDM DEI PUC</h2></div>
 <h3 style ="color:black;text-align:center;">Metodologia de apoio à decisão para manutenção inteligente </h3></div>
 <h3 style ="color:black;text-align:center;">combinando abordagens multicritério</h3></div>
-<h4 style ="color:black;text-align:center;">Mestrado acadêmico em Engenharia de Produção - PUC - Rio | DEI - Departamento de Engenharia Industrial</h4></div>
+<h7 style ="color:black;text-align:center;">Mestrado acadêmico em Engenharia de Produção - PUC - Rio | DEI - Departamento de Engenharia Industrial</h7></div>
 """
 # display the front end aspect
 st.markdown(html_temp, unsafe_allow_html = True)
