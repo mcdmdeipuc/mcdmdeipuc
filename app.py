@@ -223,7 +223,7 @@ desafioData = ReadSheetByNr(desafioFile, sheetNr);
 desafioData
 
 #11
-st.subheader("1.6.1 Normalizando o criterio Falhas - Decisor Gerente")
+st.subheader("1.7 Normalizando o criterio Falhas - Decisor Gerente")
 
 # Normaliza dados
 desafioNormal = NormalizingCritera(desafioData);
@@ -231,7 +231,7 @@ desafioNormalAll.append(desafioNormal)
 desafioNormal
 
 
-st.subheader("1.6.2 Teste de consistência do critério 01 Falhas - Decisor Gerente")
+st.subheader("1.8 Teste de consistência do critério 01 Falhas - Decisor Gerente")
 st.write("Nova matriz do criterio normalizada sem soma e peso")
 #Retira-se a Soma e  matriz de peso. Se não tirar não funciona.
 desafioNormal2 = desafioNormal.copy()
@@ -264,7 +264,7 @@ if "Consistente" in result:
 
 
 #2.9
-st.subheader("Critério 1.7 Segurança - Decisor Gerente")
+st.subheader("1.9 Critério  Segurança - Decisor Gerente")
 st.write("Lendo os dados do decisor")
 
 sheetNr = 2
@@ -276,19 +276,19 @@ DadosCriterioSeguranca
 
 
 # Normaliza dados
-st.write("1.7.1 Normalizando o criterio seguranca - Decisor Gerente")
+st.write("1.10 Normalizando o criterio seguranca - Decisor Gerente")
 NormalizandoSeguranca = NormalizingCritera(DadosCriterioSeguranca);
 desafioNormalAll.append(NormalizandoSeguranca)
 NormalizandoSeguranca
 
-st.write("1.7.2 Recebendo a matriz do criterio segurança normalizada - Decisor Gerente")
+st.write("1.11 Recebendo a matriz do criterio segurança normalizada - Decisor Gerente")
 #Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
 ajustetabelaseguranca = NormalizandoSeguranca.copy()
 del ajustetabelaseguranca['Csoma']
 del ajustetabelaseguranca['MatrizdePeso']
 ajustetabelaseguranca
 
-st.write("1.7.3 Transformando para array")
+st.write("1.12 Transformando para array")
 #00
 #teste de consistencia recebe o nome da matriz ja normalizada para teste Assim....  ""  Consistencia00 = nometabela.to_numpy()
 array_criterio2 = ajustetabelaseguranca.to_numpy()
@@ -312,7 +312,7 @@ if "Consistente" in result:
 
 
 #2.10
-st.subheader("1.8 Critério 03 OEE - Decisor Gerente")
+st.subheader("1.13 Critério 03 OEE - Decisor Gerente")
 st.write("Lendo os dados do decisor")
 sheetNr = 3
 print(desafioLabels[sheetNr])
@@ -322,20 +322,20 @@ desafioData = ReadSheetByNr(desafioFile, sheetNr);
 desafioData
 
 
-st.write("1.8.1 Normalizando o criterio OEE")
+st.write("1.14 Normalizando o criterio OEE")
 # Normaliza dados
 NormalizandoOEE = NormalizingCritera(desafioData);
 desafioNormalAll.append(NormalizandoOEE)
 NormalizandoOEE
 
-st.write("1.8.2 Teste de consistência do critério OEE")
+st.write("1.15 Teste de consistência do critério OEE")
 #Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
 ajustetabelaOEE = NormalizandoSeguranca.copy()
 del ajustetabelaOEE['Csoma']
 del ajustetabelaOEE['MatrizdePeso']
 ajustetabelaOEE
 
-st.write("1.8.3 Transformando para array")
+st.write("1.16 Transformando para array")
 #00
 array_criterio3 = ajustetabelaOEE.to_numpy()
 array_criterio3
@@ -357,7 +357,7 @@ if "Consistente" in result:
 
 
 #2.11
-st.subheader("1.9 Critério 04 Custo - Decisor Gerente")
+st.subheader("1.17 Critério 04 Custo - Decisor Gerente")
 st.write("Lendo os dados do decisor")
 
 #19
@@ -366,20 +366,20 @@ print(desafioLabels[sheetNr])
 desafioData = ReadSheetByNr(desafioFile, sheetNr);
 desafioData
 
-st.write("1.9.1 Normalizando o critério CUSTO")
+st.write("1.18 Normalizando o critério CUSTO")
 #20
 NormalizandoCusto = NormalizingCritera(desafioData);
 desafioNormalAll.append(NormalizandoCusto)
 NormalizandoCusto
 
-st.write("1.9.2 Teste de consistência do critério Custo")
+st.write("1.19 Teste de consistência do critério Custo")
 #Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
 ajustetabelaCusto = NormalizandoSeguranca.copy()
 del ajustetabelaCusto['Csoma']
 del ajustetabelaCusto['MatrizdePeso']
 ajustetabelaCusto
 
-st.write("1.9.3 Transformando para array")
+st.write("1.20 Transformando para array")
 array_criterio4 = ajustetabelaCusto.to_numpy()
 
 # Verificação de consistência
@@ -398,7 +398,7 @@ if "Consistente" in result:
     st.write("Autovetor (v):", ' '.join(map(str, v)))
 
 #2.12 Critério 05 Preventiva
-st.subheader("1.10 Critério 05 Preventiva - Decisor Gerente")
+st.subheader("1.21 Critério 05 Preventiva - Decisor Gerente")
 st.write("Lendo os dados do decisor")
 #22
 sheetNr = 5
@@ -406,12 +406,12 @@ print(desafioLabels[sheetNr])
 desafioData = ReadSheetByNr(desafioFile, sheetNr);
 desafioData
 
-st.write("1.10.1 Normalizando o criterio Preventiva")
+st.write("1.22 Normalizando o criterio Preventiva")
 NormalizandoPreventiva = NormalizingCritera(desafioData);
 desafioNormalAll.append(NormalizandoPreventiva)
 NormalizandoPreventiva
 
-st.write("1.10.2 Teste de consistência do critério Preventiva")
+st.write("1.23 Teste de consistência do critério Preventiva")
 st.write("Recebendo a matriz do criterio normalizada")
 #Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
 ajustetabelaPreventiva = NormalizandoPreventiva.copy()
@@ -419,7 +419,7 @@ del ajustetabelaPreventiva['Csoma']
 del ajustetabelaPreventiva['MatrizdePeso']
 ajustetabelaPreventiva
 
-st.write("1.10.3Transformando para array")
+st.write("1.24 Transformando para array")
 #00
 #teste de consistencia recebe o nome da matriz ja normalizada para teste Assim....  ""  Consistencia00 = nometabela.to_numpy()
 array_criterio5 = ajustetabelaPreventiva.to_numpy()
@@ -443,7 +443,7 @@ if "Consistente" in result:
 
 
 #2.13 Critério 06 Treinamento
-st.subheader("1.11 Critério 06 Treinamento - Decisor Gerente")
+st.subheader("1.25 Critério 06 Treinamento - Decisor Gerente")
 st.write("Lendo os dados do decisor")
 sheetNr = 6
 print(desafioLabels[sheetNr])
@@ -451,20 +451,20 @@ desafioData = ReadSheetByNr(desafioFile, sheetNr);
 desafioData
 
 
-st.write("1.11.1 Normalizando o critério Treinamento")
+st.write("1.26 Normalizando o critério Treinamento")
 NormalizandoTreinamento = NormalizingCritera(desafioData);
 desafioNormalAll.append(NormalizandoTreinamento)
 NormalizandoTreinamento
 
 
-st.write("1.11.2 Teste de consistência do critério Treinamento")
+st.write("1.27 Teste de consistência do critério Treinamento")
 ajustetabelaTreinamento = NormalizandoTreinamento.copy()
 del ajustetabelaTreinamento['Csoma']
 del ajustetabelaTreinamento['MatrizdePeso']
 ajustetabelaTreinamento
 
 
-st.write(" 1.11.3 Transformando para array")
+st.write("1.28 Transformando para array")
 array_criterio6 = ajustetabelaTreinamento.to_numpy()
 st.write(array_criterio6)
 
@@ -485,7 +485,7 @@ if "Consistente" in result:
 
 
 
-st.subheader("1.12  Finalizando Matriz de pesos locais - Priorização das alternativas - Decisor Gerente")
+st.subheader("1.29  Finalizando Matriz de pesos locais - Priorização das alternativas - Decisor Gerente")
 st.write("2.14.1 PARA ENVIAR AO MOORA DADOS GERENTE")
 #25
 
@@ -534,7 +534,7 @@ somaTable
 
 
 
-st.subheader("1.13. Resultado RankingDecisor_01_de_04_Gerado_No_AHP - Gerente")
+st.subheader("1.30 Resultado RankingDecisor_01_de_04_Gerado_No_AHP - Gerente")
 #28
 RankingDecisor1 = pd.DataFrame(somaData, index=alternativasList, columns=['RankinDecisor_01_de_04_Gerado_No_AHP'])
 RankingDecisor1_sorted = RankingDecisor1.sort_values(by=['RankinDecisor_01_de_04_Gerado_No_AHP'], ascending=False)
@@ -549,7 +549,7 @@ with st.container():
 
 
 #29
-st.subheader("1.14- Gerando a Matriz de comparação dos 5 critérios - Decisor Supervisor:")
+st.subheader("1.31 - Gerando a Matriz de comparação dos 5 critérios - Decisor Supervisor:")
 sheetNr = 7
 print(desafioLabels[sheetNr])
 
@@ -560,14 +560,14 @@ desafioData
 
 
 #2.4
-st.subheader(" Normalizando os valores dos critérios - Decisor Supervisor")
+st.subheader("1.32 - Normalizando os valores dos critérios - Decisor Supervisor")
 # Normaliza dados
 normalizandocriterio = NormalizingConsistency(desafioData);
 normalizandocriterio
 
 
 #09
-st.subheader(" - Consistencia (01) dos dados de critério vs objetivo (LOCAL) onde é comparado os 6 critérios par a par - Decisor Gerente")
+st.subheader("1.33 - - Consistencia (01) dos dados de critério vs objetivo (LOCAL) onde é comparado os 6 critérios par a par - Decisor Gerente")
 Consistencia1 = normalizandocriterio.to_numpy()
 Consistencia1
 
@@ -585,7 +585,7 @@ DadosSaaty(l, Consistencia1.shape[0])
 
 
 #11
-st.subheader("3.5 Vetor de peso - Decisor Supervisor")
+st.subheader("1.34 Vetor de peso - Decisor Supervisor")
 
 desafioNormal = NormalizingCritera(desafioData);
 desafioNormalAll.append(desafioNormal)
@@ -593,7 +593,7 @@ desafioNormal
 
 
 #12
-st.subheader("3.6 Gráfico matriz de peso - Grafico Supervisor")
+st.subheader("1.35 Gráfico matriz de peso - Grafico Supervisor")
 
 desafioNormal[desafioSeets[sheetNr]] = desafioNormal.index
 plt.figure(figsize=(22,2))
@@ -610,7 +610,7 @@ for p in ax.patches:
 st.pyplot(plt)
 
 #13
-st.subheader("3.7 Critério 01 Falhas - Decisor Supervisor")
+st.subheader("1.36 Critério 01 Falhas - Decisor Supervisor")
 st.write("Lendo os dados do decisor")
 
 sheetNr = 8
@@ -621,7 +621,7 @@ desafioData = ReadSheetByNr(desafioFile, sheetNr);
 desafioData
 
 #11
-st.subheader("3.7.1 Normalizando o criterio Falhas - Decisor Supervisor")
+st.subheader("1.37 Normalizando o criterio Falhas - Decisor Supervisor")
 
 # Normaliza dados
 desafioNormal = NormalizingCritera(desafioData);
@@ -629,7 +629,7 @@ desafioNormalAll.append(desafioNormal)
 desafioNormal
 
 
-st.subheader("3.7.2 Teste de consistência do critério 01 Falhas - Decisor Supervisor")
+st.subheader("1.38 Teste de consistência do critério 01 Falhas - Decisor Supervisor")
 st.write("Recebendo a matriz do criterio normalizada")
 #Retira-se a Soma e  matriz de peso. Se não tirar não funciona.
 desafioNormal2 = desafioNormal.copy()
@@ -638,7 +638,7 @@ del desafioNormal2['MatrizdePeso']
 desafioNormal2
 
 
-st.write("3.7.3 Transformando para array")
+st.write("1.39 Transformando para array")
 #00
 #teste de consistencia recebe o nome da matriz ja normalizada para teste Assim....  ""  Consistencia00 = nometabela.to_numpy()
 array_criterio11 = desafioNormal2.to_numpy()
@@ -662,7 +662,7 @@ if "Consistente" in result:
 
 
 #2.9
-st.subheader("3.8 Critério 02 Segurança - Decisor Supervisor")
+st.subheader("1.40 Critério 02 Segurança - Decisor Supervisor")
 st.write("Lendo os dados do decisor")
 
 sheetNr = 9
