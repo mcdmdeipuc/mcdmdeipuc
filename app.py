@@ -8,20 +8,6 @@ import seaborn as sns
 sns.set(style="whitegrid")
 
 # set page configuration
-import logging
-import sys
-class CustomErrorHandler(logging.Handler):
-    def emit(self, record):
-        try:
-            # Filtra mensagens que começam com "ValueError:"
-            if record.levelname == 'ERROR' and record.getMessage().startswith('ValueError:'):
-                return
-            # Emite todas as outras mensagens de erro
-            logging.StreamHandler.emit(self, record)
-        except Exception:
-            self.handleError(record)
-logging.basicConfig(level=logging.ERROR, handlers=[CustomErrorHandler(stream=sys.stderr)])
-
 
 st.set_page_config(
 page_title= "MESTRADO",
@@ -168,6 +154,9 @@ print(desafioLabels[sheetNr])
 
 # Busca dados da planilha
 desafioData = ReadSheetByNr(desafioFile, sheetNr);
+if desafioData is None:
+        st.error("Erro: Não foi possível ler a planilha.")
+    else:
 desafioData
 
 
