@@ -186,7 +186,7 @@ def tratando_erro():
         array_ahp = normalizandocriterio.to_numpy()
         array_ahp
     except NameError: 
-        return "erro
+        return "erro"
 print(tratando_erro())    
 
 # Verificação de consistência
