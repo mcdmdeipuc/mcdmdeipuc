@@ -142,8 +142,7 @@ if desafioFile is not None:
         st.error(f"Erro ao ler o arquivo: {str(e)}")
 else:
     st.info("Por favor, faça o upload do arquivo Dados_decisores.xlsx.")
-
-with st.container():
+#with st.container():
     def tratando_erro(): 
         try: 
         st.markdown("<h1 style='text-align: center;'>Método 01 AHP</h1>", unsafe_allow_html=True)
