@@ -12,13 +12,13 @@ sns.set(style="whitegrid")
 #page_title= "MESTRADO",
 #layout="wide")
 
-html_code = """
+html_temp = """
 #<div style ="background-color:cornflowerblue;padding:10px;text-align:center">
 <div style ="background-color:cornflowerblue;padding:13px">
 <h2 style ="color:black;text-align:center;">PROJETO PARA PATENTE - MCDM DEI PUC</h2></div>
 <h3 style ="color:black;text-align:center;">Metodologia de apoio à decisão para manutenção inteligente </h3></div>
 <h3 style ="color:black;text-align:center;">combinando abordagens multicritério</h3></div>
-
+"""
 
 st.markdown(html_temp, unsafe_allow_html=True)
 st.write('Mestrado acadêmico em Engenharia de Produção - PUC - Rio | DEI - Departamento de Engenharia Industrial')
