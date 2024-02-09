@@ -192,116 +192,118 @@ def tratando_erro():
             st.write("Autovalor (l):", l)
             #st.write("Autovetor (v):", v)
             st.write("Autovetor (v):", ' '.join(map(str, v)))
+
+#11
+        st.subheader("1.4 Vetor de peso - Decisor Gerente")
+
+        desafioNormal = NormalizingCritera(desafioData);
+        desafioNormalAll.append(desafioNormal)
+        desafioNormal
+
+
+#12
+        st.subheader("1.5 Gráfico matriz de peso - Grafico Gerente")
+
+        desafioNormal[desafioSeets[sheetNr]] = desafioNormal.index
+        plt.figure(figsize=(22,2))
+        plt.title("Matriz de peso", fontsize=14)
+
+        ax = sns.barplot(x=desafioSeets[sheetNr], y='MatrizdePeso', data=desafioNormal)
+
+# Aqui vem a parte para incluir os rótulos:
+        for p in ax.patches:
+           height = p.get_height()
+        ax.text(p.get_x() + p.get_width() / 2, height + 0, '{:1.2f}'.format((height)), ha='center', fontsize=12)
+
+# Exibe o gráfico usando st.pyplot()
+        st.pyplot(plt)
+
+
+#13
+        st.subheader("1.6 Critério 01 Falhas - Decisor Gerente")
+        st.write("Lendo os dados do decisor")
+
+        sheetNr = 1
+        print(desafioLabels[sheetNr])
+
+# Busca dados da planilha
+        desafioData = ReadSheetByNr(desafioFile, sheetNr);
+        desafioData
+
+#11
+        st.subheader("1.6.1 Normalizando o criterio Falhas - Decisor Gerente")
+
+# Normaliza dados
+        desafioNormal = NormalizingCritera(desafioData);
+        desafioNormalAll.append(desafioNormal)
+        desafioNormal
+
+
+        st.subheader("1.6.2 Teste de consistência do critério 01 Falhas - Decisor Gerente")
+        st.write("Nova matriz do criterio normalizada sem soma e peso")
+        #Retira-se a Soma e  matriz de peso. Se não tirar não funciona.
+        desafioNormal2 = desafioNormal.copy()
+        del desafioNormal2['Csoma']
+        del desafioNormal2['MatrizdePeso']
+        desafioNormal2
+
+
+        st.write("Transformando para array")
+#00
+#teste de consistencia recebe o nome da matriz ja normalizada para teste Assim....  ""  Consistencia00 = nometabela.to_numpy()
+        array_criterio1 = desafioNormal2.to_numpy()
+        array_criterio1
+
+
+        # Verificação de consistência
+        N = len(array_criterio1)
+        lamb = np.sum(array_criterio1, axis=1)
+        result = DadosSaaty(lamb, N)
+        # Exibindo o resultado na tela
+        st.write("Resultado da Verificação de Consistência:")
+        st.markdown(result)
+
+        # Realizando o cálculo VV se os dados são consistentes
+        if "Consistente" in result:
+            l, v = VV(array_criterio1)
+            st.write("Autovalor (l):", l)
+            #st.write("Autovetor (v):", v)
+            st.write("Autovetor (v):", ' '.join(map(str, v)))
+
+
+
+
+        #2.9
+        st.subheader("Critério 2.7 Segurança - Decisor Gerente")
+        st.write("Lendo os dados do decisor")
+
+        sheetNr = 2
+        print(desafioLabels[sheetNr])
+
+        # Busca dados da planilha
+        DadosCriterioSeguranca = ReadSheetByNr(desafioFile, sheetNr);
+        DadosCriterioSeguranca
+
+
+        # Normaliza dados
+        st.write("1.7.1 Normalizando o criterio seguranca - Decisor Gerente")
+        NormalizandoSeguranca = NormalizingCritera(DadosCriterioSeguranca);
+        desafioNormalAll.append(NormalizandoSeguranca)
+        NormalizandoSeguranca
+
+        st.write("1.7.2 Recebendo a matriz do criterio segurança normalizada - Decisor Gerente")
+        #Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
+        ajustetabelaseguranca = NormalizandoSeguranca.copy()
+        del ajustetabelaseguranca['Csoma']
+        del ajustetabelaseguranca['MatrizdePeso']
+        ajustetabelaseguranca
+
+        st.write("1.7.3 Transformando para array")
+
     except NameError: 
         return "erro"
 
 
-#11
-st.subheader("1.4 Vetor de peso - Decisor Gerente")
-
-desafioNormal = NormalizingCritera(desafioData);
-desafioNormalAll.append(desafioNormal)
-desafioNormal
-
-
-#12
-st.subheader("1.5 Gráfico matriz de peso - Grafico Gerente")
-
-desafioNormal[desafioSeets[sheetNr]] = desafioNormal.index
-plt.figure(figsize=(22,2))
-plt.title("Matriz de peso", fontsize=14)
-
-ax = sns.barplot(x=desafioSeets[sheetNr], y='MatrizdePeso', data=desafioNormal)
-
-# Aqui vem a parte para incluir os rótulos:
-for p in ax.patches:
-    height = p.get_height()
-    ax.text(p.get_x() + p.get_width() / 2, height + 0, '{:1.2f}'.format((height)), ha='center', fontsize=12)
-
-# Exibe o gráfico usando st.pyplot()
-st.pyplot(plt)
-
-
-#13
-st.subheader("1.6 Critério 01 Falhas - Decisor Gerente")
-st.write("Lendo os dados do decisor")
-
-sheetNr = 1
-print(desafioLabels[sheetNr])
-
-# Busca dados da planilha
-desafioData = ReadSheetByNr(desafioFile, sheetNr);
-desafioData
-
-#11
-st.subheader("1.6.1 Normalizando o criterio Falhas - Decisor Gerente")
-
-# Normaliza dados
-desafioNormal = NormalizingCritera(desafioData);
-desafioNormalAll.append(desafioNormal)
-desafioNormal
-
-
-st.subheader("1.6.2 Teste de consistência do critério 01 Falhas - Decisor Gerente")
-st.write("Nova matriz do criterio normalizada sem soma e peso")
-#Retira-se a Soma e  matriz de peso. Se não tirar não funciona.
-desafioNormal2 = desafioNormal.copy()
-del desafioNormal2['Csoma']
-del desafioNormal2['MatrizdePeso']
-desafioNormal2
-
-
-st.write("Transformando para array")
-#00
-#teste de consistencia recebe o nome da matriz ja normalizada para teste Assim....  ""  Consistencia00 = nometabela.to_numpy()
-array_criterio1 = desafioNormal2.to_numpy()
-array_criterio1
-
-
-# Verificação de consistência
-N = len(array_criterio1)
-lamb = np.sum(array_criterio1, axis=1)
-result = DadosSaaty(lamb, N)
-# Exibindo o resultado na tela
-st.write("Resultado da Verificação de Consistência:")
-st.markdown(result)
-
-# Realizando o cálculo VV se os dados são consistentes
-if "Consistente" in result:
-    l, v = VV(array_criterio1)
-    st.write("Autovalor (l):", l)
-    #st.write("Autovetor (v):", v)
-    st.write("Autovetor (v):", ' '.join(map(str, v)))
-
-
-
-
-#2.9
-st.subheader("Critério 2.7 Segurança - Decisor Gerente")
-st.write("Lendo os dados do decisor")
-
-sheetNr = 2
-print(desafioLabels[sheetNr])
-
-# Busca dados da planilha
-DadosCriterioSeguranca = ReadSheetByNr(desafioFile, sheetNr);
-DadosCriterioSeguranca
-
-
-# Normaliza dados
-st.write("1.7.1 Normalizando o criterio seguranca - Decisor Gerente")
-NormalizandoSeguranca = NormalizingCritera(DadosCriterioSeguranca);
-desafioNormalAll.append(NormalizandoSeguranca)
-NormalizandoSeguranca
-
-st.write("1.7.2 Recebendo a matriz do criterio segurança normalizada - Decisor Gerente")
-#Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
-ajustetabelaseguranca = NormalizandoSeguranca.copy()
-del ajustetabelaseguranca['Csoma']
-del ajustetabelaseguranca['MatrizdePeso']
-ajustetabelaseguranca
-
-st.write("1.7.3 Transformando para array")
 #00
 #teste de consistencia recebe o nome da matriz ja normalizada para teste Assim....  ""  Consistencia00 = nometabela.to_numpy()
 array_criterio2 = ajustetabelaseguranca.to_numpy()
@@ -505,6 +507,7 @@ if "Consistente" in result:
 
 
 
+    
 st.subheader("1.12  Finalizando Matriz de pesos locais - Priorização das alternativas - Decisor Gerente")
 st.write("2.14.1 PARA ENVIAR AO MOORA DADOS GERENTE")
 #25
