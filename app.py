@@ -158,7 +158,7 @@ try:
     desafioData = ReadSheetByNr(desafioFile, sheetNr);
     desafioData
 except ValueError:
-    print("Numero digitado inválido")
+    print("esperando info")
 
 
 #08
@@ -166,11 +166,15 @@ except ValueError:
 st.subheader("1.2 Normalizando os valores dos critérios - Decisor Gerente")
 # Normaliza dados
 
-try:
-    normalizandocriterio = NormalizingConsistency(desafioData);
-    normalizandocriterio
-except ValueError:
-    print("sem erro")
+If sheetNr is not None:
+    try:
+        normalizandocriterio = NormalizingConsistency(desafioData);
+        normalizandocriterio
+    except ValueError:
+        print("sem erro")
+else:
+    st.info("Por favor, faça o upload do arquivo Dados_decisores.xlsx.")
+
 
 #09
 st.subheader("1.3 - Consistencia (01) dos dados de critério vs objetivo (LOCAL) onde é comparado os 6 critérios par a par - Decisor Gerente")
