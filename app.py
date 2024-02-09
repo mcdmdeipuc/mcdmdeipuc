@@ -549,8 +549,8 @@ for x in matrizPesoXAlt:
 matrizPesoXAlt
 
 try:
-somaTable = pd.DataFrame([somaData], index=['SOMA'], columns=alternativasList)
-somaTable
+    somaTable = pd.DataFrame([somaData], index=['SOMA'], columns=alternativasList)
+    somaTable
 except(ZeroDivisionError, ValueError):
     print("esperando dados")
 
