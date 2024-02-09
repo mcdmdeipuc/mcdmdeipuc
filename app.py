@@ -183,10 +183,10 @@ st.subheader("1.3 - Consistencia (01) dos dados de critério vs objetivo (LOCAL)
 st.write("transformando em array")
 def tratando_erro(): 
     try: 
-    array_ahp = normalizandocriterio.to_numpy()
-    array_ahp
-except NameError: 
-    return "erro
+        array_ahp = normalizandocriterio.to_numpy()
+        array_ahp
+    except NameError: 
+        return "erro
 print(tratando_erro())    
 
 # Verificação de consistência
