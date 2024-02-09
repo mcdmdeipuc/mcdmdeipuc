@@ -21,7 +21,7 @@ html_temp = """
 """
 # display the front end aspect
 html_temp = f'<center>{html_temp}</center>'
-<div style="text-align: center"> your-text-here </div>
+
 st.markdown(html_temp, unsafe_allow_html=True)
 st.write('Mestrado acadêmico em Engenharia de Produção - PUC - Rio | DEI - Departamento de Engenharia Industrial')
 st.write("2023 - Todos os direitos reservados")
