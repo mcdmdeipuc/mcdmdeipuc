@@ -165,11 +165,12 @@ except ValueError:
 #2.4
 st.subheader("1.2 Normalizando os valores dos critérios - Decisor Gerente")
 # Normaliza dados
+
 try:
     normalizandocriterio = NormalizingConsistency(desafioData);
     normalizandocriterio
 except ValueError:
-    print("Numero digitado inválido")
+    print("sem erro")
 
 #09
 st.subheader("1.3 - Consistencia (01) dos dados de critério vs objetivo (LOCAL) onde é comparado os 6 critérios par a par - Decisor Gerente")
@@ -547,9 +548,11 @@ for x in matrizPesoXAlt:
     i = i + 1
 matrizPesoXAlt
 
+try:
 somaTable = pd.DataFrame([somaData], index=['SOMA'], columns=alternativasList)
 somaTable
-
+except(ZeroDivisionError, ValueError):
+    print("esperando dados")
 
 
 st.subheader("Resultado RankingDecisor_01_de_04_Gerado_No_AHP - Gerente")
