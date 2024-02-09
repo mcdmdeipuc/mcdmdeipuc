@@ -768,1684 +768,1682 @@ def tratando_erro():
             st.write("Autovetor (v):", ' '.join(map(str, v)))
 
 
+        #2.11
+        st.subheader("3.10 Critério 04 Custo - Decisor Supervisor")
+        st.write("Lendo os dados do decisor")
+        
+        #19
+        sheetNr = 11
+        print(desafioLabels[sheetNr])
+        desafioData = ReadSheetByNr(desafioFile, sheetNr);
+        desafioData
+        
+        st.write("2.11.1 Normalizando o critério CUSTO")
+        #20
+        NormalizandoCusto = NormalizingCritera(desafioData);
+        desafioNormalAll.append(NormalizandoCusto)
+        NormalizandoCusto
+        
+        st.write("2.11.2 Teste de consistência do critério Custo")
+        #Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
+        ajustetabelaCusto = NormalizandoSeguranca.copy()
+        del ajustetabelaCusto['Csoma']
+        del ajustetabelaCusto['MatrizdePeso']
+        ajustetabelaCusto
+        
+        st.write("Transformando para array")
+        array_criterio44 = ajustetabelaCusto.to_numpy()
+        array_criterio44 = ajustetabelaCusto.to_numpy()
+        
+        # Verificação de consistência
+        N = len(array_criterio44)
+        lamb = np.sum(array_criterio44, axis=1)
+        result = DadosSaaty(lamb, N)
+        # Exibindo o resultado na tela
+        st.write("Resultado da Verificação de Consistência:")
+        st.markdown(result)
+        
+        # Realizando o cálculo VV se os dados são consistentes
+        if "Consistente" in result:
+            l, v = VV(array_criterio44)
+            st.write("Autovalor (l):", l)
+            #st.write("Autovetor (v):", v)
+            st.write("Autovetor (v):", ' '.join(map(str, v)))
+        
+        
+        
+        #2.12 Critério 05 Preventiva
+        st.subheader("3.11 Critério 05 Preventiva - Decisor Supervisor")
+        st.write("Lendo os dados do decisor")
+        #22
+        sheetNr = 12
+        print(desafioLabels[sheetNr])
+        desafioData = ReadSheetByNr(desafioFile, sheetNr);
+        desafioData
+        
+        st.write("2.12.1Normalizando o criterio Preventiva")
+        NormalizandoPreventiva = NormalizingCritera(desafioData);
+        desafioNormalAll.append(NormalizandoPreventiva)
+        NormalizandoPreventiva
+        
+        st.write(" Teste de consistência do critério Preventiva Supervisor")
+        st.write("Recebendo a matriz do criterio normalizada")
+        #Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
+        ajustetabelaPreventiva = NormalizandoPreventiva.copy()
+        del ajustetabelaPreventiva['Csoma']
+        del ajustetabelaPreventiva['MatrizdePeso']
+        ajustetabelaPreventiva
+        
+        st.write("Transformando para array")
+        #00
+        #teste de consistencia recebe o nome da matriz ja normalizada para teste Assim....  ""  Consistencia00 = nometabela.to_numpy()
+        array_criterio55 = ajustetabelaPreventiva.to_numpy()
+        array_criterio55
+        
+        # Verificação de consistência
+        N = len(array_criterio55)
+        lamb = np.sum(array_criterio55, axis=1)
+        result = DadosSaaty(lamb, N)
+        # Exibindo o resultado na tela
+        st.write("Resultado da Verificação de Consistência:")
+        st.markdown(result)
+        
+        # Realizando o cálculo VV se os dados são consistentes
+        if "Consistente" in result:
+            l, v = VV(array_criterio55)
+            st.write("Autovalor (l):", l)
+            #st.write("Autovetor (v):", v)
+            st.write("Autovetor (v):", ' '.join(map(str, v)))
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        #2.13 Critério 06 Treinamento
+        st.subheader("3.12 Critério 06 Treinamento - Decisor Supervisor")
+        st.write("Lendo os dados do decisor")
+        sheetNr = 13
+        print(desafioLabels[sheetNr])
+        desafioData = ReadSheetByNr(desafioFile, sheetNr);
+        desafioData
+        
+        
+        st.write("Normalizando o critério Treinamento")
+        NormalizandoTreinamento = NormalizingCritera(desafioData);
+        desafioNormalAll.append(NormalizandoTreinamento)
+        NormalizandoTreinamento
+        
+        
+        st.write(" Teste de consistência do critério Treinamento")
+        ajustetabelaTreinamento = NormalizandoTreinamento.copy()
+        del ajustetabelaTreinamento['Csoma']
+        del ajustetabelaTreinamento['MatrizdePeso']
+        ajustetabelaTreinamento
+        
+        
+        st.write("Transformando para array")
+        array_criterio66 = ajustetabelaTreinamento.to_numpy()
+        # Verificação de consistência
+        N = len(array_criterio66)
+        lamb = np.sum(array_criterio66, axis=1)
+        result = DadosSaaty(lamb, N)
+        # Exibindo o resultado na tela
+        st.write("Resultado da Verificação de Consistência:")
+        st.markdown(result)
+        
+        # Realizando o cálculo VV se os dados são consistentes
+        if "Consistente" in result:
+            l, v = VV(array_criterio66)
+            st.write("Autovalor (l):", l)
+            #st.write("Autovetor (v):", v)
+            st.write("Autovetor (v):", ' '.join(map(str, v)))
+        
+        
+        
+        st.subheader("Finalizando Matriz de pesos locais - Priorização das alternativas - Decisor Supervisor")
+        st.write("2.14.1 PARA ENVIAR AO MOORA DADOS SUPERVISOR")
+        #25
+        
+        # Criando Matriz de Priorização das alternativas
+        matrizData = pd.DataFrame(desafioNormalAll[0]['MatrizdePeso'])
+        criteriosList = desafioNormalAll[0].index.tolist();
+        alternativasList = desafioNormalAll[1].index.tolist();
+        # print(criteriosList)
+        # print(alternativasList)
+        
+        for x in alternativasList:
+          auxList = [];
+          for x2 in criteriosList:
+            i = criteriosList.index(x2) + 1
+            auxList.append(desafioNormalAll[i]['MatrizdePeso'][x])
+          matrizData[x] = auxList
+        #matrizData
+        
+        #armazenando em um DataFrame
+        MatrizDePesoSupervisorParaAHP = matrizData.transpose()
+        # Exibindo o DataFrame resultante
+        
+        MatrizDePesoSupervisorParaAHP
+        
+        
+        
+        #26
+        
+        somaData = list_of_zeros = [0] * len(alternativasList)
+        
+        matrizPesoXAlt = matrizData.to_numpy()
+        i = 0
+        for x in matrizPesoXAlt:
+            p = matrizPesoXAlt[i][0]
+            j = 0
+            for x2 in x:
+                if j > 0:
+                    pa = p * matrizPesoXAlt[i][j]
+                    matrizPesoXAlt[i][j] = pa
+                    somaData[j - 1] += matrizPesoXAlt[i][j]
+                j = j + 1
+        
+            i = i + 1
+        matrizPesoXAlt
+        
+        somaTable = pd.DataFrame([somaData], index=['SOMA'], columns=alternativasList)
+        somaTable
+        
+        
+        
+        st.subheader("2.15.2 Resultado RankingDecisor_02_de_04_Gerado_No_AHP - Supervisor")
+        #28
+        RankingDecisor2 = pd.DataFrame(somaData, index=alternativasList, columns=['RankinDecisor_02_de_04_Gerado_No_AHP'])
+        RankingDecisor2.sort_values(by=['RankinDecisor_02_de_04_Gerado_No_AHP'],ascending=False)
+        
+        # Exibir DataFrame ordenado
+        st.write(RankingDecisor2)
+        
+        
+        
+        #............................................................................................
+        with st.container():
+          st.write("---")
+        
+        
+        
+        #29
+        st.subheader("Gerando a Matriz de comparação dos 5 critérios - Decisor 3 Técnico 01:")
+        sheetNr = 14
+        print(desafioLabels[sheetNr])
+        
+        # Busca dados da planilha
+        desafioData = ReadSheetByNr(desafioFile, sheetNr);
+        desafioData
+        
+        
+        
+        #2.4
+        st.subheader(" Normalizando os valores dos critérios - Decisor 3 Técnico 01")
+        # Normaliza dados
+        normalizandocriterio = NormalizingConsistency(desafioData);
+        normalizandocriterio
+        
+        
+        #09
+        st.subheader("Consistencia (01) dos dados de critério vs objetivo (LOCAL) onde é comparado os 6 critérios par a par - Decisor Gerente")
+        Consistencia1 = normalizandocriterio.to_numpy()
+        Consistencia1
+        
+        
+        
+        #10   NÃO ESTA FUNCIONANDO   NÃO ESTA FUNCIONANDO
+        st.subheader("Obtém o autovetor e autovalor e Calcula a consistência - Decisor 3 Técnico 01 ")
+        l, v = VV(Consistencia1)
+        
+        #print('Autovalor: %.2f' %l)
+        #print('Autovetor: ', np.round(v, 2))
+        
+        DadosSaaty(l, Consistencia1.shape[0])
+        
+        
+        
+        
+        #11
+        st.subheader("Vetor de peso - Decisor 3 Técnico 01")
+        
+        desafioNormal = NormalizingCritera(desafioData);
+        desafioNormalAll.append(desafioNormal)
+        desafioNormal
+        
+        
+        #12
+        st.subheader("2.7 Gráfico matriz de peso - Grafico 3 Técnico 01")
+        
+        desafioNormal[desafioSeets[sheetNr]] = desafioNormal.index
+        plt.figure(figsize=(22,2))
+        plt.title("Matriz de peso", fontsize=20)
+        
+        ax = sns.barplot(x=desafioSeets[sheetNr], y='MatrizdePeso', data=desafioNormal)
+        
+        # Aqui vem a parte para incluir os rótulos:
+        for p in ax.patches:
+            height = p.get_height()
+            ax.text(p.get_x() + p.get_width() / 2, height + 0, '{:1.2f}'.format((height)), ha='center', fontsize=12)
+        
+        # Exibe o gráfico usando st.pyplot()
+        st.pyplot(plt)
+        
+        #13
+        st.subheader("2.10 Critério 01 Falhas - Decisor 3 Técnico 01")
+        st.write("Lendo os dados do decisor")
+        
+        sheetNr = 15
+        print(desafioLabels[sheetNr])
+        
+        # Busca dados da planilha
+        desafioData = ReadSheetByNr(desafioFile, sheetNr);
+        desafioData
+        
+        #11
+        st.subheader(" Normalizando o criterio Falhas - Decisor 3 Técnico 01")
+        
+        # Normaliza dados
+        desafioNormal = NormalizingCritera(desafioData);
+        desafioNormalAll.append(desafioNormal)
+        desafioNormal
+        
+        
+        st.subheader(" Teste de consistência do critério 01 Falhas - Decisor 3 Técnico 01")
+        st.write("Recebendo a matriz do criterio normalizada")
+        #Retira-se a Soma e  matriz de peso. Se não tirar não funciona.
+        desafioNormal2 = desafioNormal.copy()
+        del desafioNormal2['Csoma']
+        del desafioNormal2['MatrizdePeso']
+        desafioNormal2
+        
+        
+        st.write("Transformando para array")
+        #00
+        #teste de consistencia recebe o nome da matriz ja normalizada para teste Assim....  ""  Consistencia00 = nometabela.to_numpy()
+        Consistencia2 = desafioNormal2.to_numpy()
+        Consistencia2
+        
+        st.write("Resultado consistencia critério 01 - falhas NÃO ESTA FUNCIONANDO")
+        l, v = VV(Consistencia2)
+        
+        print('Autovalor: %.2f' %l)
+        print('Autovetor: ', np.round(v, 2))
+        
+        DadosSaaty(l, Consistencia2.shape[0])
+        
+        
+        #2.9
+        st.subheader("Critério 02 Segurança - Decisor 3 Técnico 01")
+        st.write("Lendo os dados do decisor")
+        
+        # Busca dados da planilha
+        DadosCriterioSeguranca = ReadSheetByNr(desafioFile, sheetNr);
+        DadosCriterioSeguranca
+        
+        
+        # Normaliza dados
+        st.write("Normalizando o criterio seguranca - Decisor 3 Técnico 01")
+        NormalizandoSeguranca = NormalizingCritera(DadosCriterioSeguranca);
+        desafioNormalAll.append(NormalizandoSeguranca)
+        NormalizandoSeguranca
+        
+        st.write("Recebendo a matriz do criterio segurança normalizada - Decisor 3 Técnico 01")
+        #Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
+        ajustetabelaseguranca = NormalizandoSeguranca.copy()
+        del ajustetabelaseguranca['Csoma']
+        del ajustetabelaseguranca['MatrizdePeso']
+        ajustetabelaseguranca
+        
+        st.write("Transformando para array")
+        #00
+        #teste de consistencia recebe o nome da matriz ja normalizada para teste Assim....  ""  Consistencia00 = nometabela.to_numpy()
+        ConsistenciaSeguranca = ajustetabelaseguranca.to_numpy()
+        ConsistenciaSeguranca
+        
+        
+        st.write("Resultado consistencia critério 02 segurança - Decisor 3 Técnico 01")
+        
+        l, v = VV(ConsistenciaSeguranca)
+        
+        print('Autovalor: %.2f' %l)
+        print('Autovetor: ', np.round(v, 2))
+        
+        DadosSaaty(l, ConsistenciaSeguranca.shape[0])
+        
+        
+        #2.10
+        st.subheader("Critério 03 OEE - Decisor Supervisorrrrr")
+        st.write("Lendo os dados do decisor")
+        sheetNr = 9
+        print(desafioLabels[sheetNr])
+        
+        # Busca dados da planinha
+        desafioData = ReadSheetByNr(desafioFile, sheetNr);
+        desafioData
+        
+        
+        st.write("Normalizando o criterio OEE")
+        # Normaliza dados
+        NormalizandoOEE = NormalizingCritera(desafioData);
+        desafioNormalAll.append(NormalizandoOEE)
+        NormalizandoOEE
+        
+        st.write(" Teste de consistência do critério OEE")
+        #Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
+        ajustetabelaOEE = NormalizandoSeguranca.copy()
+        del ajustetabelaOEE['Csoma']
+        del ajustetabelaOEE['MatrizdePeso']
+        ajustetabelaOEE
+        
+        st.write("Transformando para array")
+        #00
+        #teste de consistencia recebe o nome da matriz ja normalizada para teste Assim....  ""  Consistencia00 = nometabela.to_numpy()
+        ConsistenciaOEE = ajustetabelaOEE.to_numpy()
+        ConsistenciaOEE
+        
+        st.write("TResultado consistencia critério 03 OEE NAO FUNCIONA")
+        #00
+        '''
+        Obtém o autovetor e autovalor
+        Calcula a consistência
+        '''
+        l, v = VV(ConsistenciaOEE)
+        
+        print('Autovalor: %.2f' %l)
+        print('Autovetor: ', np.round(v, 2))
+        
+        DadosSaaty(l, ConsistenciaOEE.shape[0])
+        
+        
+        
+        #2.11
+        st.subheader("Critério 04 Custo - Decisor 3 Técnico 01")
+        st.write("Lendo os dados do decisor")
+        
+        #19
+        sheetNr = 10
+        print(desafioLabels[sheetNr])
+        desafioData = ReadSheetByNr(desafioFile, sheetNr);
+        desafioData
+        
+        st.write("2.11.1 Normalizando o critério CUSTO")
+        #20
+        NormalizandoCusto = NormalizingCritera(desafioData);
+        desafioNormalAll.append(NormalizandoCusto)
+        NormalizandoCusto
+        
+        st.write(" Teste de consistência do critério Custo")
+        #Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
+        ajustetabelaCusto = NormalizandoSeguranca.copy()
+        del ajustetabelaCusto['Csoma']
+        del ajustetabelaCusto['MatrizdePeso']
+        ajustetabelaCusto
+        
+        st.write("Transformando para array")
+        ConsistenciaCusto = ajustetabelaCusto.to_numpy()
+        print(ConsistenciaCusto)
+        
+        st.write("Resultado consistencia critério 04 Custo Não esta funcionando")
+        l, v = VV(ConsistenciaCusto)
+        print('Autovalor: %.2f' %l)
+        print('Autovetor: ', np.round(v, 2))
+        DadosSaaty(l, ConsistenciaCusto.shape[0])
+        
+        
+        
+        
+        #2.12 Critério 05 Preventiva
+        st.subheader("Critério 05 Preventiva - Decisor 3 Técnico 01")
+        st.write("Lendo os dados do decisor")
+        #22
+        sheetNr = 12
+        print(desafioLabels[sheetNr])
+        desafioData = ReadSheetByNr(desafioFile, sheetNr);
+        desafioData
+        
+        st.write("Normalizando o criterio Preventiva")
+        NormalizandoPreventiva = NormalizingCritera(desafioData);
+        desafioNormalAll.append(NormalizandoPreventiva)
+        NormalizandoPreventiva
+        
+        st.write(" Teste de consistência do critério Preventiva Supervisor")
+        st.write("Recebendo a matriz do criterio normalizada")
+        #Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
+        ajustetabelaPreventiva = NormalizandoPreventiva.copy()
+        del ajustetabelaPreventiva['Csoma']
+        del ajustetabelaPreventiva['MatrizdePeso']
+        ajustetabelaPreventiva
+        
+        st.write("Transformando para array")
+        #00
+        #teste de consistencia recebe o nome da matriz ja normalizada para teste Assim....  ""  Consistencia00 = nometabela.to_numpy()
+        array_criterio55 = ajustetabelaPreventiva.to_numpy()
+        array_criterio55
+        # Verificação de consistência
+        N = len(array_criterio55)
+        lamb = np.sum(array_criterio55, axis=1)
+        result = DadosSaaty(lamb, N)
+        # Exibindo o resultado na tela
+        st.write("Resultado da Verificação de Consistência:")
+        st.markdown(result)
+        
+        # Realizando o cálculo VV se os dados são consistentes
+        if "Consistente" in result:
+            l, v = VV(array_criterio55)
+            st.write("Autovalor (l):", l)
+            #st.write("Autovetor (v):", v)
+            st.write("Autovetor (v):", ' '.join(map(str, v)))
+        
+        
+        
+        
+        #2.13 Critério 06 Treinamento
+        st.subheader("Critério 06 Treinamento - Decisor 3 Técnico 01")
+        st.write("Lendo os dados do decisor")
+        sheetNr = 12
+        print(desafioLabels[sheetNr])
+        desafioData = ReadSheetByNr(desafioFile, sheetNr);
+        desafioData
+        
+        
+        st.write("Normalizando o critério Treinamento")
+        NormalizandoTreinamento = NormalizingCritera(desafioData);
+        desafioNormalAll.append(NormalizandoTreinamento)
+        NormalizandoTreinamento
+        
+        
+        st.write("Teste de consistência do critério Treinamento")
+        ajustetabelaTreinamento = NormalizandoTreinamento.copy()
+        del ajustetabelaTreinamento['Csoma']
+        del ajustetabelaTreinamento['MatrizdePeso']
+        ajustetabelaTreinamento
+        
+        
+        st.write("Transformando para array")
+        array_criterio66 = ajustetabelaTreinamento.to_numpy()
+        st.write(array_criterio66)
+        
+        # Verificação de consistência
+        N = len(array_criterio66)
+        lamb = np.sum(array_criterio66, axis=1)
+        result = DadosSaaty(lamb, N)
+        # Exibindo o resultado na tela
+        st.write("Resultado da Verificação de Consistência:")
+        st.markdown(result)
+        
+        # Realizando o cálculo VV se os dados são consistentes
+        if "Consistente" in result:
+            l, v = VV(array_criterio66)
+            st.write("Autovalor (l):", l)
+            #st.write("Autovetor (v):", v)
+            st.write("Autovetor (v):", ' '.join(map(str, v)))
+        
+        
+        
+        st.subheader(" Finalizando Matriz de pesos locais - Priorização das alternativas - 3 Técnico 01")
+        st.write(" PARA ENVIAR AO MOORA DADOS TÉCNICO 01")
+        #25
+        
+        # Criando Matriz de Priorização das alternativas
+        matrizData = pd.DataFrame(desafioNormalAll[0]['MatrizdePeso'])
+        criteriosList = desafioNormalAll[0].index.tolist();
+        alternativasList = desafioNormalAll[1].index.tolist();
+        # print(criteriosList)
+        # print(alternativasList)
+        
+        for x in alternativasList:
+          auxList = [];
+          for x2 in criteriosList:
+            i = criteriosList.index(x2) + 1
+            auxList.append(desafioNormalAll[i]['MatrizdePeso'][x])
+          matrizData[x] = auxList
+        #matrizData
+        
+        #armazenando em um DataFrame
+        MatrizDePesoTec1ParaAHP = matrizData.transpose()
+        # Exibindo o DataFrame resultante
+        
+        MatrizDePesoTec1ParaAHP
+        
+        
+        
+        #26
+        
+        somaData = list_of_zeros = [0] * len(alternativasList)
+        
+        matrizPesoXAlt = matrizData.to_numpy()
+        i = 0
+        for x in matrizPesoXAlt:
+            p = matrizPesoXAlt[i][0]
+            j = 0
+            for x2 in x:
+                if j > 0:
+                    pa = p * matrizPesoXAlt[i][j]
+                    matrizPesoXAlt[i][j] = pa
+                    somaData[j - 1] += matrizPesoXAlt[i][j]
+                j = j + 1
+        
+            i = i + 1
+        matrizPesoXAlt
+        
+        somaTable = pd.DataFrame([somaData], index=['SOMA'], columns=alternativasList)
+        somaTable
+        
+        
+        st.subheader("2.15.2 Resultado RankingDecisor_03_de_04_Gerado_No_AHP - Téc 01")
+        #28
+        RankingDecisor3 = pd.DataFrame(somaData, index=alternativasList, columns=['RankinDecisor_03_de_04_Gerado_No_AHP'])
+        RankingDecisor3.sort_values(by=['RankinDecisor_03_de_04_Gerado_No_AHP'],ascending=False)
+        
+        # Exibir DataFrame ordenado
+        st.write(RankingDecisor3)
+        
+        
+        
+        
+        
+        #........................
+        
+        with st.container():
+          st.write("---")
+          st.write("---")
+          st.write("---")
+        
+        
+        #29
+        st.subheader(" Gerando a Matriz de comparação dos 5 critérios - Decisor 3 Técnico 02:")
+        sheetNr = 21
+        print(desafioLabels[sheetNr])
+        
+        # Busca dados da planilha
+        desafioData = ReadSheetByNr(desafioFile, sheetNr);
+        desafioData
+        
+        
+        
+        #2.4
+        st.subheader("Normalizando os valores dos critérios - Decisor 3 Técnico 02")
+        # Normaliza dados
+        normalizandocriterio = NormalizingConsistency(desafioData);
+        normalizandocriterio
+        
+        
+        #09
+        st.subheader(" Consistencia (01) dos dados de critério vs objetivo (LOCAL) onde é comparado os 6 critérios par a par - Decisor Gerente")
+        Consistencia1 = normalizandocriterio.to_numpy()
+        Consistencia1
+        
+        
+        
+        st.subheader("Obtém o autovetor e autovalor e Calcula a consistência - Decisor 3 Técnico 01 ")
+        l, v = VV(Consistencia1)
+        
+        #print('Autovalor: %.2f' %l)
+        #print('Autovetor: ', np.round(v, 2))
+        
+        DadosSaaty(l, Consistencia1.shape[0])
+        
+        
+        
+        
+        #11
+        st.subheader("Vetor de peso - Decisor 3 Técnico 02")
+        
+        desafioNormal = NormalizingCritera(desafioData);
+        desafioNormalAll.append(desafioNormal)
+        desafioNormal
+        
+        
+        #12
+        st.subheader("Gráfico matriz de peso - Grafico 3 Técnico 02")
+        
+        desafioNormal[desafioSeets[sheetNr]] = desafioNormal.index
+        plt.figure(figsize=(22,2))
+        plt.title("Matriz de peso", fontsize=20)
+        
+        ax = sns.barplot(x=desafioSeets[sheetNr], y='MatrizdePeso', data=desafioNormal)
+        
+        # Aqui vem a parte para incluir os rótulos:
+        for p in ax.patches:
+            height = p.get_height()
+            ax.text(p.get_x() + p.get_width() / 2, height + 0, '{:1.2f}'.format((height)), ha='center', fontsize=12)
+        
+        # Exibe o gráfico usando st.pyplot()
+        st.pyplot(plt)
+        
+        #13
+        st.subheader("Critério 01 Falhas - Decisor 3 Técnico 02")
+        st.write("Lendo os dados do decisor")
+        
+        sheetNr = 22
+        print(desafioLabels[sheetNr])
+        
+        # Busca dados da planilha
+        desafioData = ReadSheetByNr(desafioFile, sheetNr);
+        desafioData
+        
+        #11
+        st.subheader(" Normalizando o criterio Falhas - Decisor 3 Técnico 02")
+        
+        # Normaliza dados
+        desafioNormal = NormalizingCritera(desafioData);
+        desafioNormalAll.append(desafioNormal)
+        desafioNormal
+        
+        
+        st.subheader("Teste de consistência do critério 01 Falhas - Decisor 3 Técnico 02")
+        st.write("Recebendo a matriz do criterio normalizada")
+        #Retira-se a Soma e  matriz de peso. Se não tirar não funciona.
+        desafioNormal2 = desafioNormal.copy()
+        del desafioNormal2['Csoma']
+        del desafioNormal2['MatrizdePeso']
+        desafioNormal2
+        
+        
+        st.write("Transformando para array")
+        #00
+        #teste de consistencia recebe o nome da matriz ja normalizada para teste Assim....  ""  Consistencia00 = nometabela.to_numpy()
+        Consistencia2 = desafioNormal2.to_numpy()
+        Consistencia2
+        
+        st.write("Resultado consistencia critério 01 - falhas NÃO ESTA FUNCIONANDO")
+        l, v = VV(Consistencia2)
+        
+        print('Autovalor: %.2f' %l)
+        print('Autovetor: ', np.round(v, 2))
+        
+        DadosSaaty(l, Consistencia2.shape[0])
+        
+        
+        #2.9
+        st.subheader("Critério 02 Segurança - Decisor 3 Técnico 02")
+        st.write("Lendo os dados do decisor")
+        
+        # Busca dados da planilha
+        DadosCriterioSeguranca = ReadSheetByNr(desafioFile, sheetNr);
+        DadosCriterioSeguranca
+        
+        
+        # Normaliza dados
+        st.write("Normalizando o criterio seguranca - Decisor 3 Técnico 02")
+        NormalizandoSeguranca = NormalizingCritera(DadosCriterioSeguranca);
+        desafioNormalAll.append(NormalizandoSeguranca)
+        NormalizandoSeguranca
+        
+        st.write("Recebendo a matriz do criterio segurança normalizada - Decisor 3 Técnico 01")
+        #Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
+        ajustetabelaseguranca = NormalizandoSeguranca.copy()
+        del ajustetabelaseguranca['Csoma']
+        del ajustetabelaseguranca['MatrizdePeso']
+        ajustetabelaseguranca
+        
+        st.write("Transformando para array")
+        #00
+        #teste de consistencia recebe o nome da matriz ja normalizada para teste Assim....  ""  Consistencia00 = nometabela.to_numpy()
+        ConsistenciaSeguranca = ajustetabelaseguranca.to_numpy()
+        ConsistenciaSeguranca
+        
+        
+        st.write("Resultado consistencia critério 02 segurança - Decisor 3 Técnico 01")
+        
+        l, v = VV(ConsistenciaSeguranca)
+        
+        print('Autovalor: %.2f' %l)
+        print('Autovetor: ', np.round(v, 2))
+        
+        DadosSaaty(l, ConsistenciaSeguranca.shape[0])
+        
+        
+        #2.10
+        st.subheader("Critério 03 OEE - Decisor tec2")
+        st.write("Lendo os dados do decisor")
+        sheetNr = 24
+        print(desafioLabels[sheetNr])
+        
+        # Busca dados da planinha
+        desafioData = ReadSheetByNr(desafioFile, sheetNr);
+        desafioData
+        
+        
+        st.write("2.10.1 Normalizando o criterio OEE")
+        # Normaliza dados
+        NormalizandoOEE = NormalizingCritera(desafioData);
+        desafioNormalAll.append(NormalizandoOEE)
+        NormalizandoOEE
+        
+        st.write("2.10.1 Teste de consistência do critério OEE")
+        #Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
+        ajustetabelaOEE = NormalizandoSeguranca.copy()
+        del ajustetabelaOEE['Csoma']
+        del ajustetabelaOEE['MatrizdePeso']
+        ajustetabelaOEE
+        
+        st.write("Transformando para array")
+        #00
+        #teste de consistencia recebe o nome da matriz ja normalizada para teste Assim....  ""  Consistencia00 = nometabela.to_numpy()
+        ConsistenciaOEE = ajustetabelaOEE.to_numpy()
+        ConsistenciaOEE
+        
+        st.write("TResultado consistencia critério 03 OEE NAO FUNCIONA")
+        #00
+        '''
+        Obtém o autovetor e autovalor
+        Calcula a consistência
+        '''
+        l, v = VV(ConsistenciaOEE)
+        
+        print('Autovalor: %.2f' %l)
+        print('Autovetor: ', np.round(v, 2))
+        
+        DadosSaaty(l, ConsistenciaOEE.shape[0])
+        
+        
+        
+        #2.11
+        st.subheader("Critério 04 Custo - Decisor 3 Técnico 02")
+        st.write("Lendo os dados do decisor")
+        
+        #19
+        sheetNr = 25
+        print(desafioLabels[sheetNr])
+        desafioData = ReadSheetByNr(desafioFile, sheetNr);
+        desafioData
+        
+        st.write("2.11.1 Normalizando o critério CUSTO")
+        #20
+        NormalizandoCusto = NormalizingCritera(desafioData);
+        desafioNormalAll.append(NormalizandoCusto)
+        NormalizandoCusto
+        
+        st.write(" Teste de consistência do critério Custo")
+        #Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
+        ajustetabelaCusto = NormalizandoSeguranca.copy()
+        del ajustetabelaCusto['Csoma']
+        del ajustetabelaCusto['MatrizdePeso']
+        ajustetabelaCusto
+        
+        st.write("Transformando para array")
+        ConsistenciaCusto = ajustetabelaCusto.to_numpy()
+        print(ConsistenciaCusto)
+        
+        st.write("Resultado consistencia critério 04 Custo Não esta funcionando")
+        l, v = VV(ConsistenciaCusto)
+        print('Autovalor: %.2f' %l)
+        print('Autovetor: ', np.round(v, 2))
+        DadosSaaty(l, ConsistenciaCusto.shape[0])
+        
+        
+        
+        
+        #2.12 Critério 05 Preventiva
+        st.subheader("Critério 05 Preventiva - Decisor 3 Técnico 02")
+        st.write("Lendo os dados do decisor")
+        #22
+        sheetNr = 26
+        print(desafioLabels[sheetNr])
+        desafioData = ReadSheetByNr(desafioFile, sheetNr);
+        desafioData
+        
+        st.write("2.12.1Normalizando o criterio Preventiva")
+        NormalizandoPreventiva = NormalizingCritera(desafioData);
+        desafioNormalAll.append(NormalizandoPreventiva)
+        NormalizandoPreventiva
+        
+        st.write("2.12.2 Teste de consistência do critério Preventiva Supervisor")
+        st.write("Recebendo a matriz do criterio normalizada")
+        #Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
+        ajustetabelaPreventiva = NormalizandoPreventiva.copy()
+        del ajustetabelaPreventiva['Csoma']
+        del ajustetabelaPreventiva['MatrizdePeso']
+        ajustetabelaPreventiva
+        
+        st.write("Transformando para array")
+        #00
+        #teste de consistencia recebe o nome da matriz ja normalizada para teste Assim....  ""  Consistencia00 = nometabela.to_numpy()
+        ConsistenciaPreventiva = ajustetabelaPreventiva.to_numpy()
+        print(ConsistenciaPreventiva )
+        
+        st.write("resultado consistencia Noa esta funcioando")
+        l, v = VV(ConsistenciaPreventiva )
+        print('Autovalor: %.2f' %l)
+        print('Autovetor: ', np.round(v, 2))
+        DadosSaaty(l, ConsistenciaPreventiva .shape[0])
+        
+        
+        
+        #2.13 Critério 06 Treinamento
+        st.subheader("Critério 06 Treinamento - Decisor 3 Técnico 02")
+        st.write("Lendo os dados do decisor")
+        sheetNr = 27
+        print(desafioLabels[sheetNr])
+        desafioData = ReadSheetByNr(desafioFile, sheetNr);
+        desafioData
+        
+        
+        st.write("2.12.1Normalizando o critério Treinamento")
+        NormalizandoTreinamento = NormalizingCritera(desafioData);
+        desafioNormalAll.append(NormalizandoTreinamento)
+        NormalizandoTreinamento
+        
+        
+        st.write(" Teste de consistência do critério Treinamento")
+        ajustetabelaTreinamento = NormalizandoTreinamento.copy()
+        del ajustetabelaTreinamento['Csoma']
+        del ajustetabelaTreinamento['MatrizdePeso']
+        ajustetabelaTreinamento
+        
+        
+        st.write("Transformando para array")
+        array_criterio_Treinamento_tec1 = ajustetabelaTreinamento.to_numpy()
+        st.write(array_criterio_Treinamento_tec1)
+        
+        # Verificação de consistência
+        N = len(array_criterio_Treinamento_tec1)
+        lamb = np.sum(array_criterio_Treinamento_tec1, axis=1)
+        result = DadosSaaty(lamb, N)
+        # Exibindo o resultado na tela
+        st.write("Resultado da Verificação de Consistência:")
+        st.markdown(result)
+        
+        # Realizando o cálculo VV se os dados são consistentes
+        if "Consistente" in result:
+            l, v = VV(array_criterio_Treinamento_tec1)
+            st.write("Autovalor (l):", l)
+            #st.write("Autovetor (v):", v)
+            st.write("Autovetor (v):", ' '.join(map(str, v)))
+        
+        
+        
+        
+        
+        st.subheader(" Finalizando Matriz de pesos locais - Priorização das alternativas - 3 Técnico 02")
+        st.write("2.14.1 PARA ENVIAR AO MOORA DADOS TEC02")
+        #25
+        
+        # Criando Matriz de Priorização das alternativas
+        matrizData = pd.DataFrame(desafioNormalAll[0]['MatrizdePeso'])
+        criteriosList = desafioNormalAll[0].index.tolist();
+        alternativasList = desafioNormalAll[1].index.tolist();
+        # print(criteriosList)
+        # print(alternativasList)
+        
+        for x in alternativasList:
+          auxList = [];
+          for x2 in criteriosList:
+            i = criteriosList.index(x2) + 1
+            auxList.append(desafioNormalAll[i]['MatrizdePeso'][x])
+          matrizData[x] = auxList
+        #matrizData
+        
+        #armazenando em um DataFrame
+        MatrizDePesoTec2ParaAHP = matrizData.transpose()
+        # Exibindo o DataFrame resultante
+        
+        MatrizDePesoTec2ParaAHP
+        
+        
+        
+        #26
+        st.subheader(" AHP ADITIVO Tec2")
+        
+        somaData = list_of_zeros = [0] * len(alternativasList)
+        
+        matrizPesoXAlt = matrizData.to_numpy()
+        i = 0
+        for x in matrizPesoXAlt:
+            p = matrizPesoXAlt[i][0]
+            j = 0
+            for x2 in x:
+                if j > 0:
+                    pa = p * matrizPesoXAlt[i][j]
+                    matrizPesoXAlt[i][j] = pa
+                    somaData[j - 1] += matrizPesoXAlt[i][j]
+                j = j + 1
+        
+            i = i + 1
+        matrizPesoXAlt
+        
+        somaTable = pd.DataFrame([somaData], index=['SOMA'], columns=alternativasList)
+        somaTable
+        
+        
+        
+        st.subheader("Resultado RankingDecisor_04_de_04_Gerado_No_AHP - Téc 02")
+        #28
+        RankingDecisor4 = pd.DataFrame(somaData, index=alternativasList, columns=['RankinDecisor_04_de_04_Gerado_No_AHP'])
+        RankingDecisor4.sort_values(by=['RankinDecisor_04_de_04_Gerado_No_AHP'],ascending=False)
+        
+        # Exibir DataFrame ordenado
+        st.write(RankingDecisor4)
+        
+        
+        
+        dataframes = [RankingDecisor1, RankingDecisor2, RankingDecisor3, RankingDecisor4]
+        
+        # Concatenando os DataFrames ao longo das colunas
+        tabela_combinada = pd.concat(dataframes, axis=1)
+        
+        # Calculando a média aritmética para cada linha
+        media_aritmetica = tabela_combinada.mean(axis=1)
+        media_aritmetica = pd.DataFrame(media_aritmetica, columns=['MediaAritmetica'])
+        
+        # Adicionando a coluna de média aritmética à tabela combinada
+        tabela_combinada = pd.concat([tabela_combinada, media_aritmetica], axis=1)
+        tabela_combinada = tabela_combinada.sort_values(by=['MediaAritmetica'], ascending=False)
+        
+        # Exibindo a tabela combinada
+        tabela_combinada
+        
+        st.subheader('Ranking final AHP')
+        
+        # Filtrar apenas as colunas "MediaAritmetica"
+        
+        # Mantenha a primeira e a última coluna
+        Ranking_final_AHP = tabela_combinada.copy
+        
+        colunas_desejadas = [tabela_combinada.columns[-1]]
+        Ranking_final_AHP = tabela_combinada[colunas_desejadas]
+        
+        # Exiba o DataFrame resultante
+        #st.write(Ranking_final_AHP)
+        
+        # Dê um nome à coluna de índice
+        Ranking_final_AHP.index.name = 'Alternativas'
+        
+        # Exiba o DataFrame resultante
+        st.write(Ranking_final_AHP)
+        
+        
+        
+        
+        ################
+        with st.container():
+            st.markdown("<h1 style='text-align: center;'>Método 02 MOORA</h1>", unsafe_allow_html=True)
+            st.subheader('Brauers e Zavadskas')
+        
+        dataframes = [MatrizDePesoGerenteParaAHP, MatrizDePesoSupervisorParaAHP, MatrizDePesoTec1ParaAHP, MatrizDePesoTec2ParaAHP]
+        
+        # Verificando se os DataFrames têm a mesma estrutura (mesmas colunas)
+        colunas_esperadas = dataframes[0].columns.tolist()
+        for df in dataframes[1:]:
+            if df.columns.tolist() != colunas_esperadas:
+                raise ValueError("Os DataFrames não têm a mesma estrutura (colunas).")
+        
+        # Criando um DataFrame vazio para armazenar a média
+        tabela_media = pd.DataFrame(columns=colunas_esperadas)
+        
+        # Calculando a média para cada coluna, excluindo a linha "MatrizdePeso"
+        for coluna in colunas_esperadas:
+            valores_coluna = [df[coluna] for df in dataframes if coluna != "MatrizdePeso"]
+            tabela_media[coluna] = pd.concat(valores_coluna, axis=0).groupby(level=0).mean()
+        
+        
+        # Exibindo o DataFrame com a média
+        #print("DataFrame com Média:")
+        #tabela_media
+        
+        
+        st.subheader('2.1 - Critérios de Maximização ou Minimização')
+        st.write("Esco.lha se o objetivo é Minimizar ou Maximizar Falha e Custo Minimizar")
+        
+        # Criando uma lista para armazenar as opções de maximização/minimização
+        opcoes = {}
+        
+        # Exibindo a interface para cada coluna
+        for coluna in tabela_media.columns:
+            # Adicionando uma opção para o usuário informar se é Maximizar ou Minimizar
+            objetivo = st.radio(f"Selecione o objetivo para a coluna {coluna}:", ["Maximizar", "Minimizar"])
+            opcoes[coluna] = objetivo
+        
+        # Gerando um novo DataFrame com os nomes modificados
+        novo_dataframe = tabela_media.copy()
+        
+        for coluna, objetivo in opcoes.items():
+            novo_nome = f"{coluna}_{objetivo}"
+            novo_dataframe.rename(columns={coluna: novo_nome}, inplace=True)
+        
+        # Exibindo o novo DataFrame
+        st.write("Novo DataFrame com a escolha do usuário:")
+        st.write(novo_dataframe)
+        
+        
+        
+        st.write("Guardando somente a linha de peso para usar depois")
+        
+        # Criando uma cópia do DataFrame contendo apenas a linha "MatrizdePeso"
+        dados_peso_do_ahp = novo_dataframe.loc[['MatrizdePeso']].copy()
+        
+        # Exibindo o novo DataFrame
+        st.write(dados_peso_do_ahp)
+        
+        
+        
+        st.write("Ficando com o data frame sem o peso")
+        # Criando uma cópia do DataFrame
+        matriz_moora = novo_dataframe.copy()
+        
+        # Excluindo a linha "MatrizdePeso"
+        matriz_moora = matriz_moora.drop(index='MatrizdePeso')
+        
+        # Exibindo o DataFrame atualizado
+        st.subheader('Novo DataFrame sem a Linha "MatrizdePeso"')
+        st.write(matriz_moora)
+        
+        # Criando uma cópia do DataFrame para usar depois
+        matriz_Tchebycheff = matriz_moora.copy()
+        
+        
+        
+        st.subheader('Normalizando')
+        st.write("Elevar os indicadores em análise ao quadrado")
+        
+        normalizando = matriz_moora.pow(2).round(6)
+        # Exibindo o novo DataFrame resultante
+        st.write("normalizando:")
+        st.write(normalizando)
+        
+        
+        
+        st.write(" Obtendo a soma de todos os critérios")
+        decisaoSumDf = normalizando.copy()
+        decisaoSumDf.loc['soma'] = decisaoSumDf.sum()
+        decisaoSumDf
+        
+        
+        
+        st.write(" Encontrando a raiz da soma ")
+        
+        
+        # Adicione a linha 'raiz_da_soma' ao final de cada coluna
+        decisaoSumDf.loc['raiz_da_soma'] = decisaoSumDf.sum()
+        decisaoSumDf
+        
+        st.write(" Dividindo cada valor pela raiz quadrada de cada critério")
+        
+        # Iterando sobre as colunas e normalizando os valores
+        for coluna in decisaoSumDf.columns:
+            raiz_da_soma = decisaoSumDf.at['raiz_da_soma', coluna]
+            decisaoSumDf[coluna] = decisaoSumDf[coluna] / raiz_da_soma
+        
+        # Exibindo o DataFrame após a normalização
+        
+        st.write(decisaoSumDf)
+        
+        
+        st.subheader('Relacionando aos pesos')
+        st.write("Excluindo as linhas de soma e raiz da soma")
+        
+        # Criando uma cópia do DataFrame
+        matriz_nova = decisaoSumDf.copy()
+        
+        # Excluindo a linha "soma"
+        matriz_nova = matriz_nova.drop(index='soma')
+        matriz_nova = matriz_nova.drop(index='raiz_da_soma')
+        # Exibindo o DataFrame atualizado
+        st.write(matriz_nova)
+        
+        
+        st.write("Trazendo os pesos do AHP")
+        st.write(dados_peso_do_ahp)
+        primeira_coluna = dados_peso_do_ahp.columns[0]
+        st.write(f"O nome da primeira coluna é: {primeira_coluna}")
+        
+        
+        
+        # Inicializa a variável global resultado
+        resultado = None
+        
+        def main():
+            global resultado  # Indica que estamos referenciando a variável global, não criando uma nova local
+        
+            # Simulando DataFrames (substitua isso pelos seus DataFrames reais)
+            matriz_nova2 = pd.DataFrame(matriz_nova)
+            dados_peso_do_ahp2 = pd.DataFrame(dados_peso_do_ahp)
+        
+            # Unindo os DataFrames pela coluna 'Alternativa'
+            resultado = pd.concat([matriz_nova2, dados_peso_do_ahp2], ignore_index=False)
+            #resultado = pd.merge(matriz_nova2, dados_peso_do_ahp2, on='', how='outer')
+        
+            # Exibindo o DataFrame resultante
+            st.write("DataFrame Resultante:")
+            st.write(resultado, width=800, height=400)
+        
+            resultado.reset_index(inplace=True)
+            return resultado.copy()
+        
+        # Chama a função principal
+        if __name__ == "__main__":
+            main()
+        
+        # Agora, você pode acessar a variável global 'resultado' fora da função main
+        st.write("Acesso a 'resultado' fora da função main:")
+        st.write(resultado)
+        
+        
+        
+        
+        
+        
+        
+        
+        st.subheader("Relacionando aos pesos ")
+        st.write("do data frame anterior cada valor foi multiplicado pela MatrizdePeso:")
+        
+        # Obtendo os pesos dos critérios da última linha
+        pesos = resultado.iloc[-1, :]
+        
+        
+        # Multiplicando os valores das alternativas pelos pesos dos critérios
+        resultado.iloc[:-1, 1:] = resultado.iloc[:-1, 1:].multiply(pesos[1:])
+        
+        # Excluindo a linha "MatrizdePeso"
+        resultado = resultado[resultado['index'] != 'MatrizdePeso']
+        
+        # Resetando o índice para trazer a coluna 'Alternativa' de volta
+        resultado.reset_index(drop=True, inplace=True)
+        resultado = resultado.dropna()
+        
+        # Exibindo o DataFrame resultante)
+        st.dataframe(resultado)
+        
+        
+        
+        
+        st.subheader(" Otimização do Modelo Moora")
+        
+        
+        # Carregue o DataFrame existente
+        otimizacao = pd.DataFrame(resultado)
+        
+        # Listas para armazenar as otimizações otimizadas
+        alternativas = []
+        resultados_otimizados = []
+        info_crit = []
+        
+        # Itera sobre as linhas do DataFrame 'otimizacao' usando iterrows()
+        for index, row in otimizacao.iterrows():
+            # Adiciona a alternativa à lista de otimizações otimizadas
+            alternativas.append(row['index'])
+        
+            # Inicializa a soma para critérios de maximização
+            soma_max = 0
+        
+            # Itera sobre as colunas do DataFrame 'otimizacao'
+            for coluna in otimizacao.columns:
+                # Verifica se a coluna contém "Minimizar"
+                if "minimizar" in coluna.lower():
+                    soma_max -= row[coluna]  # Corrigindo o sinal para minimização
+                    info_crit.append((coluna, row['index'], "Minimizar"))
+                # Verifica se a coluna contém "Maximizar"
+                elif "maximizar" in coluna.lower():
+                    soma_max += row[coluna]
+                    info_crit.append((coluna, row['index'], "Maximizar"))
+        
+            # Adiciona a soma para critérios de maximização à lista de resultados otimizados
+            resultados_otimizados.append(soma_max)
+        
+        # Cria um DataFrame com os resultados otimizados
+        otimizado_df = pd.DataFrame({"Alternativa": alternativas, "Resultado Otimizado": resultados_otimizados})
+        
+        # Exibe o DataFrame resultante
+        st.subheader("Resultado Otimizado:")
+        st.write(otimizado_df, width=800, height=400)
+        
+        
+        
+        st.subheader("- Ranking Moora")
+        # Cria um DataFrame para a ordenação
+        Ranking_Moora = pd.DataFrame(otimizado_df, columns=['Alternativa', 'Resultado Otimizado'])
+        Ranking_Moora = Ranking_Moora.sort_values(by=['Resultado Otimizado'], ascending=False)
+        
+        # Exibe o DataFrame ordenado
+        st.write(Ranking_Moora, width=800, height=400)
+        
+        
+        
+        
+        ################
+        with st.container():
+            st.markdown("<h1 style='text-align: center;'> Método 05  Tchebycheff</h1>", unsafe_allow_html=True)
+            st.subheader('a. Iniciando com a matriz original do AHP.')
+        st.write(matriz_Tchebycheff)
+        
+        
+        st.write("..............................TESTE.................................")
+        # Verificar se é um DataFrame
+        if isinstance(matriz_Tchebycheff, pd.DataFrame):
+            st.write("É um DataFrame")
+        else:
+            st.write("Não é um DataFrame")
+        
+        # Verificar se o DataFrame tem colunas preenchidas
+        if not matriz_Tchebycheff.empty and not matriz_Tchebycheff.columns.empty:
+            st.write("O DataFrame tem colunas preenchidas")
+        else:
+            st.write("O DataFrame está vazio ou sem colunas")
+        
+        st.write("..............................TESTE.................................")
+        
+        st.subheader('b. Achando o ponto de referencia')
+        # Função para calcular o ponto de referência com base nos critérios
+        def calcular_ponto_referencia(df):
+            ponto_referencia = []
+            for coluna in df.columns:
+                if 'Maximizar' in coluna:
+                    ponto_referencia.append(df[coluna].max())
+                elif 'Minimizar' in coluna:
+                    ponto_referencia.append(df[coluna].min())
+            return ponto_referencia
+        
+        # Função para adicionar a linha de ponto de referência
+        def adicionar_linha_ponto_referencia(df):
+            ponto_referencia = calcular_ponto_referencia(df)
+            df.loc['Ponto_Referencia'] = ponto_referencia
+        
+        # Função principal do Streamlit
+        def main():
+            global matriz_Tchebycheff  # Garante que a variável global seja usada
+        
+            # Adicionar a linha de ponto de referência
+            adicionar_linha_ponto_referencia(matriz_Tchebycheff)
+        
+            # Mostrar DataFrame no Streamlit
+            st.dataframe(matriz_Tchebycheff)
+        
+        # Executar a função principal
+        if __name__ == '__main__':
+            main()
+        
+        #...............................................................
+        st.subheader("c. Avaliação final - FALTA CHEGAR O QUE DEVE SER REDUZIDO ")
+        st.write("Pega-se o valor de cada alternaytiva e diminui pelo valor do ponto de referencia?")
+        # Reduzir os valores das alternativas pelo valor na linha Ponto_Referencia
+        matriz_reduzida = matriz_Tchebycheff.iloc[:-1, :] - matriz_Tchebycheff.loc['Ponto_Referencia']
+        
+        # Adicionar a linha de Ponto_Referencia à matriz reduzida
+        matriz_reduzida.loc['Ponto_Referencia'] = matriz_Tchebycheff.loc['Ponto_Referencia']
+        
+        # Função principal do Streamlit
+        def main():
+            global matriz_reduzida  # Garante que a variável global seja usada
+        
+            # Excluir a linha Ponto_Referencia do resultado
+            matriz_reduzida = matriz_reduzida.drop('Ponto_Referencia')
+        
+            # Mostrar DataFrame reduzido no Streamlit
+            st.dataframe(matriz_reduzida)
+        
+        # Executar a função principal
+        if __name__ == '__main__':
+            main()
+        
+        
+        
+        st.subheader("4.2 Ordena-se as alternativas de acordo com maior distância. Ponto de referencia")
+        
+        
+        # Reduzir os valores das alternativas pelo valor na linha Ponto_Referencia
+        matriz_reduzida = matriz_Tchebycheff.iloc[:-1, :] - matriz_Tchebycheff.loc['Ponto_Referencia']
+        
+        # Encontrar o maior valor em cada alternativa
+        maiores_valores = matriz_reduzida.max(axis=1)
+        
+        # Criar DataFrame com os maiores valores
+        resultados = pd.DataFrame({'Maior_Valor': maiores_valores})
+        
+        # Função principal do Streamlit
+        def main():
+            global resultados  # Garante que a variável global seja usada
+        
+            # Mostrar DataFrame com os maiores valores no Streamlit
+            st.dataframe(resultados)
+        
+        # Executar a função principal
+        if __name__ == '__main__':
+            main()
+        
+        
+        #...............................................................
+        st.subheader("4.3 Resultado tchebycheff")
+        st.write("Ordena-se do menor para o maior")
+        # Ordenar os resultados do menor para o maior
+        Ranking_tchebycheff = resultados.sort_values(by='Maior_Valor')
+        st.dataframe(Ranking_tchebycheff)
+        
+        # Renomeando o índice para "Alternativas"
+        Ranking_tchebycheff = Ranking_tchebycheff.rename_axis('Alternativas')
+        
+        # Exibindo o DataFrame modificado usando Streamlit
+        st.write(Ranking_tchebycheff)
+        
+        
+        
+        
+        ################
+        with st.container():
+            st.markdown("<h1 style='text-align: center;'>5 METODO MULTIMOORA</h1>", unsafe_allow_html=True)
+            st.subheader('a. Iniciando com a matriz original do AHP.')
+            st.write(" MULTIMOORA é a sequência adicional do método MOORA e da forma multiplicativa completa de múltiplos objetivos")
+        
+        
+            matriz_multimoora = matriz_Tchebycheff.copy()
+        st.write(matriz_multimoora)
+        
+        
+        nomes_colunas = matriz_multimoora.columns.tolist()
+        # Exibir os nomes das colunas
+        #st.write("Nomes das Colunas:", nomes_colunas)
+        
+        #...............................................................
+        st.subheader("5.3 Dividindo ou multiplicandox")
+        st.write("Se o critério for de max multiplica pelo ponto de referencia, senão divide")
+        
+        
+        
+        # Obtendo os nomes das alternativas e critérios
+        alternativas = matriz_multimoora.index.tolist()
+        criterios = matriz_multimoora.columns.tolist()
+        
+        # Obtendo os pontos de referência
+        ponto_referencia = matriz_multimoora.loc["Ponto_Referencia"]
+        
+        # Aplicando a lógica MUTIMOORA
+        for criterio in criterios:
+            if "Maximizar" in criterio:
+                matriz_multimoora[criterio] *= ponto_referencia[criterio]
+            else:
+                matriz_multimoora[criterio] /= ponto_referencia[criterio]
+        
+        # Excluindo a linha "Ponto_Referencia"
+        matriz_multimoora = matriz_multimoora.drop("Ponto_Referencia")
+        
+        # Exibindo o DataFrame após a aplicação do método
+        st.write("DataFrame Após MUTIMOORA:", matriz_multimoora)
+        
+        
+        
+        #...............................................................
+        st.subheader("Resultado MULTIMOORA")
+        st.write("Agregação dos Resultados e  Classificação das Alternativas")
+        
+        
+        
+        # Obtendo os nomes das alternativas e critérios
+        alternativas = matriz_multimoora.index.tolist()
+        criterios = matriz_multimoora.columns.tolist()
+        
+        # Página Streamlit
+        st.title("Análise MULTIMOORA")
+        
+        # Exibindo o DataFrame original
+        st.subheader("DataFrame Original:")
+        st.write(matriz_multimoora)
+        
+        
+        st.subheader("descobrindo se é de max ou min:")
+        # Obtendo os nomes das colunas de critérios
+        colunas_critérios = matriz_multimoora.columns.tolist()
+        
+        # Criando a lista colMinOrMax automaticamente
+        colMinOrMax = []
+        
+        for coluna in colunas_critérios:
+            if "Maximizar" in coluna:
+                colMinOrMax.append('max')
+            elif "Minimizar" in coluna:
+                colMinOrMax.append('min')
+            else:
+                # Caso a coluna não contenha informações sobre maximizar ou minimizar, você pode adicionar lógica adicional ou definir um valor padrão.
+                colMinOrMax.append('padrao')
+        
+        # Exibindo a lista colMinOrMax
+        st.write("Lista colMinOrMax:", colMinOrMax)
+        
+        
+        
+        
+        st.subheader("montando as novas colunas:")
+        # Obtendo os nomes das colunas de critérios
+        colunas_critérios = matriz_multimoora.columns.tolist()
+        
+        # Criando a variável vColunas conforme o padrão mencionado
+        vColunas = []
+        for i, coluna in enumerate(colunas_critérios):
+            vColunas.append(coluna)
+            if i > 0:
+                vColunas.append(f"{i+1}")
+        
+        # Exibindo a lista vColunas
+        st.subheader("Variável vColunas:")
+        st.write("vColunas:", vColunas)
+        
+        
+        
+        
+        
+        st.subheader("descobrindo nomes das alternativas de critérios:")
+        # Obtendo os nomes das alternativas de critérios
+        vIndice = matriz_multimoora.index.tolist()
+        
+        # Exibindo a lista vIndice
+        st.write("Lista vIndice:", vIndice)
+        
+        
+        
+        
+        st.subheader(" implementando a lógica do método MULTIMOORA")
+        st.write("Recebe a primeira e a segunda coluna original do dataframe e cria as proximas colunas numerando seus títulos - comencando pelo numero 2 - e nas linhas das alternativas recebe os valores das colunas multiplicados")
+        
+        
+        MultimooraMt = []
+        MultimooraOrderMt = []
+        for k, linha in enumerate(matriz_multimoora.values):
+            v = 0  # Inicialize v com um valor numérico
+            MultimooraMt.append([])
+            MultimooraOrderMt.append([0])
+        
+            for k2, valor in enumerate(linha):
+                MultimooraMt[k].append(valor)
+        
+                if k2 > 0:
+                    if colMinOrMax[k2] == 'max':
+                        v = v * float(valor)  # Converta para float antes de multiplicar
+                    else:
+                        v = v / float(valor)  # Converta para float antes de dividir
+                    MultimooraMt[k].append(v)
+                else:
+                    v = float(valor)  # Converta para float no início do loop
+                MultimooraOrderMt[k][0] = v
+        
+        
+        MultimooraDf = pd.DataFrame(MultimooraMt, index=vIndice, columns=vColunas)
+        MultimooraDf
+        
+        
+        st.subheader("Resultado MULTIMOORA")
+        
+        Ranking_Multimoora = pd.DataFrame(MultimooraOrderMt, index=vIndice, columns=['RankingMultiMoora'])
+        
+        # Ajustando a exibição de casas decimais
+        pd.set_option('display.float_format', '{:.6f}'.format)
+        
+        # Arredondando o DataFrame para 6 casas decimais
+        Ranking_Multimoora = Ranking_Multimoora.round(6)
+        
+        Ranking_Multimoora = Ranking_Multimoora.sort_values(by=['RankingMultiMoora'], ascending=False)
+        st.write(Ranking_Multimoora)
+        
+        
+        
+        
+        ################
+        with st.container():
+            st.markdown("<h1 style='text-align: center;'>6 MÉTODO BORDA</h1>", unsafe_allow_html=True)
+            st.write(" Nesse método, se houver t alternativas, a primeira colocada recebe t votos e a segunda recebe um voto a menos, e assim por diante.")
+            st.subheader('recebendo todos os rankings ')
+            st.write("Ranking_final_AHP, Ranking_Moora, Ranking_tchebycheff, Ranking_Multimoora")
+        
+        
+        st.subheader('AHP')
+        #st.write(Ranking_final_AHP)
+        #st.write(" -------AHP Verificar se é DataFrame ou Series")
+        Ranking_final_AHP = Ranking_final_AHP.rename(columns={'Indice': 'Alternativas'})
+        Ranking_final_AHP= Ranking_final_AHP.rename(columns={'MediaAritmetica': 'Ranking_final_AHP'})
+        
+        
+        st.write(Ranking_final_AHP)
+        if isinstance(Ranking_final_AHP, pd.DataFrame):
+            st.write("Ranking_final_AHP, é um DataFrame.")
+        elif isinstance(Ranking_final_AHP, pd.Series):
+            st.write("Ranking_final_AHP, é uma Series.")
+        else:
+            st.write("Não é nem DataFrame nem Series. Verifique o tipo do objeto.")
+        #st.write(" --------Verificar se 'index' está nas colunas do DataFrame")
+        tem_coluna_index_ahp = 'index' in Ranking_final_AHP.columns
+        st.write(f"O DataFrame tem uma coluna chamada 'Indice: {tem_coluna_index_ahp}")
+        
+        
+        
+        
+        
+        
+        st.subheader('MOORA')
+        st.write(" Ranking_Moora Verificar se é DataFrame ou Series")
+        # Renomeando a coluna
+        Ranking_Moora= Ranking_Moora.rename(columns={'Resultado Otimizado': 'Ranking_Moora'})
+        Ranking_Moora= Ranking_Moora.rename(columns={'Alternativa': 'Alternativas'})
+        st.write(Ranking_Moora)
+        if isinstance(Ranking_Moora, pd.DataFrame):
+            st.write("Ranking_Moora é um DataFrame.")
+            # Se for um DataFrame, você pode realizar operações específicas de DataFrame
+            # Exemplo: st.dataframe(Ranking_Moora)
+        elif isinstance(Ranking_Moora, pd.Series):
+            st.write("Ranking_Moora é uma Series.")
+            # Se for uma Series, você pode realizar operações específicas de Series
+            # Exemplo: st.write(Ranking_Moora)
+        else:
+            st.write("Não é nem DataFrame nem Series. Verifique o tipo do objeto.")
+        
+        #st.write(" --------Verificar se 'index' está nas colunas do DataFrame")
+        tem_coluna_index_moora = 'index' in Ranking_Moora.columns
+        st.write(f"O DataFrame tem uma coluna chamada 'index': {tem_coluna_index_moora}")
+        
+        
+        
+        
+        st.subheader('tchebychefff')
+        #st.write(" Ranking_Moora Verificar se é DataFrame ou Series")
+        #st.write(Ranking_tchebycheff)
+        
+        # Renomeando a coluna
+        Ranking_tchebycheff = Ranking_tchebycheff.rename(columns={'Maior_Valor': 'Ranking_tchebycheff'})
+        # Renomeando o índice para "Alternativas"
+        Ranking_tchebycheff = Ranking_tchebycheff.rename_axis('Alternativas')
+        st.write(Ranking_tchebycheff)
+        
+        
+        
+        st.subheader('Multimoora')
+        st.write(" Ranking_Moora Verificar se é DataFrame ou Series")
+        #st.write(Ranking_Multimoora)
+        if isinstance(Ranking_Multimoora, pd.DataFrame):
+            st.write("Ranking_Multimoora é um DataFrame.")
+            # Se for um DataFrame, você pode realizar operações específicas de DataFrame
+            # Exemplo: st.dataframe(Ranking_Multimoora)
+        
+        elif isinstance(Ranking_Multimoora, pd.Series):
+            st.write("Ranking_Multimoora é uma Series.")
+            # Se for uma Series, você pode realizar operações específicas de Series
+            # Exemplo: st.write(Ranking_Multimoora)
+        else:
+            st.write("Não é nem DataFrame nem Series. Verifique o tipo do objeto.")
+        
+        # Renomeando o índice para "Alternativas"
+        Ranking_Multimoora = Ranking_Multimoora.rename_axis('Alternativas')
+        
+        # Exibindo o DataFrame modificado usando Streamlit
+        st.write(Ranking_Multimoora)
+        # para obter os nomes das colunas
+        #nomes_colunas = Ranking_Multimoora.columns
+        st.write("Nomes das Colunas do Ranking_Multimoora:", nomes_colunas)
+        
+        # Renomeando o índice para "Alternativas"
+        Ranking_Multimoora= Ranking_Multimoora.rename_axis('Alternativas')
+        
+        
+        
+        
+        
+        
+        st.subheader('Unindo os rankings Ranking_final_AHP, Ranking_tchebycheff, Ranking_Multimoora, Ranking_Moora')
+        
+        # Unindo os DataFrames com base na coluna 'Alternativas'
+        borda_inicio_df = pd.merge(Ranking_final_AHP, Ranking_tchebycheff, on='Alternativas')
+        borda_inicio_df = pd.merge(borda_inicio_df, Ranking_Moora, on='Alternativas')
+        borda_inicio_df = pd.merge(borda_inicio_df, Ranking_Multimoora, on='Alternativas')
+        
+        # Exibindo o DataFrame resultante
+        st.table(borda_inicio_df)
+        
+        # Fazendo o Ranking
+        #função para Ordenar
+        def reoder(x, y):
+            return y.index(x)+1
+        
+        col1 = borda_inicio_df['Ranking_final_AHP'].values.tolist()
+        col1_ordered = borda_inicio_df['Ranking_final_AHP'].sort_values().values.tolist()
+        borda_inicio_df['ordem1'] = borda_inicio_df['Ranking_final_AHP'].apply(reoder, y=col1_ordered)
+        
+        col2 = borda_inicio_df['Ranking_Moora'].values.tolist()
+        col2_ordered = borda_inicio_df['Ranking_Moora'].sort_values().values.tolist()
+        borda_inicio_df['ordem2'] = borda_inicio_df['Ranking_Moora'].apply(reoder, y=col2_ordered)
+        
+        
+        col3 = borda_inicio_df['RankingMultiMoora'].values.tolist()
+        col3_ordered = borda_inicio_df['RankingMultiMoora'].sort_values().values.tolist()
+        borda_inicio_df['ordem3'] = borda_inicio_df['RankingMultiMoora'].apply(reoder, y=col3_ordered)
+        
+        
+        col4 = borda_inicio_df['Ranking_tchebycheff'].values.tolist()
+        col4_ordered = borda_inicio_df['Ranking_tchebycheff'].sort_values().values.tolist()
+        borda_inicio_df['ordem4'] = borda_inicio_df['Ranking_tchebycheff'].apply(reoder, y=col4_ordered)
+        
+        
+        
+        
+        # Reordenando as colunas para mover 'ordem1' para a terceira posição
+        ordem1 = borda_inicio_df.pop('ordem1')  # Remove a coluna 'ordem1'
+        borda_inicio_df.insert(2, 'ordem1', ordem1)  # Insere 'ordem1' na posição desejada (posição 2 neste caso)
+        
+        # Reordenando as colunas para mover 'ordem2' para a terceira posição
+        ordem2 = borda_inicio_df.pop('ordem2')  # Remove a coluna 'ordem2'
+        borda_inicio_df.insert(4, 'ordem2', ordem2)  # Insere 'ordem1' na posição desejada (posição 4 neste caso)
+        
+        # Reordenando as colunas para mover 'ordem3' para a terceira posição
+        ordem3 = borda_inicio_df.pop('ordem3')  # Remove a coluna 'ordem2'
+        borda_inicio_df.insert(6, 'ordem3', ordem3)  # Insere 'ordem1' na posição desejada (posição 6 neste caso)
+        
+        st.write(borda_inicio_df)
+        
+        # Criando a nova coluna "Ranking_Borda" somando as colunas "ordem1", "ordem2", "ordem3" e "ordem4"
+        borda_inicio_df['Ranking_Borda'] = borda_inicio_df[['ordem1', 'ordem2', 'ordem3', 'ordem4']].sum(axis=1)
+        
+        # Exibindo o DataFrame resultante
+        st.table(borda_inicio_df)
+        
+        
+        
+        # Mantendo apenas a primeira e a última coluna
+        borda_inicio_df = borda_inicio_df.iloc[:, [0, -1]]
+        
+        # Renomeando a coluna
+        borda_inicio_df = borda_inicio_df.rename(columns={'Ranking_Borda': 'Ranking_Final'})
+        st.write(borda_inicio_df)
+
     except NameError: 
         return "erro"
-
-
-#2.11
-st.subheader("3.10 Critério 04 Custo - Decisor Supervisor")
-st.write("Lendo os dados do decisor")
-
-#19
-sheetNr = 11
-print(desafioLabels[sheetNr])
-desafioData = ReadSheetByNr(desafioFile, sheetNr);
-desafioData
-
-st.write("2.11.1 Normalizando o critério CUSTO")
-#20
-NormalizandoCusto = NormalizingCritera(desafioData);
-desafioNormalAll.append(NormalizandoCusto)
-NormalizandoCusto
-
-st.write("2.11.2 Teste de consistência do critério Custo")
-#Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
-ajustetabelaCusto = NormalizandoSeguranca.copy()
-del ajustetabelaCusto['Csoma']
-del ajustetabelaCusto['MatrizdePeso']
-ajustetabelaCusto
-
-st.write("Transformando para array")
-array_criterio44 = ajustetabelaCusto.to_numpy()
-array_criterio44 = ajustetabelaCusto.to_numpy()
-
-# Verificação de consistência
-N = len(array_criterio44)
-lamb = np.sum(array_criterio44, axis=1)
-result = DadosSaaty(lamb, N)
-# Exibindo o resultado na tela
-st.write("Resultado da Verificação de Consistência:")
-st.markdown(result)
-
-# Realizando o cálculo VV se os dados são consistentes
-if "Consistente" in result:
-    l, v = VV(array_criterio44)
-    st.write("Autovalor (l):", l)
-    #st.write("Autovetor (v):", v)
-    st.write("Autovetor (v):", ' '.join(map(str, v)))
-
-
-
-#2.12 Critério 05 Preventiva
-st.subheader("3.11 Critério 05 Preventiva - Decisor Supervisor")
-st.write("Lendo os dados do decisor")
-#22
-sheetNr = 12
-print(desafioLabels[sheetNr])
-desafioData = ReadSheetByNr(desafioFile, sheetNr);
-desafioData
-
-st.write("2.12.1Normalizando o criterio Preventiva")
-NormalizandoPreventiva = NormalizingCritera(desafioData);
-desafioNormalAll.append(NormalizandoPreventiva)
-NormalizandoPreventiva
-
-st.write(" Teste de consistência do critério Preventiva Supervisor")
-st.write("Recebendo a matriz do criterio normalizada")
-#Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
-ajustetabelaPreventiva = NormalizandoPreventiva.copy()
-del ajustetabelaPreventiva['Csoma']
-del ajustetabelaPreventiva['MatrizdePeso']
-ajustetabelaPreventiva
-
-st.write("Transformando para array")
-#00
-#teste de consistencia recebe o nome da matriz ja normalizada para teste Assim....  ""  Consistencia00 = nometabela.to_numpy()
-array_criterio55 = ajustetabelaPreventiva.to_numpy()
-array_criterio55
-
-# Verificação de consistência
-N = len(array_criterio55)
-lamb = np.sum(array_criterio55, axis=1)
-result = DadosSaaty(lamb, N)
-# Exibindo o resultado na tela
-st.write("Resultado da Verificação de Consistência:")
-st.markdown(result)
-
-# Realizando o cálculo VV se os dados são consistentes
-if "Consistente" in result:
-    l, v = VV(array_criterio55)
-    st.write("Autovalor (l):", l)
-    #st.write("Autovetor (v):", v)
-    st.write("Autovetor (v):", ' '.join(map(str, v)))
-
-
-
-
-
-
-
-
-
-#2.13 Critério 06 Treinamento
-st.subheader("3.12 Critério 06 Treinamento - Decisor Supervisor")
-st.write("Lendo os dados do decisor")
-sheetNr = 13
-print(desafioLabels[sheetNr])
-desafioData = ReadSheetByNr(desafioFile, sheetNr);
-desafioData
-
-
-st.write("Normalizando o critério Treinamento")
-NormalizandoTreinamento = NormalizingCritera(desafioData);
-desafioNormalAll.append(NormalizandoTreinamento)
-NormalizandoTreinamento
-
-
-st.write(" Teste de consistência do critério Treinamento")
-ajustetabelaTreinamento = NormalizandoTreinamento.copy()
-del ajustetabelaTreinamento['Csoma']
-del ajustetabelaTreinamento['MatrizdePeso']
-ajustetabelaTreinamento
-
-
-st.write("Transformando para array")
-array_criterio66 = ajustetabelaTreinamento.to_numpy()
-# Verificação de consistência
-N = len(array_criterio66)
-lamb = np.sum(array_criterio66, axis=1)
-result = DadosSaaty(lamb, N)
-# Exibindo o resultado na tela
-st.write("Resultado da Verificação de Consistência:")
-st.markdown(result)
-
-# Realizando o cálculo VV se os dados são consistentes
-if "Consistente" in result:
-    l, v = VV(array_criterio66)
-    st.write("Autovalor (l):", l)
-    #st.write("Autovetor (v):", v)
-    st.write("Autovetor (v):", ' '.join(map(str, v)))
-
-
-
-st.subheader("Finalizando Matriz de pesos locais - Priorização das alternativas - Decisor Supervisor")
-st.write("2.14.1 PARA ENVIAR AO MOORA DADOS SUPERVISOR")
-#25
-
-# Criando Matriz de Priorização das alternativas
-matrizData = pd.DataFrame(desafioNormalAll[0]['MatrizdePeso'])
-criteriosList = desafioNormalAll[0].index.tolist();
-alternativasList = desafioNormalAll[1].index.tolist();
-# print(criteriosList)
-# print(alternativasList)
-
-for x in alternativasList:
-  auxList = [];
-  for x2 in criteriosList:
-    i = criteriosList.index(x2) + 1
-    auxList.append(desafioNormalAll[i]['MatrizdePeso'][x])
-  matrizData[x] = auxList
-#matrizData
-
-#armazenando em um DataFrame
-MatrizDePesoSupervisorParaAHP = matrizData.transpose()
-# Exibindo o DataFrame resultante
-
-MatrizDePesoSupervisorParaAHP
-
-
-
-#26
-
-somaData = list_of_zeros = [0] * len(alternativasList)
-
-matrizPesoXAlt = matrizData.to_numpy()
-i = 0
-for x in matrizPesoXAlt:
-    p = matrizPesoXAlt[i][0]
-    j = 0
-    for x2 in x:
-        if j > 0:
-            pa = p * matrizPesoXAlt[i][j]
-            matrizPesoXAlt[i][j] = pa
-            somaData[j - 1] += matrizPesoXAlt[i][j]
-        j = j + 1
-
-    i = i + 1
-matrizPesoXAlt
-
-somaTable = pd.DataFrame([somaData], index=['SOMA'], columns=alternativasList)
-somaTable
-
-
-
-st.subheader("2.15.2 Resultado RankingDecisor_02_de_04_Gerado_No_AHP - Supervisor")
-#28
-RankingDecisor2 = pd.DataFrame(somaData, index=alternativasList, columns=['RankinDecisor_02_de_04_Gerado_No_AHP'])
-RankingDecisor2.sort_values(by=['RankinDecisor_02_de_04_Gerado_No_AHP'],ascending=False)
-
-# Exibir DataFrame ordenado
-st.write(RankingDecisor2)
-
-
-
-#............................................................................................
-with st.container():
-  st.write("---")
-
-
-
-#29
-st.subheader("Gerando a Matriz de comparação dos 5 critérios - Decisor 3 Técnico 01:")
-sheetNr = 14
-print(desafioLabels[sheetNr])
-
-# Busca dados da planilha
-desafioData = ReadSheetByNr(desafioFile, sheetNr);
-desafioData
-
-
-
-#2.4
-st.subheader(" Normalizando os valores dos critérios - Decisor 3 Técnico 01")
-# Normaliza dados
-normalizandocriterio = NormalizingConsistency(desafioData);
-normalizandocriterio
-
-
-#09
-st.subheader("Consistencia (01) dos dados de critério vs objetivo (LOCAL) onde é comparado os 6 critérios par a par - Decisor Gerente")
-Consistencia1 = normalizandocriterio.to_numpy()
-Consistencia1
-
-
-
-#10   NÃO ESTA FUNCIONANDO   NÃO ESTA FUNCIONANDO
-st.subheader("Obtém o autovetor e autovalor e Calcula a consistência - Decisor 3 Técnico 01 ")
-l, v = VV(Consistencia1)
-
-#print('Autovalor: %.2f' %l)
-#print('Autovetor: ', np.round(v, 2))
-
-DadosSaaty(l, Consistencia1.shape[0])
-
-
-
-
-#11
-st.subheader("Vetor de peso - Decisor 3 Técnico 01")
-
-desafioNormal = NormalizingCritera(desafioData);
-desafioNormalAll.append(desafioNormal)
-desafioNormal
-
-
-#12
-st.subheader("2.7 Gráfico matriz de peso - Grafico 3 Técnico 01")
-
-desafioNormal[desafioSeets[sheetNr]] = desafioNormal.index
-plt.figure(figsize=(22,2))
-plt.title("Matriz de peso", fontsize=20)
-
-ax = sns.barplot(x=desafioSeets[sheetNr], y='MatrizdePeso', data=desafioNormal)
-
-# Aqui vem a parte para incluir os rótulos:
-for p in ax.patches:
-    height = p.get_height()
-    ax.text(p.get_x() + p.get_width() / 2, height + 0, '{:1.2f}'.format((height)), ha='center', fontsize=12)
-
-# Exibe o gráfico usando st.pyplot()
-st.pyplot(plt)
-
-#13
-st.subheader("2.10 Critério 01 Falhas - Decisor 3 Técnico 01")
-st.write("Lendo os dados do decisor")
-
-sheetNr = 15
-print(desafioLabels[sheetNr])
-
-# Busca dados da planilha
-desafioData = ReadSheetByNr(desafioFile, sheetNr);
-desafioData
-
-#11
-st.subheader(" Normalizando o criterio Falhas - Decisor 3 Técnico 01")
-
-# Normaliza dados
-desafioNormal = NormalizingCritera(desafioData);
-desafioNormalAll.append(desafioNormal)
-desafioNormal
-
-
-st.subheader(" Teste de consistência do critério 01 Falhas - Decisor 3 Técnico 01")
-st.write("Recebendo a matriz do criterio normalizada")
-#Retira-se a Soma e  matriz de peso. Se não tirar não funciona.
-desafioNormal2 = desafioNormal.copy()
-del desafioNormal2['Csoma']
-del desafioNormal2['MatrizdePeso']
-desafioNormal2
-
-
-st.write("Transformando para array")
-#00
-#teste de consistencia recebe o nome da matriz ja normalizada para teste Assim....  ""  Consistencia00 = nometabela.to_numpy()
-Consistencia2 = desafioNormal2.to_numpy()
-Consistencia2
-
-st.write("Resultado consistencia critério 01 - falhas NÃO ESTA FUNCIONANDO")
-l, v = VV(Consistencia2)
-
-print('Autovalor: %.2f' %l)
-print('Autovetor: ', np.round(v, 2))
-
-DadosSaaty(l, Consistencia2.shape[0])
-
-
-#2.9
-st.subheader("Critério 02 Segurança - Decisor 3 Técnico 01")
-st.write("Lendo os dados do decisor")
-
-# Busca dados da planilha
-DadosCriterioSeguranca = ReadSheetByNr(desafioFile, sheetNr);
-DadosCriterioSeguranca
-
-
-# Normaliza dados
-st.write("Normalizando o criterio seguranca - Decisor 3 Técnico 01")
-NormalizandoSeguranca = NormalizingCritera(DadosCriterioSeguranca);
-desafioNormalAll.append(NormalizandoSeguranca)
-NormalizandoSeguranca
-
-st.write("Recebendo a matriz do criterio segurança normalizada - Decisor 3 Técnico 01")
-#Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
-ajustetabelaseguranca = NormalizandoSeguranca.copy()
-del ajustetabelaseguranca['Csoma']
-del ajustetabelaseguranca['MatrizdePeso']
-ajustetabelaseguranca
-
-st.write("Transformando para array")
-#00
-#teste de consistencia recebe o nome da matriz ja normalizada para teste Assim....  ""  Consistencia00 = nometabela.to_numpy()
-ConsistenciaSeguranca = ajustetabelaseguranca.to_numpy()
-ConsistenciaSeguranca
-
-
-st.write("Resultado consistencia critério 02 segurança - Decisor 3 Técnico 01")
-
-l, v = VV(ConsistenciaSeguranca)
-
-print('Autovalor: %.2f' %l)
-print('Autovetor: ', np.round(v, 2))
-
-DadosSaaty(l, ConsistenciaSeguranca.shape[0])
-
-
-#2.10
-st.subheader("Critério 03 OEE - Decisor Supervisorrrrr")
-st.write("Lendo os dados do decisor")
-sheetNr = 9
-print(desafioLabels[sheetNr])
-
-# Busca dados da planinha
-desafioData = ReadSheetByNr(desafioFile, sheetNr);
-desafioData
-
-
-st.write("Normalizando o criterio OEE")
-# Normaliza dados
-NormalizandoOEE = NormalizingCritera(desafioData);
-desafioNormalAll.append(NormalizandoOEE)
-NormalizandoOEE
-
-st.write(" Teste de consistência do critério OEE")
-#Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
-ajustetabelaOEE = NormalizandoSeguranca.copy()
-del ajustetabelaOEE['Csoma']
-del ajustetabelaOEE['MatrizdePeso']
-ajustetabelaOEE
-
-st.write("Transformando para array")
-#00
-#teste de consistencia recebe o nome da matriz ja normalizada para teste Assim....  ""  Consistencia00 = nometabela.to_numpy()
-ConsistenciaOEE = ajustetabelaOEE.to_numpy()
-ConsistenciaOEE
-
-st.write("TResultado consistencia critério 03 OEE NAO FUNCIONA")
-#00
-'''
-Obtém o autovetor e autovalor
-Calcula a consistência
-'''
-l, v = VV(ConsistenciaOEE)
-
-print('Autovalor: %.2f' %l)
-print('Autovetor: ', np.round(v, 2))
-
-DadosSaaty(l, ConsistenciaOEE.shape[0])
-
-
-
-#2.11
-st.subheader("Critério 04 Custo - Decisor 3 Técnico 01")
-st.write("Lendo os dados do decisor")
-
-#19
-sheetNr = 10
-print(desafioLabels[sheetNr])
-desafioData = ReadSheetByNr(desafioFile, sheetNr);
-desafioData
-
-st.write("2.11.1 Normalizando o critério CUSTO")
-#20
-NormalizandoCusto = NormalizingCritera(desafioData);
-desafioNormalAll.append(NormalizandoCusto)
-NormalizandoCusto
-
-st.write(" Teste de consistência do critério Custo")
-#Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
-ajustetabelaCusto = NormalizandoSeguranca.copy()
-del ajustetabelaCusto['Csoma']
-del ajustetabelaCusto['MatrizdePeso']
-ajustetabelaCusto
-
-st.write("Transformando para array")
-ConsistenciaCusto = ajustetabelaCusto.to_numpy()
-print(ConsistenciaCusto)
-
-st.write("Resultado consistencia critério 04 Custo Não esta funcionando")
-l, v = VV(ConsistenciaCusto)
-print('Autovalor: %.2f' %l)
-print('Autovetor: ', np.round(v, 2))
-DadosSaaty(l, ConsistenciaCusto.shape[0])
-
-
-
-
-#2.12 Critério 05 Preventiva
-st.subheader("Critério 05 Preventiva - Decisor 3 Técnico 01")
-st.write("Lendo os dados do decisor")
-#22
-sheetNr = 12
-print(desafioLabels[sheetNr])
-desafioData = ReadSheetByNr(desafioFile, sheetNr);
-desafioData
-
-st.write("Normalizando o criterio Preventiva")
-NormalizandoPreventiva = NormalizingCritera(desafioData);
-desafioNormalAll.append(NormalizandoPreventiva)
-NormalizandoPreventiva
-
-st.write(" Teste de consistência do critério Preventiva Supervisor")
-st.write("Recebendo a matriz do criterio normalizada")
-#Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
-ajustetabelaPreventiva = NormalizandoPreventiva.copy()
-del ajustetabelaPreventiva['Csoma']
-del ajustetabelaPreventiva['MatrizdePeso']
-ajustetabelaPreventiva
-
-st.write("Transformando para array")
-#00
-#teste de consistencia recebe o nome da matriz ja normalizada para teste Assim....  ""  Consistencia00 = nometabela.to_numpy()
-array_criterio55 = ajustetabelaPreventiva.to_numpy()
-array_criterio55
-# Verificação de consistência
-N = len(array_criterio55)
-lamb = np.sum(array_criterio55, axis=1)
-result = DadosSaaty(lamb, N)
-# Exibindo o resultado na tela
-st.write("Resultado da Verificação de Consistência:")
-st.markdown(result)
-
-# Realizando o cálculo VV se os dados são consistentes
-if "Consistente" in result:
-    l, v = VV(array_criterio55)
-    st.write("Autovalor (l):", l)
-    #st.write("Autovetor (v):", v)
-    st.write("Autovetor (v):", ' '.join(map(str, v)))
-
-
-
-
-#2.13 Critério 06 Treinamento
-st.subheader("Critério 06 Treinamento - Decisor 3 Técnico 01")
-st.write("Lendo os dados do decisor")
-sheetNr = 12
-print(desafioLabels[sheetNr])
-desafioData = ReadSheetByNr(desafioFile, sheetNr);
-desafioData
-
-
-st.write("Normalizando o critério Treinamento")
-NormalizandoTreinamento = NormalizingCritera(desafioData);
-desafioNormalAll.append(NormalizandoTreinamento)
-NormalizandoTreinamento
-
-
-st.write("Teste de consistência do critério Treinamento")
-ajustetabelaTreinamento = NormalizandoTreinamento.copy()
-del ajustetabelaTreinamento['Csoma']
-del ajustetabelaTreinamento['MatrizdePeso']
-ajustetabelaTreinamento
-
-
-st.write("Transformando para array")
-array_criterio66 = ajustetabelaTreinamento.to_numpy()
-st.write(array_criterio66)
-
-# Verificação de consistência
-N = len(array_criterio66)
-lamb = np.sum(array_criterio66, axis=1)
-result = DadosSaaty(lamb, N)
-# Exibindo o resultado na tela
-st.write("Resultado da Verificação de Consistência:")
-st.markdown(result)
-
-# Realizando o cálculo VV se os dados são consistentes
-if "Consistente" in result:
-    l, v = VV(array_criterio66)
-    st.write("Autovalor (l):", l)
-    #st.write("Autovetor (v):", v)
-    st.write("Autovetor (v):", ' '.join(map(str, v)))
-
-
-
-st.subheader(" Finalizando Matriz de pesos locais - Priorização das alternativas - 3 Técnico 01")
-st.write(" PARA ENVIAR AO MOORA DADOS TÉCNICO 01")
-#25
-
-# Criando Matriz de Priorização das alternativas
-matrizData = pd.DataFrame(desafioNormalAll[0]['MatrizdePeso'])
-criteriosList = desafioNormalAll[0].index.tolist();
-alternativasList = desafioNormalAll[1].index.tolist();
-# print(criteriosList)
-# print(alternativasList)
-
-for x in alternativasList:
-  auxList = [];
-  for x2 in criteriosList:
-    i = criteriosList.index(x2) + 1
-    auxList.append(desafioNormalAll[i]['MatrizdePeso'][x])
-  matrizData[x] = auxList
-#matrizData
-
-#armazenando em um DataFrame
-MatrizDePesoTec1ParaAHP = matrizData.transpose()
-# Exibindo o DataFrame resultante
-
-MatrizDePesoTec1ParaAHP
-
-
-
-#26
-
-somaData = list_of_zeros = [0] * len(alternativasList)
-
-matrizPesoXAlt = matrizData.to_numpy()
-i = 0
-for x in matrizPesoXAlt:
-    p = matrizPesoXAlt[i][0]
-    j = 0
-    for x2 in x:
-        if j > 0:
-            pa = p * matrizPesoXAlt[i][j]
-            matrizPesoXAlt[i][j] = pa
-            somaData[j - 1] += matrizPesoXAlt[i][j]
-        j = j + 1
-
-    i = i + 1
-matrizPesoXAlt
-
-somaTable = pd.DataFrame([somaData], index=['SOMA'], columns=alternativasList)
-somaTable
-
-
-st.subheader("2.15.2 Resultado RankingDecisor_03_de_04_Gerado_No_AHP - Téc 01")
-#28
-RankingDecisor3 = pd.DataFrame(somaData, index=alternativasList, columns=['RankinDecisor_03_de_04_Gerado_No_AHP'])
-RankingDecisor3.sort_values(by=['RankinDecisor_03_de_04_Gerado_No_AHP'],ascending=False)
-
-# Exibir DataFrame ordenado
-st.write(RankingDecisor3)
-
-
-
-
-
-#........................
-
-with st.container():
-  st.write("---")
-  st.write("---")
-  st.write("---")
-
-
-#29
-st.subheader(" Gerando a Matriz de comparação dos 5 critérios - Decisor 3 Técnico 02:")
-sheetNr = 21
-print(desafioLabels[sheetNr])
-
-# Busca dados da planilha
-desafioData = ReadSheetByNr(desafioFile, sheetNr);
-desafioData
-
-
-
-#2.4
-st.subheader("Normalizando os valores dos critérios - Decisor 3 Técnico 02")
-# Normaliza dados
-normalizandocriterio = NormalizingConsistency(desafioData);
-normalizandocriterio
-
-
-#09
-st.subheader(" Consistencia (01) dos dados de critério vs objetivo (LOCAL) onde é comparado os 6 critérios par a par - Decisor Gerente")
-Consistencia1 = normalizandocriterio.to_numpy()
-Consistencia1
-
-
-
-st.subheader("Obtém o autovetor e autovalor e Calcula a consistência - Decisor 3 Técnico 01 ")
-l, v = VV(Consistencia1)
-
-#print('Autovalor: %.2f' %l)
-#print('Autovetor: ', np.round(v, 2))
-
-DadosSaaty(l, Consistencia1.shape[0])
-
-
-
-
-#11
-st.subheader("Vetor de peso - Decisor 3 Técnico 02")
-
-desafioNormal = NormalizingCritera(desafioData);
-desafioNormalAll.append(desafioNormal)
-desafioNormal
-
-
-#12
-st.subheader("Gráfico matriz de peso - Grafico 3 Técnico 02")
-
-desafioNormal[desafioSeets[sheetNr]] = desafioNormal.index
-plt.figure(figsize=(22,2))
-plt.title("Matriz de peso", fontsize=20)
-
-ax = sns.barplot(x=desafioSeets[sheetNr], y='MatrizdePeso', data=desafioNormal)
-
-# Aqui vem a parte para incluir os rótulos:
-for p in ax.patches:
-    height = p.get_height()
-    ax.text(p.get_x() + p.get_width() / 2, height + 0, '{:1.2f}'.format((height)), ha='center', fontsize=12)
-
-# Exibe o gráfico usando st.pyplot()
-st.pyplot(plt)
-
-#13
-st.subheader("Critério 01 Falhas - Decisor 3 Técnico 02")
-st.write("Lendo os dados do decisor")
-
-sheetNr = 22
-print(desafioLabels[sheetNr])
-
-# Busca dados da planilha
-desafioData = ReadSheetByNr(desafioFile, sheetNr);
-desafioData
-
-#11
-st.subheader(" Normalizando o criterio Falhas - Decisor 3 Técnico 02")
-
-# Normaliza dados
-desafioNormal = NormalizingCritera(desafioData);
-desafioNormalAll.append(desafioNormal)
-desafioNormal
-
-
-st.subheader("Teste de consistência do critério 01 Falhas - Decisor 3 Técnico 02")
-st.write("Recebendo a matriz do criterio normalizada")
-#Retira-se a Soma e  matriz de peso. Se não tirar não funciona.
-desafioNormal2 = desafioNormal.copy()
-del desafioNormal2['Csoma']
-del desafioNormal2['MatrizdePeso']
-desafioNormal2
-
-
-st.write("Transformando para array")
-#00
-#teste de consistencia recebe o nome da matriz ja normalizada para teste Assim....  ""  Consistencia00 = nometabela.to_numpy()
-Consistencia2 = desafioNormal2.to_numpy()
-Consistencia2
-
-st.write("Resultado consistencia critério 01 - falhas NÃO ESTA FUNCIONANDO")
-l, v = VV(Consistencia2)
-
-print('Autovalor: %.2f' %l)
-print('Autovetor: ', np.round(v, 2))
-
-DadosSaaty(l, Consistencia2.shape[0])
-
-
-#2.9
-st.subheader("Critério 02 Segurança - Decisor 3 Técnico 02")
-st.write("Lendo os dados do decisor")
-
-# Busca dados da planilha
-DadosCriterioSeguranca = ReadSheetByNr(desafioFile, sheetNr);
-DadosCriterioSeguranca
-
-
-# Normaliza dados
-st.write("Normalizando o criterio seguranca - Decisor 3 Técnico 02")
-NormalizandoSeguranca = NormalizingCritera(DadosCriterioSeguranca);
-desafioNormalAll.append(NormalizandoSeguranca)
-NormalizandoSeguranca
-
-st.write("Recebendo a matriz do criterio segurança normalizada - Decisor 3 Técnico 01")
-#Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
-ajustetabelaseguranca = NormalizandoSeguranca.copy()
-del ajustetabelaseguranca['Csoma']
-del ajustetabelaseguranca['MatrizdePeso']
-ajustetabelaseguranca
-
-st.write("Transformando para array")
-#00
-#teste de consistencia recebe o nome da matriz ja normalizada para teste Assim....  ""  Consistencia00 = nometabela.to_numpy()
-ConsistenciaSeguranca = ajustetabelaseguranca.to_numpy()
-ConsistenciaSeguranca
-
-
-st.write("Resultado consistencia critério 02 segurança - Decisor 3 Técnico 01")
-
-l, v = VV(ConsistenciaSeguranca)
-
-print('Autovalor: %.2f' %l)
-print('Autovetor: ', np.round(v, 2))
-
-DadosSaaty(l, ConsistenciaSeguranca.shape[0])
-
-
-#2.10
-st.subheader("Critério 03 OEE - Decisor tec2")
-st.write("Lendo os dados do decisor")
-sheetNr = 24
-print(desafioLabels[sheetNr])
-
-# Busca dados da planinha
-desafioData = ReadSheetByNr(desafioFile, sheetNr);
-desafioData
-
-
-st.write("2.10.1 Normalizando o criterio OEE")
-# Normaliza dados
-NormalizandoOEE = NormalizingCritera(desafioData);
-desafioNormalAll.append(NormalizandoOEE)
-NormalizandoOEE
-
-st.write("2.10.1 Teste de consistência do critério OEE")
-#Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
-ajustetabelaOEE = NormalizandoSeguranca.copy()
-del ajustetabelaOEE['Csoma']
-del ajustetabelaOEE['MatrizdePeso']
-ajustetabelaOEE
-
-st.write("Transformando para array")
-#00
-#teste de consistencia recebe o nome da matriz ja normalizada para teste Assim....  ""  Consistencia00 = nometabela.to_numpy()
-ConsistenciaOEE = ajustetabelaOEE.to_numpy()
-ConsistenciaOEE
-
-st.write("TResultado consistencia critério 03 OEE NAO FUNCIONA")
-#00
-'''
-Obtém o autovetor e autovalor
-Calcula a consistência
-'''
-l, v = VV(ConsistenciaOEE)
-
-print('Autovalor: %.2f' %l)
-print('Autovetor: ', np.round(v, 2))
-
-DadosSaaty(l, ConsistenciaOEE.shape[0])
-
-
-
-#2.11
-st.subheader("Critério 04 Custo - Decisor 3 Técnico 02")
-st.write("Lendo os dados do decisor")
-
-#19
-sheetNr = 25
-print(desafioLabels[sheetNr])
-desafioData = ReadSheetByNr(desafioFile, sheetNr);
-desafioData
-
-st.write("2.11.1 Normalizando o critério CUSTO")
-#20
-NormalizandoCusto = NormalizingCritera(desafioData);
-desafioNormalAll.append(NormalizandoCusto)
-NormalizandoCusto
-
-st.write(" Teste de consistência do critério Custo")
-#Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
-ajustetabelaCusto = NormalizandoSeguranca.copy()
-del ajustetabelaCusto['Csoma']
-del ajustetabelaCusto['MatrizdePeso']
-ajustetabelaCusto
-
-st.write("Transformando para array")
-ConsistenciaCusto = ajustetabelaCusto.to_numpy()
-print(ConsistenciaCusto)
-
-st.write("Resultado consistencia critério 04 Custo Não esta funcionando")
-l, v = VV(ConsistenciaCusto)
-print('Autovalor: %.2f' %l)
-print('Autovetor: ', np.round(v, 2))
-DadosSaaty(l, ConsistenciaCusto.shape[0])
-
-
-
-
-#2.12 Critério 05 Preventiva
-st.subheader("Critério 05 Preventiva - Decisor 3 Técnico 02")
-st.write("Lendo os dados do decisor")
-#22
-sheetNr = 26
-print(desafioLabels[sheetNr])
-desafioData = ReadSheetByNr(desafioFile, sheetNr);
-desafioData
-
-st.write("2.12.1Normalizando o criterio Preventiva")
-NormalizandoPreventiva = NormalizingCritera(desafioData);
-desafioNormalAll.append(NormalizandoPreventiva)
-NormalizandoPreventiva
-
-st.write("2.12.2 Teste de consistência do critério Preventiva Supervisor")
-st.write("Recebendo a matriz do criterio normalizada")
-#Retira-se a Soma e  mtriz de peso. Se não tirar não funciona.
-ajustetabelaPreventiva = NormalizandoPreventiva.copy()
-del ajustetabelaPreventiva['Csoma']
-del ajustetabelaPreventiva['MatrizdePeso']
-ajustetabelaPreventiva
-
-st.write("Transformando para array")
-#00
-#teste de consistencia recebe o nome da matriz ja normalizada para teste Assim....  ""  Consistencia00 = nometabela.to_numpy()
-ConsistenciaPreventiva = ajustetabelaPreventiva.to_numpy()
-print(ConsistenciaPreventiva )
-
-st.write("resultado consistencia Noa esta funcioando")
-l, v = VV(ConsistenciaPreventiva )
-print('Autovalor: %.2f' %l)
-print('Autovetor: ', np.round(v, 2))
-DadosSaaty(l, ConsistenciaPreventiva .shape[0])
-
-
-
-#2.13 Critério 06 Treinamento
-st.subheader("Critério 06 Treinamento - Decisor 3 Técnico 02")
-st.write("Lendo os dados do decisor")
-sheetNr = 27
-print(desafioLabels[sheetNr])
-desafioData = ReadSheetByNr(desafioFile, sheetNr);
-desafioData
-
-
-st.write("2.12.1Normalizando o critério Treinamento")
-NormalizandoTreinamento = NormalizingCritera(desafioData);
-desafioNormalAll.append(NormalizandoTreinamento)
-NormalizandoTreinamento
-
-
-st.write(" Teste de consistência do critério Treinamento")
-ajustetabelaTreinamento = NormalizandoTreinamento.copy()
-del ajustetabelaTreinamento['Csoma']
-del ajustetabelaTreinamento['MatrizdePeso']
-ajustetabelaTreinamento
-
-
-st.write("Transformando para array")
-array_criterio_Treinamento_tec1 = ajustetabelaTreinamento.to_numpy()
-st.write(array_criterio_Treinamento_tec1)
-
-# Verificação de consistência
-N = len(array_criterio_Treinamento_tec1)
-lamb = np.sum(array_criterio_Treinamento_tec1, axis=1)
-result = DadosSaaty(lamb, N)
-# Exibindo o resultado na tela
-st.write("Resultado da Verificação de Consistência:")
-st.markdown(result)
-
-# Realizando o cálculo VV se os dados são consistentes
-if "Consistente" in result:
-    l, v = VV(array_criterio_Treinamento_tec1)
-    st.write("Autovalor (l):", l)
-    #st.write("Autovetor (v):", v)
-    st.write("Autovetor (v):", ' '.join(map(str, v)))
-
-
-
-
-
-st.subheader(" Finalizando Matriz de pesos locais - Priorização das alternativas - 3 Técnico 02")
-st.write("2.14.1 PARA ENVIAR AO MOORA DADOS TEC02")
-#25
-
-# Criando Matriz de Priorização das alternativas
-matrizData = pd.DataFrame(desafioNormalAll[0]['MatrizdePeso'])
-criteriosList = desafioNormalAll[0].index.tolist();
-alternativasList = desafioNormalAll[1].index.tolist();
-# print(criteriosList)
-# print(alternativasList)
-
-for x in alternativasList:
-  auxList = [];
-  for x2 in criteriosList:
-    i = criteriosList.index(x2) + 1
-    auxList.append(desafioNormalAll[i]['MatrizdePeso'][x])
-  matrizData[x] = auxList
-#matrizData
-
-#armazenando em um DataFrame
-MatrizDePesoTec2ParaAHP = matrizData.transpose()
-# Exibindo o DataFrame resultante
-
-MatrizDePesoTec2ParaAHP
-
-
-
-#26
-st.subheader(" AHP ADITIVO Tec2")
-
-somaData = list_of_zeros = [0] * len(alternativasList)
-
-matrizPesoXAlt = matrizData.to_numpy()
-i = 0
-for x in matrizPesoXAlt:
-    p = matrizPesoXAlt[i][0]
-    j = 0
-    for x2 in x:
-        if j > 0:
-            pa = p * matrizPesoXAlt[i][j]
-            matrizPesoXAlt[i][j] = pa
-            somaData[j - 1] += matrizPesoXAlt[i][j]
-        j = j + 1
-
-    i = i + 1
-matrizPesoXAlt
-
-somaTable = pd.DataFrame([somaData], index=['SOMA'], columns=alternativasList)
-somaTable
-
-
-
-st.subheader("Resultado RankingDecisor_04_de_04_Gerado_No_AHP - Téc 02")
-#28
-RankingDecisor4 = pd.DataFrame(somaData, index=alternativasList, columns=['RankinDecisor_04_de_04_Gerado_No_AHP'])
-RankingDecisor4.sort_values(by=['RankinDecisor_04_de_04_Gerado_No_AHP'],ascending=False)
-
-# Exibir DataFrame ordenado
-st.write(RankingDecisor4)
-
-
-
-dataframes = [RankingDecisor1, RankingDecisor2, RankingDecisor3, RankingDecisor4]
-
-# Concatenando os DataFrames ao longo das colunas
-tabela_combinada = pd.concat(dataframes, axis=1)
-
-# Calculando a média aritmética para cada linha
-media_aritmetica = tabela_combinada.mean(axis=1)
-media_aritmetica = pd.DataFrame(media_aritmetica, columns=['MediaAritmetica'])
-
-# Adicionando a coluna de média aritmética à tabela combinada
-tabela_combinada = pd.concat([tabela_combinada, media_aritmetica], axis=1)
-tabela_combinada = tabela_combinada.sort_values(by=['MediaAritmetica'], ascending=False)
-
-# Exibindo a tabela combinada
-tabela_combinada
-
-st.subheader('Ranking final AHP')
-
-# Filtrar apenas as colunas "MediaAritmetica"
-
-# Mantenha a primeira e a última coluna
-Ranking_final_AHP = tabela_combinada.copy
-
-colunas_desejadas = [tabela_combinada.columns[-1]]
-Ranking_final_AHP = tabela_combinada[colunas_desejadas]
-
-# Exiba o DataFrame resultante
-#st.write(Ranking_final_AHP)
-
-# Dê um nome à coluna de índice
-Ranking_final_AHP.index.name = 'Alternativas'
-
-# Exiba o DataFrame resultante
-st.write(Ranking_final_AHP)
-
-
-
-
-################
-with st.container():
-    st.markdown("<h1 style='text-align: center;'>Método 02 MOORA</h1>", unsafe_allow_html=True)
-    st.subheader('Brauers e Zavadskas')
-
-dataframes = [MatrizDePesoGerenteParaAHP, MatrizDePesoSupervisorParaAHP, MatrizDePesoTec1ParaAHP, MatrizDePesoTec2ParaAHP]
-
-# Verificando se os DataFrames têm a mesma estrutura (mesmas colunas)
-colunas_esperadas = dataframes[0].columns.tolist()
-for df in dataframes[1:]:
-    if df.columns.tolist() != colunas_esperadas:
-        raise ValueError("Os DataFrames não têm a mesma estrutura (colunas).")
-
-# Criando um DataFrame vazio para armazenar a média
-tabela_media = pd.DataFrame(columns=colunas_esperadas)
-
-# Calculando a média para cada coluna, excluindo a linha "MatrizdePeso"
-for coluna in colunas_esperadas:
-    valores_coluna = [df[coluna] for df in dataframes if coluna != "MatrizdePeso"]
-    tabela_media[coluna] = pd.concat(valores_coluna, axis=0).groupby(level=0).mean()
-
-
-# Exibindo o DataFrame com a média
-#print("DataFrame com Média:")
-#tabela_media
-
-
-st.subheader('2.1 - Critérios de Maximização ou Minimização')
-st.write("Esco.lha se o objetivo é Minimizar ou Maximizar Falha e Custo Minimizar")
-
-# Criando uma lista para armazenar as opções de maximização/minimização
-opcoes = {}
-
-# Exibindo a interface para cada coluna
-for coluna in tabela_media.columns:
-    # Adicionando uma opção para o usuário informar se é Maximizar ou Minimizar
-    objetivo = st.radio(f"Selecione o objetivo para a coluna {coluna}:", ["Maximizar", "Minimizar"])
-    opcoes[coluna] = objetivo
-
-# Gerando um novo DataFrame com os nomes modificados
-novo_dataframe = tabela_media.copy()
-
-for coluna, objetivo in opcoes.items():
-    novo_nome = f"{coluna}_{objetivo}"
-    novo_dataframe.rename(columns={coluna: novo_nome}, inplace=True)
-
-# Exibindo o novo DataFrame
-st.write("Novo DataFrame com a escolha do usuário:")
-st.write(novo_dataframe)
-
-
-
-st.write("Guardando somente a linha de peso para usar depois")
-
-# Criando uma cópia do DataFrame contendo apenas a linha "MatrizdePeso"
-dados_peso_do_ahp = novo_dataframe.loc[['MatrizdePeso']].copy()
-
-# Exibindo o novo DataFrame
-st.write(dados_peso_do_ahp)
-
-
-
-st.write("Ficando com o data frame sem o peso")
-# Criando uma cópia do DataFrame
-matriz_moora = novo_dataframe.copy()
-
-# Excluindo a linha "MatrizdePeso"
-matriz_moora = matriz_moora.drop(index='MatrizdePeso')
-
-# Exibindo o DataFrame atualizado
-st.subheader('Novo DataFrame sem a Linha "MatrizdePeso"')
-st.write(matriz_moora)
-
-# Criando uma cópia do DataFrame para usar depois
-matriz_Tchebycheff = matriz_moora.copy()
-
-
-
-st.subheader('Normalizando')
-st.write("Elevar os indicadores em análise ao quadrado")
-
-normalizando = matriz_moora.pow(2).round(6)
-# Exibindo o novo DataFrame resultante
-st.write("normalizando:")
-st.write(normalizando)
-
-
-
-st.write(" Obtendo a soma de todos os critérios")
-decisaoSumDf = normalizando.copy()
-decisaoSumDf.loc['soma'] = decisaoSumDf.sum()
-decisaoSumDf
-
-
-
-st.write(" Encontrando a raiz da soma ")
-
-
-# Adicione a linha 'raiz_da_soma' ao final de cada coluna
-decisaoSumDf.loc['raiz_da_soma'] = decisaoSumDf.sum()
-decisaoSumDf
-
-st.write(" Dividindo cada valor pela raiz quadrada de cada critério")
-
-# Iterando sobre as colunas e normalizando os valores
-for coluna in decisaoSumDf.columns:
-    raiz_da_soma = decisaoSumDf.at['raiz_da_soma', coluna]
-    decisaoSumDf[coluna] = decisaoSumDf[coluna] / raiz_da_soma
-
-# Exibindo o DataFrame após a normalização
-
-st.write(decisaoSumDf)
-
-
-st.subheader('Relacionando aos pesos')
-st.write("Excluindo as linhas de soma e raiz da soma")
-
-# Criando uma cópia do DataFrame
-matriz_nova = decisaoSumDf.copy()
-
-# Excluindo a linha "soma"
-matriz_nova = matriz_nova.drop(index='soma')
-matriz_nova = matriz_nova.drop(index='raiz_da_soma')
-# Exibindo o DataFrame atualizado
-st.write(matriz_nova)
-
-
-st.write("Trazendo os pesos do AHP")
-st.write(dados_peso_do_ahp)
-primeira_coluna = dados_peso_do_ahp.columns[0]
-st.write(f"O nome da primeira coluna é: {primeira_coluna}")
-
-
-
-# Inicializa a variável global resultado
-resultado = None
-
-def main():
-    global resultado  # Indica que estamos referenciando a variável global, não criando uma nova local
-
-    # Simulando DataFrames (substitua isso pelos seus DataFrames reais)
-    matriz_nova2 = pd.DataFrame(matriz_nova)
-    dados_peso_do_ahp2 = pd.DataFrame(dados_peso_do_ahp)
-
-    # Unindo os DataFrames pela coluna 'Alternativa'
-    resultado = pd.concat([matriz_nova2, dados_peso_do_ahp2], ignore_index=False)
-    #resultado = pd.merge(matriz_nova2, dados_peso_do_ahp2, on='', how='outer')
-
-    # Exibindo o DataFrame resultante
-    st.write("DataFrame Resultante:")
-    st.write(resultado, width=800, height=400)
-
-    resultado.reset_index(inplace=True)
-    return resultado.copy()
-
-# Chama a função principal
-if __name__ == "__main__":
-    main()
-
-# Agora, você pode acessar a variável global 'resultado' fora da função main
-st.write("Acesso a 'resultado' fora da função main:")
-st.write(resultado)
-
-
-
-
-
-
-
-
-st.subheader("Relacionando aos pesos ")
-st.write("do data frame anterior cada valor foi multiplicado pela MatrizdePeso:")
-
-# Obtendo os pesos dos critérios da última linha
-pesos = resultado.iloc[-1, :]
-
-
-# Multiplicando os valores das alternativas pelos pesos dos critérios
-resultado.iloc[:-1, 1:] = resultado.iloc[:-1, 1:].multiply(pesos[1:])
-
-# Excluindo a linha "MatrizdePeso"
-resultado = resultado[resultado['index'] != 'MatrizdePeso']
-
-# Resetando o índice para trazer a coluna 'Alternativa' de volta
-resultado.reset_index(drop=True, inplace=True)
-resultado = resultado.dropna()
-
-# Exibindo o DataFrame resultante)
-st.dataframe(resultado)
-
-
-
-
-st.subheader(" Otimização do Modelo Moora")
-
-
-# Carregue o DataFrame existente
-otimizacao = pd.DataFrame(resultado)
-
-# Listas para armazenar as otimizações otimizadas
-alternativas = []
-resultados_otimizados = []
-info_crit = []
-
-# Itera sobre as linhas do DataFrame 'otimizacao' usando iterrows()
-for index, row in otimizacao.iterrows():
-    # Adiciona a alternativa à lista de otimizações otimizadas
-    alternativas.append(row['index'])
-
-    # Inicializa a soma para critérios de maximização
-    soma_max = 0
-
-    # Itera sobre as colunas do DataFrame 'otimizacao'
-    for coluna in otimizacao.columns:
-        # Verifica se a coluna contém "Minimizar"
-        if "minimizar" in coluna.lower():
-            soma_max -= row[coluna]  # Corrigindo o sinal para minimização
-            info_crit.append((coluna, row['index'], "Minimizar"))
-        # Verifica se a coluna contém "Maximizar"
-        elif "maximizar" in coluna.lower():
-            soma_max += row[coluna]
-            info_crit.append((coluna, row['index'], "Maximizar"))
-
-    # Adiciona a soma para critérios de maximização à lista de resultados otimizados
-    resultados_otimizados.append(soma_max)
-
-# Cria um DataFrame com os resultados otimizados
-otimizado_df = pd.DataFrame({"Alternativa": alternativas, "Resultado Otimizado": resultados_otimizados})
-
-# Exibe o DataFrame resultante
-st.subheader("Resultado Otimizado:")
-st.write(otimizado_df, width=800, height=400)
-
-
-
-st.subheader("- Ranking Moora")
-# Cria um DataFrame para a ordenação
-Ranking_Moora = pd.DataFrame(otimizado_df, columns=['Alternativa', 'Resultado Otimizado'])
-Ranking_Moora = Ranking_Moora.sort_values(by=['Resultado Otimizado'], ascending=False)
-
-# Exibe o DataFrame ordenado
-st.write(Ranking_Moora, width=800, height=400)
-
-
-
-
-################
-with st.container():
-    st.markdown("<h1 style='text-align: center;'> Método 05  Tchebycheff</h1>", unsafe_allow_html=True)
-    st.subheader('a. Iniciando com a matriz original do AHP.')
-st.write(matriz_Tchebycheff)
-
-
-st.write("..............................TESTE.................................")
-# Verificar se é um DataFrame
-if isinstance(matriz_Tchebycheff, pd.DataFrame):
-    st.write("É um DataFrame")
-else:
-    st.write("Não é um DataFrame")
-
-# Verificar se o DataFrame tem colunas preenchidas
-if not matriz_Tchebycheff.empty and not matriz_Tchebycheff.columns.empty:
-    st.write("O DataFrame tem colunas preenchidas")
-else:
-    st.write("O DataFrame está vazio ou sem colunas")
-
-st.write("..............................TESTE.................................")
-
-st.subheader('b. Achando o ponto de referencia')
-# Função para calcular o ponto de referência com base nos critérios
-def calcular_ponto_referencia(df):
-    ponto_referencia = []
-    for coluna in df.columns:
-        if 'Maximizar' in coluna:
-            ponto_referencia.append(df[coluna].max())
-        elif 'Minimizar' in coluna:
-            ponto_referencia.append(df[coluna].min())
-    return ponto_referencia
-
-# Função para adicionar a linha de ponto de referência
-def adicionar_linha_ponto_referencia(df):
-    ponto_referencia = calcular_ponto_referencia(df)
-    df.loc['Ponto_Referencia'] = ponto_referencia
-
-# Função principal do Streamlit
-def main():
-    global matriz_Tchebycheff  # Garante que a variável global seja usada
-
-    # Adicionar a linha de ponto de referência
-    adicionar_linha_ponto_referencia(matriz_Tchebycheff)
-
-    # Mostrar DataFrame no Streamlit
-    st.dataframe(matriz_Tchebycheff)
-
-# Executar a função principal
-if __name__ == '__main__':
-    main()
-
-#...............................................................
-st.subheader("c. Avaliação final - FALTA CHEGAR O QUE DEVE SER REDUZIDO ")
-st.write("Pega-se o valor de cada alternaytiva e diminui pelo valor do ponto de referencia?")
-# Reduzir os valores das alternativas pelo valor na linha Ponto_Referencia
-matriz_reduzida = matriz_Tchebycheff.iloc[:-1, :] - matriz_Tchebycheff.loc['Ponto_Referencia']
-
-# Adicionar a linha de Ponto_Referencia à matriz reduzida
-matriz_reduzida.loc['Ponto_Referencia'] = matriz_Tchebycheff.loc['Ponto_Referencia']
-
-# Função principal do Streamlit
-def main():
-    global matriz_reduzida  # Garante que a variável global seja usada
-
-    # Excluir a linha Ponto_Referencia do resultado
-    matriz_reduzida = matriz_reduzida.drop('Ponto_Referencia')
-
-    # Mostrar DataFrame reduzido no Streamlit
-    st.dataframe(matriz_reduzida)
-
-# Executar a função principal
-if __name__ == '__main__':
-    main()
-
-
-
-st.subheader("4.2 Ordena-se as alternativas de acordo com maior distância. Ponto de referencia")
-
-
-# Reduzir os valores das alternativas pelo valor na linha Ponto_Referencia
-matriz_reduzida = matriz_Tchebycheff.iloc[:-1, :] - matriz_Tchebycheff.loc['Ponto_Referencia']
-
-# Encontrar o maior valor em cada alternativa
-maiores_valores = matriz_reduzida.max(axis=1)
-
-# Criar DataFrame com os maiores valores
-resultados = pd.DataFrame({'Maior_Valor': maiores_valores})
-
-# Função principal do Streamlit
-def main():
-    global resultados  # Garante que a variável global seja usada
-
-    # Mostrar DataFrame com os maiores valores no Streamlit
-    st.dataframe(resultados)
-
-# Executar a função principal
-if __name__ == '__main__':
-    main()
-
-
-#...............................................................
-st.subheader("4.3 Resultado tchebycheff")
-st.write("Ordena-se do menor para o maior")
-# Ordenar os resultados do menor para o maior
-Ranking_tchebycheff = resultados.sort_values(by='Maior_Valor')
-st.dataframe(Ranking_tchebycheff)
-
-# Renomeando o índice para "Alternativas"
-Ranking_tchebycheff = Ranking_tchebycheff.rename_axis('Alternativas')
-
-# Exibindo o DataFrame modificado usando Streamlit
-st.write(Ranking_tchebycheff)
-
-
-
-
-################
-with st.container():
-    st.markdown("<h1 style='text-align: center;'>5 METODO MULTIMOORA</h1>", unsafe_allow_html=True)
-    st.subheader('a. Iniciando com a matriz original do AHP.')
-    st.write(" MULTIMOORA é a sequência adicional do método MOORA e da forma multiplicativa completa de múltiplos objetivos")
-
-
-    matriz_multimoora = matriz_Tchebycheff.copy()
-st.write(matriz_multimoora)
-
-
-nomes_colunas = matriz_multimoora.columns.tolist()
-# Exibir os nomes das colunas
-#st.write("Nomes das Colunas:", nomes_colunas)
-
-#...............................................................
-st.subheader("5.3 Dividindo ou multiplicandox")
-st.write("Se o critério for de max multiplica pelo ponto de referencia, senão divide")
-
-
-
-# Obtendo os nomes das alternativas e critérios
-alternativas = matriz_multimoora.index.tolist()
-criterios = matriz_multimoora.columns.tolist()
-
-# Obtendo os pontos de referência
-ponto_referencia = matriz_multimoora.loc["Ponto_Referencia"]
-
-# Aplicando a lógica MUTIMOORA
-for criterio in criterios:
-    if "Maximizar" in criterio:
-        matriz_multimoora[criterio] *= ponto_referencia[criterio]
-    else:
-        matriz_multimoora[criterio] /= ponto_referencia[criterio]
-
-# Excluindo a linha "Ponto_Referencia"
-matriz_multimoora = matriz_multimoora.drop("Ponto_Referencia")
-
-# Exibindo o DataFrame após a aplicação do método
-st.write("DataFrame Após MUTIMOORA:", matriz_multimoora)
-
-
-
-#...............................................................
-st.subheader("Resultado MULTIMOORA")
-st.write("Agregação dos Resultados e  Classificação das Alternativas")
-
-
-
-# Obtendo os nomes das alternativas e critérios
-alternativas = matriz_multimoora.index.tolist()
-criterios = matriz_multimoora.columns.tolist()
-
-# Página Streamlit
-st.title("Análise MULTIMOORA")
-
-# Exibindo o DataFrame original
-st.subheader("DataFrame Original:")
-st.write(matriz_multimoora)
-
-
-st.subheader("descobrindo se é de max ou min:")
-# Obtendo os nomes das colunas de critérios
-colunas_critérios = matriz_multimoora.columns.tolist()
-
-# Criando a lista colMinOrMax automaticamente
-colMinOrMax = []
-
-for coluna in colunas_critérios:
-    if "Maximizar" in coluna:
-        colMinOrMax.append('max')
-    elif "Minimizar" in coluna:
-        colMinOrMax.append('min')
-    else:
-        # Caso a coluna não contenha informações sobre maximizar ou minimizar, você pode adicionar lógica adicional ou definir um valor padrão.
-        colMinOrMax.append('padrao')
-
-# Exibindo a lista colMinOrMax
-st.write("Lista colMinOrMax:", colMinOrMax)
-
-
-
-
-st.subheader("montando as novas colunas:")
-# Obtendo os nomes das colunas de critérios
-colunas_critérios = matriz_multimoora.columns.tolist()
-
-# Criando a variável vColunas conforme o padrão mencionado
-vColunas = []
-for i, coluna in enumerate(colunas_critérios):
-    vColunas.append(coluna)
-    if i > 0:
-        vColunas.append(f"{i+1}")
-
-# Exibindo a lista vColunas
-st.subheader("Variável vColunas:")
-st.write("vColunas:", vColunas)
-
-
-
-
-
-st.subheader("descobrindo nomes das alternativas de critérios:")
-# Obtendo os nomes das alternativas de critérios
-vIndice = matriz_multimoora.index.tolist()
-
-# Exibindo a lista vIndice
-st.write("Lista vIndice:", vIndice)
-
-
-
-
-st.subheader(" implementando a lógica do método MULTIMOORA")
-st.write("Recebe a primeira e a segunda coluna original do dataframe e cria as proximas colunas numerando seus títulos - comencando pelo numero 2 - e nas linhas das alternativas recebe os valores das colunas multiplicados")
-
-
-MultimooraMt = []
-MultimooraOrderMt = []
-for k, linha in enumerate(matriz_multimoora.values):
-    v = 0  # Inicialize v com um valor numérico
-    MultimooraMt.append([])
-    MultimooraOrderMt.append([0])
-
-    for k2, valor in enumerate(linha):
-        MultimooraMt[k].append(valor)
-
-        if k2 > 0:
-            if colMinOrMax[k2] == 'max':
-                v = v * float(valor)  # Converta para float antes de multiplicar
-            else:
-                v = v / float(valor)  # Converta para float antes de dividir
-            MultimooraMt[k].append(v)
-        else:
-            v = float(valor)  # Converta para float no início do loop
-        MultimooraOrderMt[k][0] = v
-
-
-MultimooraDf = pd.DataFrame(MultimooraMt, index=vIndice, columns=vColunas)
-MultimooraDf
-
-
-st.subheader("Resultado MULTIMOORA")
-
-Ranking_Multimoora = pd.DataFrame(MultimooraOrderMt, index=vIndice, columns=['RankingMultiMoora'])
-
-# Ajustando a exibição de casas decimais
-pd.set_option('display.float_format', '{:.6f}'.format)
-
-# Arredondando o DataFrame para 6 casas decimais
-Ranking_Multimoora = Ranking_Multimoora.round(6)
-
-Ranking_Multimoora = Ranking_Multimoora.sort_values(by=['RankingMultiMoora'], ascending=False)
-st.write(Ranking_Multimoora)
-
-
-
-
-################
-with st.container():
-    st.markdown("<h1 style='text-align: center;'>6 MÉTODO BORDA</h1>", unsafe_allow_html=True)
-    st.write(" Nesse método, se houver t alternativas, a primeira colocada recebe t votos e a segunda recebe um voto a menos, e assim por diante.")
-    st.subheader('recebendo todos os rankings ')
-    st.write("Ranking_final_AHP, Ranking_Moora, Ranking_tchebycheff, Ranking_Multimoora")
-
-
-st.subheader('AHP')
-#st.write(Ranking_final_AHP)
-#st.write(" -------AHP Verificar se é DataFrame ou Series")
-Ranking_final_AHP = Ranking_final_AHP.rename(columns={'Indice': 'Alternativas'})
-Ranking_final_AHP= Ranking_final_AHP.rename(columns={'MediaAritmetica': 'Ranking_final_AHP'})
-
-
-st.write(Ranking_final_AHP)
-if isinstance(Ranking_final_AHP, pd.DataFrame):
-    st.write("Ranking_final_AHP, é um DataFrame.")
-elif isinstance(Ranking_final_AHP, pd.Series):
-    st.write("Ranking_final_AHP, é uma Series.")
-else:
-    st.write("Não é nem DataFrame nem Series. Verifique o tipo do objeto.")
-#st.write(" --------Verificar se 'index' está nas colunas do DataFrame")
-tem_coluna_index_ahp = 'index' in Ranking_final_AHP.columns
-st.write(f"O DataFrame tem uma coluna chamada 'Indice: {tem_coluna_index_ahp}")
-
-
-
-
-
-
-st.subheader('MOORA')
-st.write(" Ranking_Moora Verificar se é DataFrame ou Series")
-# Renomeando a coluna
-Ranking_Moora= Ranking_Moora.rename(columns={'Resultado Otimizado': 'Ranking_Moora'})
-Ranking_Moora= Ranking_Moora.rename(columns={'Alternativa': 'Alternativas'})
-st.write(Ranking_Moora)
-if isinstance(Ranking_Moora, pd.DataFrame):
-    st.write("Ranking_Moora é um DataFrame.")
-    # Se for um DataFrame, você pode realizar operações específicas de DataFrame
-    # Exemplo: st.dataframe(Ranking_Moora)
-elif isinstance(Ranking_Moora, pd.Series):
-    st.write("Ranking_Moora é uma Series.")
-    # Se for uma Series, você pode realizar operações específicas de Series
-    # Exemplo: st.write(Ranking_Moora)
-else:
-    st.write("Não é nem DataFrame nem Series. Verifique o tipo do objeto.")
-
-#st.write(" --------Verificar se 'index' está nas colunas do DataFrame")
-tem_coluna_index_moora = 'index' in Ranking_Moora.columns
-st.write(f"O DataFrame tem uma coluna chamada 'index': {tem_coluna_index_moora}")
-
-
-
-
-st.subheader('tchebychefff')
-#st.write(" Ranking_Moora Verificar se é DataFrame ou Series")
-#st.write(Ranking_tchebycheff)
-
-# Renomeando a coluna
-Ranking_tchebycheff = Ranking_tchebycheff.rename(columns={'Maior_Valor': 'Ranking_tchebycheff'})
-# Renomeando o índice para "Alternativas"
-Ranking_tchebycheff = Ranking_tchebycheff.rename_axis('Alternativas')
-st.write(Ranking_tchebycheff)
-
-
-
-st.subheader('Multimoora')
-st.write(" Ranking_Moora Verificar se é DataFrame ou Series")
-#st.write(Ranking_Multimoora)
-if isinstance(Ranking_Multimoora, pd.DataFrame):
-    st.write("Ranking_Multimoora é um DataFrame.")
-    # Se for um DataFrame, você pode realizar operações específicas de DataFrame
-    # Exemplo: st.dataframe(Ranking_Multimoora)
-
-elif isinstance(Ranking_Multimoora, pd.Series):
-    st.write("Ranking_Multimoora é uma Series.")
-    # Se for uma Series, você pode realizar operações específicas de Series
-    # Exemplo: st.write(Ranking_Multimoora)
-else:
-    st.write("Não é nem DataFrame nem Series. Verifique o tipo do objeto.")
-
-# Renomeando o índice para "Alternativas"
-Ranking_Multimoora = Ranking_Multimoora.rename_axis('Alternativas')
-
-# Exibindo o DataFrame modificado usando Streamlit
-st.write(Ranking_Multimoora)
-# para obter os nomes das colunas
-#nomes_colunas = Ranking_Multimoora.columns
-st.write("Nomes das Colunas do Ranking_Multimoora:", nomes_colunas)
-
-# Renomeando o índice para "Alternativas"
-Ranking_Multimoora= Ranking_Multimoora.rename_axis('Alternativas')
-
-
-
-
-
-
-st.subheader('Unindo os rankings Ranking_final_AHP, Ranking_tchebycheff, Ranking_Multimoora, Ranking_Moora')
-
-# Unindo os DataFrames com base na coluna 'Alternativas'
-borda_inicio_df = pd.merge(Ranking_final_AHP, Ranking_tchebycheff, on='Alternativas')
-borda_inicio_df = pd.merge(borda_inicio_df, Ranking_Moora, on='Alternativas')
-borda_inicio_df = pd.merge(borda_inicio_df, Ranking_Multimoora, on='Alternativas')
-
-# Exibindo o DataFrame resultante
-st.table(borda_inicio_df)
-
-# Fazendo o Ranking
-#função para Ordenar
-def reoder(x, y):
-    return y.index(x)+1
-
-col1 = borda_inicio_df['Ranking_final_AHP'].values.tolist()
-col1_ordered = borda_inicio_df['Ranking_final_AHP'].sort_values().values.tolist()
-borda_inicio_df['ordem1'] = borda_inicio_df['Ranking_final_AHP'].apply(reoder, y=col1_ordered)
-
-col2 = borda_inicio_df['Ranking_Moora'].values.tolist()
-col2_ordered = borda_inicio_df['Ranking_Moora'].sort_values().values.tolist()
-borda_inicio_df['ordem2'] = borda_inicio_df['Ranking_Moora'].apply(reoder, y=col2_ordered)
-
-
-col3 = borda_inicio_df['RankingMultiMoora'].values.tolist()
-col3_ordered = borda_inicio_df['RankingMultiMoora'].sort_values().values.tolist()
-borda_inicio_df['ordem3'] = borda_inicio_df['RankingMultiMoora'].apply(reoder, y=col3_ordered)
-
-
-col4 = borda_inicio_df['Ranking_tchebycheff'].values.tolist()
-col4_ordered = borda_inicio_df['Ranking_tchebycheff'].sort_values().values.tolist()
-borda_inicio_df['ordem4'] = borda_inicio_df['Ranking_tchebycheff'].apply(reoder, y=col4_ordered)
-
-
-
-
-# Reordenando as colunas para mover 'ordem1' para a terceira posição
-ordem1 = borda_inicio_df.pop('ordem1')  # Remove a coluna 'ordem1'
-borda_inicio_df.insert(2, 'ordem1', ordem1)  # Insere 'ordem1' na posição desejada (posição 2 neste caso)
-
-# Reordenando as colunas para mover 'ordem2' para a terceira posição
-ordem2 = borda_inicio_df.pop('ordem2')  # Remove a coluna 'ordem2'
-borda_inicio_df.insert(4, 'ordem2', ordem2)  # Insere 'ordem1' na posição desejada (posição 4 neste caso)
-
-# Reordenando as colunas para mover 'ordem3' para a terceira posição
-ordem3 = borda_inicio_df.pop('ordem3')  # Remove a coluna 'ordem2'
-borda_inicio_df.insert(6, 'ordem3', ordem3)  # Insere 'ordem1' na posição desejada (posição 6 neste caso)
-
-st.write(borda_inicio_df)
-
-# Criando a nova coluna "Ranking_Borda" somando as colunas "ordem1", "ordem2", "ordem3" e "ordem4"
-borda_inicio_df['Ranking_Borda'] = borda_inicio_df[['ordem1', 'ordem2', 'ordem3', 'ordem4']].sum(axis=1)
-
-# Exibindo o DataFrame resultante
-st.table(borda_inicio_df)
-
-
-
-# Mantendo apenas a primeira e a última coluna
-borda_inicio_df = borda_inicio_df.iloc[:, [0, -1]]
-
-# Renomeando a coluna
-borda_inicio_df = borda_inicio_df.rename(columns={'Ranking_Borda': 'Ranking_Final'})
-st.write(borda_inicio_df)
-
