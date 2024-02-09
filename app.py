@@ -10,8 +10,7 @@ sns.set(style="whitegrid")
 # set page configuration
 #st.set_page_config(
 #page_title= "MESTRADO",
-#layout="wide",
-)
+#layout="wide")
 
 # front end elements of the web page
 html_temp = """
