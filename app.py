@@ -1,6 +1,7 @@
 # 1° importa a biblioteca pandas
 import streamlit as st
 import logging
+import sys
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import Normalizer
@@ -11,6 +12,23 @@ sns.set(style="whitegrid")
 # set page configuration
 # Configuração do logger para suprimir mensagens de log com nível de logging menor que ERROR
 logging.basicConfig(level=logging.ERROR)
+class CustomErrorHandler(logging.Handler):
+    def emit(self, record):
+        try:
+            # Filtra mensagens que começam com "ValueError:"
+            if record.levelname == 'ERROR' and record.msg.startswith('ValueError:'):
+                return
+            # Emite todas as outras mensagens de erro
+            logging.StreamHandler.emit(self, record)
+        except Exception:
+            self.handleError(record)
+
+# Configuração do logger para usar o manipulador de erro personalizado
+logging.basicConfig(level=logging.ERROR, handlers=[CustomErrorHandler(stream=sys.stderr)])
+
+
+
+
 
 st.set_page_config(
 page_title= "MESTRADO",
