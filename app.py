@@ -173,11 +173,7 @@ def tratando_erro():
     try: 
         normalizandocriterio = NormalizingConsistency(desafioData);
         normalizandocriterio
-    except NameError: 
-        return "erro"
-print(tratando_erro())
-
-
+  
 #09
 st.subheader("1.3 - Consistencia (01) dos dados de critério vs objetivo (LOCAL) onde é comparado os 6 critérios par a par - Decisor Gerente")
 st.write("transformando em array")
