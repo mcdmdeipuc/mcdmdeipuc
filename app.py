@@ -153,8 +153,8 @@ else:
      
         # Busca dados da planilha
 
-        desafioData = ReadSheetByNr(desafioFile, sheetNr);
-        desafioData
+    desafioData = ReadSheetByNr(desafioFile, sheetNr);
+    desafioData
 
 def tratando_erro(): 
     try:            
