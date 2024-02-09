@@ -165,12 +165,13 @@ if desafioFile is not None:
         # Busque dados da planilha apenas se o arquivo foi carregado
         desafioData = ReadSheetByNr(desafioFile, sheetNr)
         # Restante do código que manipula os dados da planilha
+        desafioData = ReadSheetByNr(desafioFile, sheetNr);
 else:
     st.info("Esperando Planilha")
 
 
 # Busca dados da planilha
-desafioData = ReadSheetByNr(desafioFile, sheetNr);
+#desafioData = ReadSheetByNr(desafioFile, sheetNr);
 desafioData
 
 
