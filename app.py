@@ -16,18 +16,16 @@ layout="wide",
 # front end elements of the web page
 html_temp = """
 <div style ="background-color:blue transparency;padding:13px">
-
-<h1 style ="color:black;text-align:center;">PROJETO PARA PATENTE - MCDM DEI PUC</h1></div>
-<h2 style ="color:black;text-align:center;">Metodologia de apoio à decisão para manutenção inteligente combinando abordagens
-multicritério</h2></div>
+<h2 style ="color:black;text-align:center;">PROJETO PARA PATENTE - MCDM DEI PUC</h2></div>
+<h3 style ="color:black;text-align:center;">Metodologia de apoio à decisão para manutenção inteligente combinando abordagens
+multicritério</h3></div>
 """
 # display the front end aspect
 st.markdown(html_temp, unsafe_allow_html = True)
 st.write('Mestrado acadêmico em Engenharia de Produção - PUC - Rio | DEI - Departamento de Engenharia Industrial')
 st.write("2023 - Todos os direitos reservados")
 st.caption("by Jackeline Alves, Rodrigo Caiado, Renan Santos")
-st.write("---- Para usar é obrigatório subir a planilha contendo os dados dos decisores---")
-st.write("---- No MOORA, seção 2.1 - existe a interação com usuário para seleçao dos Critérios de Maximização ou Minimização---")
+st.write("---- A interação com usuário encontrasse no MOORA, seção 2.1, com seleçao dos Critérios de Maximização ou Minimização---")
 
 #02 FUNCAO SAATY
 def DadosSaaty(lamb, N):
@@ -144,7 +142,7 @@ else:
     st.info("Por favor, faça o upload do arquivo Dados_decisores.xlsx.")
 
 with st.container():
-    st.markdown("<h1 style='text-align: center;'>Método 01 AHP</h1>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center;'>01 - Método AHP</h2>", unsafe_allow_html=True)
 #07
 st.subheader("1.1 - Gerando a Matriz de comparação dos 5 critérios - Decisor Gerente:")
 sheetNr = 0
@@ -264,10 +262,8 @@ if "Consistente" in result:
     st.write("Autovetor (v):", ' '.join(map(str, v)))
 
 
-
-
 #2.9
-st.subheader("Critério 2.7 Segurança - Decisor Gerente")
+st.subheader("Critério 1.7 Segurança - Decisor Gerente")
 st.write("Lendo os dados do decisor")
 
 sheetNr = 2
@@ -312,8 +308,6 @@ if "Consistente" in result:
     st.write("Autovalor (l):", l)
     #st.write("Autovetor (v):", v)
     st.write("Autovetor (v):", ' '.join(map(str, v)))
-
-
 
 
 #2.10
@@ -361,8 +355,6 @@ if "Consistente" in result:
     st.write("Autovetor (v):", ' '.join(map(str, v)))
 
 
-
-
 #2.11
 st.subheader("1.9 Critério 04 Custo - Decisor Gerente")
 st.write("Lendo os dados do decisor")
@@ -403,8 +395,6 @@ if "Consistente" in result:
     st.write("Autovalor (l):", l)
     #st.write("Autovetor (v):", v)
     st.write("Autovetor (v):", ' '.join(map(str, v)))
-
-
 
 #2.12 Critério 05 Preventiva
 st.subheader("1.10 Critério 05 Preventiva - Decisor Gerente")
@@ -448,7 +438,6 @@ if "Consistente" in result:
     st.write("Autovalor (l):", l)
     #st.write("Autovetor (v):", v)
     st.write("Autovetor (v):", ' '.join(map(str, v)))
-
 
 
 
@@ -544,7 +533,7 @@ somaTable
 
 
 
-st.subheader("Resultado RankingDecisor_01_de_04_Gerado_No_AHP - Gerente")
+st.subheader("1.13. Resultado RankingDecisor_01_de_04_Gerado_No_AHP - Gerente")
 #28
 RankingDecisor1 = pd.DataFrame(somaData, index=alternativasList, columns=['RankinDecisor_01_de_04_Gerado_No_AHP'])
 RankingDecisor1_sorted = RankingDecisor1.sort_values(by=['RankinDecisor_01_de_04_Gerado_No_AHP'], ascending=False)
@@ -559,7 +548,7 @@ with st.container():
 
 
 #29
-st.subheader("- Gerando a Matriz de comparação dos 5 critérios - Decisor Supervisor:")
+st.subheader("1.14- Gerando a Matriz de comparação dos 5 critérios - Decisor Supervisor:")
 sheetNr = 7
 print(desafioLabels[sheetNr])
 
