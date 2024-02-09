@@ -18,7 +18,7 @@ html_code = """
 <h2 style ="color:black;text-align:center;">PROJETO PARA PATENTE - MCDM DEI PUC</h2></div>
 <h3 style ="color:black;text-align:center;">Metodologia de apoio à decisão para manutenção inteligente </h3></div>
 <h3 style ="color:black;text-align:center;">combinando abordagens multicritério</h3></div>
-"""
+
 
 st.markdown(html_temp, unsafe_allow_html=True)
 st.write('Mestrado acadêmico em Engenharia de Produção - PUC - Rio | DEI - Departamento de Engenharia Industrial')
@@ -2398,3 +2398,4 @@ borda_inicio_df = borda_inicio_df.iloc[:, [0, -1]]
 # Renomeando a coluna
 borda_inicio_df = borda_inicio_df.rename(columns={'Ranking_Borda': 'Ranking_Final'})
 st.write(borda_inicio_df)
+"""
