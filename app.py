@@ -14,7 +14,7 @@ sns.set(style="whitegrid")
 
 # front end elements of the web page
 
-#<div style ="background-color:cornflowerblue;padding:13px;text-align: center;">
+#<div style ="background-color:cornflowerblue;padding:13px;text-align:center;">
 <h2 style ="color:black;text-align:center;">PROJETO PARA PATENTE - MCDM DEI PUC</h2></div>
 <h3 style ="color:black;text-align:center;">Metodologia de apoio à decisão para manutenção inteligente </h3></div>
 <h3 style ="color:black;text-align:center;">combinando abordagens multicritério</h3></div>
