@@ -150,14 +150,14 @@ else:
     st.subheader("1.1 - Gerando a Matriz de comparação dos 5 critérios - Decisor Gerente:")
     sheetNr = 0
     print(desafioLabels[sheetNr])
-def tratando_erro(): 
-    try:         
+     
         # Busca dados da planilha
 
         desafioData = ReadSheetByNr(desafioFile, sheetNr);
         desafioData
 
-        
+def tratando_erro(): 
+    try:            
         #08
         #2.4
         st.subheader("1.2 Normalizando os valores dos critérios - Decisor Gerente")
