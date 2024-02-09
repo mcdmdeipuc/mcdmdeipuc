@@ -148,13 +148,20 @@ with st.container():
 #07
 st.subheader("1.1 - Gerando a Matriz de comparação dos 5 critérios - Decisor Gerente:")
 
-sheetNr = 0
+#sheetNr = 0
 #print(desafioLabels[sheetNr])
 
+    if desafioFile is not None:
+        sheetNr = 0
+        # Verifique se desafioData existe antes de exibi-lo
+        desafioData = ReadSheetByNr(desafioFile, sheetNr);
+        if desafioData is not None:
+            st.write("Desafio Data:", desafioData)
+        else:
+            st.info("Desafio Data ainda não está disponível.")
 
-# Busca dados da planilha
-desafioData = ReadSheetByNr(desafioFile, sheetNr);
-desafioData
+#desafioData = ReadSheetByNr(desafioFile, sheetNr);
+#desafioData
 
 
 #08
