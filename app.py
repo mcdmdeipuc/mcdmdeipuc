@@ -11,17 +11,25 @@ sns.set(style="whitegrid")
 #st.set_page_config(
 #page_title= "MESTRADO",
 #layout="wide",
-#)
+)
 
 # front end elements of the web page
 html_temp = """
-#<div style ="background-color:blue;padding:13px">
+#<div style ="background-color:cornflowerblue;padding:13px">
 <h2 style ="color:black;text-align:center;">PROJETO PARA PATENTE - MCDM DEI PUC</h2></div>
 <h3 style ="color:black;text-align:center;">Metodologia de apoio à decisão para manutenção inteligente </h3></div>
 <h3 style ="color:black;text-align:center;">combinando abordagens multicritério</h3></div>
 """
 # display the front end aspect
 html_temp = f'<center>{html_temp}</center>'
+title_alignment=
+"""
+<style>
+#the-title {
+  text-align: center
+}
+</style>
+"""
 st.markdown(html_temp, unsafe_allow_html=True)
 st.write('Mestrado acadêmico em Engenharia de Produção - PUC - Rio | DEI - Departamento de Engenharia Industrial')
 st.write("2023 - Todos os direitos reservados")
