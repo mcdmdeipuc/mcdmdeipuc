@@ -15,17 +15,17 @@ layout="wide",
 
 # front end elements of the web page
 html_temp = """
-<div style ="background-color:white;padding:13px">
+<div style ="background-color:blue transparency;padding:13px">
 
 <h1 style ="color:black;text-align:center;">PROJETO PARA PATENTE - MCDM DEI PUC</h1></div>
-
+<h2 style ="color:black;text-align:center;">Metodologia de apoio à decisão para manutenção inteligente combinando abordagens
+multicritério</h2></div>
 """
 # display the front end aspect
 st.markdown(html_temp, unsafe_allow_html = True)
 st.write('Mestrado acadêmico em Engenharia de Produção - PUC - Rio | DEI - Departamento de Engenharia Industrial')
 st.write("2023 - Todos os direitos reservados")
 st.caption("by Jackeline Alves, Rodrigo Caiado, Renan Santos")
-st.caption("Em construção")
 st.write("---- Para usar é obrigatório subir a planilha contendo os dados dos decisores---")
 st.write("---- No MOORA, seção 2.1 - existe a interação com usuário para seleçao dos Critérios de Maximização ou Minimização---")
 
