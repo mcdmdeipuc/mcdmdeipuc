@@ -8,11 +8,13 @@ import seaborn as sns
 sns.set(style="whitegrid")
 
 # set page configuration
+import logging
+import sys
 class CustomErrorHandler(logging.Handler):
     def emit(self, record):
         try:
             # Filtra mensagens que começam com "ValueError:"
-            if record.levelname == 'ERROR' and record.msg.startswith('ValueError:'):
+            if record.levelname == 'ERROR' and record.getMessage().startswith('ValueError:'):
                 return
             # Emite todas as outras mensagens de erro
             logging.StreamHandler.emit(self, record)
