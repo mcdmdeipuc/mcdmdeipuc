@@ -166,7 +166,7 @@ except ValueError:
 st.subheader("1.2 Normalizando os valores dos critérios - Decisor Gerente")
 # Normaliza dados
 
-If sheetNr is not None:
+If desafioData is not None:
     try:
         normalizandocriterio = NormalizingConsistency(desafioData);
         normalizandocriterio
