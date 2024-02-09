@@ -1324,15 +1324,6 @@ st.write(RankingDecisor3)
 
 
 
-
-#........................
-
-with st.container():
-  st.write("---")
-  st.write("---")
-  st.write("---")
-
-
 #29
 st.subheader("1.88 Gerando a Matriz de comparação dos 5 critérios - Decisor 3 Técnico 02:")
 sheetNr = 21
@@ -1791,7 +1782,7 @@ st.write(novo_dataframe)
 
 
 
-st.write("Guardando somente a linha de peso para usar depois")
+st.write("2.2 Guardando somente a linha de peso para usar depois")
 
 # Criando uma cópia do DataFrame contendo apenas a linha "MatrizdePeso"
 dados_peso_do_ahp = novo_dataframe.loc[['MatrizdePeso']].copy()
@@ -1801,7 +1792,7 @@ st.write(dados_peso_do_ahp)
 
 
 
-st.write("Ficando com o data frame sem o peso")
+st.write("2.3 Ficando com o data frame sem o peso")
 # Criando uma cópia do DataFrame
 matriz_moora = novo_dataframe.copy()
 
@@ -1809,7 +1800,7 @@ matriz_moora = novo_dataframe.copy()
 matriz_moora = matriz_moora.drop(index='MatrizdePeso')
 
 # Exibindo o DataFrame atualizado
-st.subheader('Novo DataFrame sem a Linha "MatrizdePeso"')
+st.write("2.4 Novo DataFrame sem a Linha "MatrizdePeso")
 st.write(matriz_moora)
 
 # Criando uma cópia do DataFrame para usar depois
@@ -1827,21 +1818,20 @@ st.write(normalizando)
 
 
 
-st.write(" Obtendo a soma de todos os critérios")
+st.write("2.5 Obtendo a soma de todos os critérios")
 decisaoSumDf = normalizando.copy()
 decisaoSumDf.loc['soma'] = decisaoSumDf.sum()
 decisaoSumDf
 
 
 
-st.write(" Encontrando a raiz da soma ")
-
+st.write("2.6 Encontrando a raiz da soma ")
 
 # Adicione a linha 'raiz_da_soma' ao final de cada coluna
 decisaoSumDf.loc['raiz_da_soma'] = decisaoSumDf.sum()
 decisaoSumDf
 
-st.write(" Dividindo cada valor pela raiz quadrada de cada critério")
+st.write("2.7 Dividindo cada valor pela raiz quadrada de cada critério")
 
 # Iterando sobre as colunas e normalizando os valores
 for coluna in decisaoSumDf.columns:
@@ -1853,7 +1843,7 @@ for coluna in decisaoSumDf.columns:
 st.write(decisaoSumDf)
 
 
-st.subheader('Relacionando aos pesos')
+st.subheader('2.8 Relacionando aos pesos')
 st.write("Excluindo as linhas de soma e raiz da soma")
 
 # Criando uma cópia do DataFrame
@@ -1909,7 +1899,7 @@ st.write(resultado)
 
 
 
-st.subheader("Relacionando aos pesos ")
+st.subheader("2.9 Relacionando aos pesos ")
 st.write("do data frame anterior cada valor foi multiplicado pela MatrizdePeso:")
 
 # Obtendo os pesos dos critérios da última linha
@@ -1932,7 +1922,7 @@ st.dataframe(resultado)
 
 
 
-st.subheader(" Otimização do Modelo Moora")
+#st.subheader("2.10 Otimização do Modelo Moora")
 
 
 # Carregue o DataFrame existente
@@ -1969,12 +1959,12 @@ for index, row in otimizacao.iterrows():
 otimizado_df = pd.DataFrame({"Alternativa": alternativas, "Resultado Otimizado": resultados_otimizados})
 
 # Exibe o DataFrame resultante
-st.subheader("Resultado Otimizado:")
+st.subheader("2.11 Resultado Otimizado:")
 st.write(otimizado_df, width=800, height=400)
 
 
 
-st.subheader("- Ranking Moora")
+st.subheader("2.12 - Ranking Moora")
 # Cria um DataFrame para a ordenação
 Ranking_Moora = pd.DataFrame(otimizado_df, columns=['Alternativa', 'Resultado Otimizado'])
 Ranking_Moora = Ranking_Moora.sort_values(by=['Resultado Otimizado'], ascending=False)
@@ -1988,26 +1978,25 @@ st.write(Ranking_Moora, width=800, height=400)
 ################
 with st.container():
     st.markdown("<h1 style='text-align: center;'> Método 05  Tchebycheff</h1>", unsafe_allow_html=True)
-    st.subheader('a. Iniciando com a matriz original do AHP.')
+    st.subheader('3.1 Iniciando com a matriz original do AHP.')
 st.write(matriz_Tchebycheff)
 
 
-st.write("..............................TESTE.................................")
+#st.write("..............................TESTE.................................")
 # Verificar se é um DataFrame
-if isinstance(matriz_Tchebycheff, pd.DataFrame):
-    st.write("É um DataFrame")
-else:
-    st.write("Não é um DataFrame")
+#if isinstance(matriz_Tchebycheff, pd.DataFrame):
+#    st.write("É um DataFrame")
+#else:
+#    st.write("Não é um DataFrame")
 
 # Verificar se o DataFrame tem colunas preenchidas
-if not matriz_Tchebycheff.empty and not matriz_Tchebycheff.columns.empty:
-    st.write("O DataFrame tem colunas preenchidas")
-else:
-    st.write("O DataFrame está vazio ou sem colunas")
+#if not matriz_Tchebycheff.empty and not matriz_Tchebycheff.columns.empty:
+#    st.write("O DataFrame tem colunas preenchidas")
+#else:
+#    st.write("O DataFrame está vazio ou sem colunas")
+#st.write("..............................TESTE.................................")
 
-st.write("..............................TESTE.................................")
-
-st.subheader('b. Achando o ponto de referencia')
+st.subheader('3.2 Achando o ponto de referencia')
 # Função para calcular o ponto de referência com base nos critérios
 def calcular_ponto_referencia(df):
     ponto_referencia = []
@@ -2038,7 +2027,7 @@ if __name__ == '__main__':
     main()
 
 #...............................................................
-st.subheader("c. Avaliação final - FALTA CHEGAR O QUE DEVE SER REDUZIDO ")
+st.subheader("3.3 . Avaliação final - FALTA CHEGAR O QUE DEVE SER REDUZIDO ")
 st.write("Pega-se o valor de cada alternaytiva e diminui pelo valor do ponto de referencia?")
 # Reduzir os valores das alternativas pelo valor na linha Ponto_Referencia
 matriz_reduzida = matriz_Tchebycheff.iloc[:-1, :] - matriz_Tchebycheff.loc['Ponto_Referencia']
@@ -2062,7 +2051,7 @@ if __name__ == '__main__':
 
 
 
-st.subheader("4.2 Ordena-se as alternativas de acordo com maior distância. Ponto de referencia")
+st.subheader("3.4 Ordena-se as alternativas de acordo com maior distância. Ponto de referencia")
 
 
 # Reduzir os valores das alternativas pelo valor na linha Ponto_Referencia
@@ -2087,7 +2076,7 @@ if __name__ == '__main__':
 
 
 #...............................................................
-st.subheader("4.3 Resultado tchebycheff")
+st.subheader("3.5 Resultado tchebycheff")
 st.write("Ordena-se do menor para o maior")
 # Ordenar os resultados do menor para o maior
 Ranking_tchebycheff = resultados.sort_values(by='Maior_Valor')
@@ -2104,11 +2093,9 @@ st.write(Ranking_tchebycheff)
 
 ################
 with st.container():
-    st.markdown("<h1 style='text-align: center;'>5 METODO MULTIMOORA</h1>", unsafe_allow_html=True)
-    st.subheader('a. Iniciando com a matriz original do AHP.')
+    st.markdown("<h1 style='text-align: center;'>4 METODO MULTIMOORA</h1>", unsafe_allow_html=True)
+    st.subheader('4.1 Iniciando com a matriz original do AHP.')
     st.write(" MULTIMOORA é a sequência adicional do método MOORA e da forma multiplicativa completa de múltiplos objetivos")
-
-
     matriz_multimoora = matriz_Tchebycheff.copy()
 st.write(matriz_multimoora)
 
@@ -2118,7 +2105,7 @@ nomes_colunas = matriz_multimoora.columns.tolist()
 #st.write("Nomes das Colunas:", nomes_colunas)
 
 #...............................................................
-st.subheader("5.3 Dividindo ou multiplicandox")
+st.subheader("4.2 Dividindo ou multiplicandox")
 st.write("Se o critério for de max multiplica pelo ponto de referencia, senão divide")
 
 
