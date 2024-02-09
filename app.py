@@ -148,7 +148,7 @@ else:
         
     #07
     st.subheader("1.1 - Gerando a Matriz de comparação dos 5 critérios - Decisor Gerente:")
-    def tratando_erro(): 
+def tratando_erro(): 
     try: 
         sheetNr = 0
             print(desafioLabels[sheetNr])
