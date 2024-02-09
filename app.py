@@ -154,10 +154,10 @@ else:
         # Busca dados da planilha
 
     desafioData = ReadSheetByNr(desafioFile, sheetNr);
-    desafioData
+    #desafioData
 
 def tratando_erro(): 
-    try:            
+    try:           
         #08
         #2.4
         st.subheader("1.2 Normalizando os valores dos critérios - Decisor Gerente")
