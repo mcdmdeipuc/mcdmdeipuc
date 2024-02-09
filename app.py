@@ -154,12 +154,10 @@ with st.container():
         print(desafioLabels[sheetNr])
         
         # Busca dados da planilha
-        try:
+
             desafioData = ReadSheetByNr(desafioFile, sheetNr);
             desafioData
-        except ValueError:
-            print("esperando info")
-        
+
         
         #08
         #2.4
