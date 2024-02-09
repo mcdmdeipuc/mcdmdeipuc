@@ -2182,14 +2182,11 @@ for i, coluna in enumerate(colunas_critérios):
         vColunas.append(f"{i+1}")
 
 # Exibindo a lista vColunas
-st.subheader("Variável vColunas:")
+
 #st.write("vColunas:", vColunas)
 
 
-
-
-
-st.subheader("descobrindo nomes das alternativas de critérios:")
+st.subheader("4.4 Descobrindo nomes das alternativas de critérios:")
 # Obtendo os nomes das alternativas de critérios
 vIndice = matriz_multimoora.index.tolist()
 
@@ -2199,7 +2196,7 @@ st.write("Lista vIndice:", vIndice)
 
 
 
-st.subheader(" implementando a lógica do método MULTIMOORA")
+st.subheader(" 4.5 Implementando a lógica do método MULTIMOORA")
 st.write("Recebe a primeira e a segunda coluna original do dataframe e cria as proximas colunas numerando seus títulos - comencando pelo numero 2 - e nas linhas das alternativas recebe os valores das colunas multiplicados")
 
 
@@ -2228,7 +2225,7 @@ MultimooraDf = pd.DataFrame(MultimooraMt, index=vIndice, columns=vColunas)
 MultimooraDf
 
 
-st.subheader("Resultado MULTIMOORA")
+st.subheader("4.6 Resultado MULTIMOORA")
 
 Ranking_Multimoora = pd.DataFrame(MultimooraOrderMt, index=vIndice, columns=['RankingMultiMoora'])
 
@@ -2246,13 +2243,13 @@ st.write(Ranking_Multimoora)
 
 ################
 with st.container():
-    st.markdown("<h1 style='text-align: center;'>6 MÉTODO BORDA</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center;'>5 MÉTODO BORDA</h1>", unsafe_allow_html=True)
     st.write(" Nesse método, se houver t alternativas, a primeira colocada recebe t votos e a segunda recebe um voto a menos, e assim por diante.")
-    st.subheader('recebendo todos os rankings ')
+    st.subheader('5.1 Recebendo todos os rankings ')
     st.write("Ranking_final_AHP, Ranking_Moora, Ranking_tchebycheff, Ranking_Multimoora")
 
 
-st.subheader('AHP')
+st.subheader('5.2 AHP')
 #st.write(Ranking_final_AHP)
 #st.write(" -------AHP Verificar se é DataFrame ou Series")
 Ranking_final_AHP = Ranking_final_AHP.rename(columns={'Indice': 'Alternativas'})
@@ -2275,7 +2272,7 @@ st.write(f"O DataFrame tem uma coluna chamada 'Indice: {tem_coluna_index_ahp}")
 
 
 
-st.subheader('MOORA')
+st.subheader('5.3 MOORA')
 st.write(" Ranking_Moora Verificar se é DataFrame ou Series")
 # Renomeando a coluna
 Ranking_Moora= Ranking_Moora.rename(columns={'Resultado Otimizado': 'Ranking_Moora'})
@@ -2299,7 +2296,7 @@ st.write(f"O DataFrame tem uma coluna chamada 'index': {tem_coluna_index_moora}"
 
 
 
-st.subheader('tchebychefff')
+st.subheader('5.4 tchebychefff')
 #st.write(" Ranking_Moora Verificar se é DataFrame ou Series")
 #st.write(Ranking_tchebycheff)
 
@@ -2311,7 +2308,7 @@ st.write(Ranking_tchebycheff)
 
 
 
-st.subheader('Multimoora')
+st.subheader('5.5 Multimoora')
 st.write(" Ranking_Moora Verificar se é DataFrame ou Series")
 #st.write(Ranking_Multimoora)
 if isinstance(Ranking_Multimoora, pd.DataFrame):
@@ -2339,11 +2336,7 @@ st.write("Nomes das Colunas do Ranking_Multimoora:", nomes_colunas)
 Ranking_Multimoora= Ranking_Multimoora.rename_axis('Alternativas')
 
 
-
-
-
-
-st.subheader('Unindo os rankings Ranking_final_AHP, Ranking_tchebycheff, Ranking_Multimoora, Ranking_Moora')
+st.subheader('5.6 Unindo os rankings Ranking_final_AHP, Ranking_tchebycheff, Ranking_Multimoora, Ranking_Moora')
 
 # Unindo os DataFrames com base na coluna 'Alternativas'
 borda_inicio_df = pd.merge(Ranking_final_AHP, Ranking_tchebycheff, on='Alternativas')
