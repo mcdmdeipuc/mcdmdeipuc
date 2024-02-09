@@ -165,9 +165,11 @@ except ValueError:
 #2.4
 st.subheader("1.2 Normalizando os valores dos critérios - Decisor Gerente")
 # Normaliza dados
-normalizandocriterio = NormalizingConsistency(desafioData);
-normalizandocriterio
-
+try:
+    normalizandocriterio = NormalizingConsistency(desafioData);
+    normalizandocriterio
+except ValueError:
+    print("Numero digitado inválido")
 
 #09
 st.subheader("1.3 - Consistencia (01) dos dados de critério vs objetivo (LOCAL) onde é comparado os 6 critérios par a par - Decisor Gerente")
