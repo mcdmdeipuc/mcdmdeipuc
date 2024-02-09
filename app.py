@@ -1792,7 +1792,7 @@ st.write(dados_peso_do_ahp)
 
 
 
-st.write("2.3 Ficando com o data frame sem o peso")
+#st.write("Ficando com o data frame sem o peso")
 # Criando uma cópia do DataFrame
 matriz_moora = novo_dataframe.copy()
 
@@ -1800,7 +1800,7 @@ matriz_moora = novo_dataframe.copy()
 matriz_moora = matriz_moora.drop(index='MatrizdePeso')
 
 # Exibindo o DataFrame atualizado
-st.write("2.4 Novo DataFrame sem a Linha MatrizdePeso")
+st.write("2.3 Novo DataFrame sem a Linha MatrizdePeso")
 st.write(matriz_moora)
 
 # Criando uma cópia do DataFrame para usar depois
@@ -1808,12 +1808,11 @@ matriz_Tchebycheff = matriz_moora.copy()
 
 
 
-st.subheader('Normalizando')
+st.subheader('2.4 Normalizando')
 st.write("Elevar os indicadores em análise ao quadrado")
 
 normalizando = matriz_moora.pow(2).round(6)
 # Exibindo o novo DataFrame resultante
-st.write("normalizando:")
 st.write(normalizando)
 
 
@@ -1959,12 +1958,12 @@ for index, row in otimizacao.iterrows():
 otimizado_df = pd.DataFrame({"Alternativa": alternativas, "Resultado Otimizado": resultados_otimizados})
 
 # Exibe o DataFrame resultante
-st.subheader("2.11 Resultado Otimizado:")
+st.subheader("2.10 Resultado Otimizado:")
 st.write(otimizado_df, width=800, height=400)
 
 
 
-st.subheader("2.12 - Ranking Moora")
+st.subheader("2.11 - Ranking Moora")
 # Cria um DataFrame para a ordenação
 Ranking_Moora = pd.DataFrame(otimizado_df, columns=['Alternativa', 'Resultado Otimizado'])
 Ranking_Moora = Ranking_Moora.sort_values(by=['Resultado Otimizado'], ascending=False)
@@ -1977,7 +1976,7 @@ st.write(Ranking_Moora, width=800, height=400)
 
 ################
 with st.container():
-    st.markdown("<h1 style='text-align: center;'> Método 05  Tchebycheff</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center;'> 03 Método Tchebycheff</h1>", unsafe_allow_html=True)
     st.subheader('3.1 Iniciando com a matriz original do AHP.')
 st.write(matriz_Tchebycheff)
 
@@ -2143,14 +2142,13 @@ alternativas = matriz_multimoora.index.tolist()
 criterios = matriz_multimoora.columns.tolist()
 
 # Página Streamlit
-st.title("Análise MULTIMOORA")
 
 # Exibindo o DataFrame original
-st.subheader("DataFrame Original:")
+st.write("DataFrame Original:")
 st.write(matriz_multimoora)
 
 
-st.subheader("descobrindo se é de max ou min:")
+st.subheader("4.3 Descobrindo se é de max ou min:")
 # Obtendo os nomes das colunas de critérios
 colunas_critérios = matriz_multimoora.columns.tolist()
 
@@ -2172,7 +2170,7 @@ st.write("Lista colMinOrMax:", colMinOrMax)
 
 
 
-st.subheader("montando as novas colunas:")
+st.write("4.4 Montando as novas colunas:")
 # Obtendo os nomes das colunas de critérios
 colunas_critérios = matriz_multimoora.columns.tolist()
 
@@ -2185,7 +2183,7 @@ for i, coluna in enumerate(colunas_critérios):
 
 # Exibindo a lista vColunas
 st.subheader("Variável vColunas:")
-st.write("vColunas:", vColunas)
+#st.write("vColunas:", vColunas)
 
 
 
