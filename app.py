@@ -185,13 +185,12 @@ def tratando_erro():
     try: 
         array_ahp = normalizandocriterio.to_numpy()
         array_ahp
-    except NameError: 
+        # Verificação de consistência
+        N = len(array_ahp)
+        lamb = np.sum(array_ahp, axis=1)
+     except NameError: 
         return "erro"
-print(tratando_erro())    
 
-# Verificação de consistência
-N = len(array_ahp)
-lamb = np.sum(array_ahp, axis=1)
 result = DadosSaaty(lamb, N)
 # Exibindo o resultado na tela
 st.write("Resultado da Verificação de Consistência:")
