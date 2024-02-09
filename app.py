@@ -145,8 +145,8 @@ else:
 
 with st.container():
     def tratando_erro(): 
-    try: 
-            st.markdown("<h1 style='text-align: center;'>Método 01 AHP</h1>", unsafe_allow_html=True)
+        try: 
+        st.markdown("<h1 style='text-align: center;'>Método 01 AHP</h1>", unsafe_allow_html=True)
         
         #07
         st.subheader("1.1 - Gerando a Matriz de comparação dos 5 critérios - Decisor Gerente:")
@@ -163,8 +163,7 @@ with st.container():
         #2.4
         st.subheader("1.2 Normalizando os valores dos critérios - Decisor Gerente")
         # Normaliza dados
-        
-        
+                
         #normalizandocriterio = NormalizingConsistency(desafioData);
         #normalizandocriterio
 
