@@ -193,7 +193,7 @@ def tratando_erro():
         st.write("Resultado da Verificação de Consistência:")
         st.markdown(result)
         # Realizando o cálculo VV se os dados são consistentes
-            if "Consistente" in result:
+        if "Consistente" in result:
             l, v = VV(array_ahp)
             st.write("Autovalor (l):", l)
             #st.write("Autovetor (v):", v)
