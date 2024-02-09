@@ -166,14 +166,18 @@ except ValueError:
 st.subheader("1.2 Normalizando os valores dos critérios - Decisor Gerente")
 # Normaliza dados
 
-If desafioData is not None:
-    try:
+
+#normalizandocriterio = NormalizingConsistency(desafioData);
+#normalizandocriterio
+def geek_message(): 
+    try: 
         normalizandocriterio = NormalizingConsistency(desafioData);
         normalizandocriterio
-    except ValueError:
-        print("sem erro")
-else:
-    st.info("Por favor, faça o upload do arquivo Dados_decisores.xlsx.")
+        #return geeksforgeeks 
+    except NameError: 
+        return "NameError occured. Some variable isn't defined."
+  
+print(geek_message())
 
 
 #09
