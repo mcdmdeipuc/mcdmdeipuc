@@ -146,8 +146,9 @@ with st.container():
     st.markdown("<h1 style='text-align: center;'>Método 01 AHP</h1>", unsafe_allow_html=True)
 #07
 st.subheader("1.1 - Gerando a Matriz de comparação dos 5 critérios - Decisor Gerente:")
+
 if desafioFile is not None:
-sheetNr = 0
+    sheetNr = 0
 print(desafioLabels[sheetNr])
 
 # Busca dados da planilha
