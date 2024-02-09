@@ -188,7 +188,7 @@ def tratando_erro():
         # Verificação de consistência
         N = len(array_ahp)
         lamb = np.sum(array_ahp, axis=1)
-     except NameError: 
+    except NameError: 
         return "erro"
 
 result = DadosSaaty(lamb, N)
