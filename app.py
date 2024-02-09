@@ -151,7 +151,7 @@ else:
 def tratando_erro(): 
     try: 
         sheetNr = 0
-            print(desafioLabels[sheetNr])
+        print(desafioLabels[sheetNr])
      
         # Busca dados da planilha
 
