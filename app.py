@@ -166,7 +166,7 @@ if desafioFile is not None:
         desafioData = ReadSheetByNr(desafioFile, sheetNr)
         # Restante do código que manipula os dados da planilha
         desafioData = ReadSheetByNr(desafioFile, sheetNr);
-        desafioData
+       # desafioData
 else:
     st.info("Esperando Planilha")
 
