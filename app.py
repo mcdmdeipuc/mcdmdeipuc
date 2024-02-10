@@ -127,7 +127,7 @@ desafioLabels = ['Par_criterios_gerente','Cr01_Falhas_gerente','Cr02_Seguranca_g
 
 with st.container():
   st.subheader("Carregando o Projeto")
-  st.markdown("<h2 style='text-align: center;'>Carregando o Projeto</h2>", unsafe_allow_html=True)
+  st.markdown("<h3 style='text-align: center;'>00 - Carregando o Projeto</h3>", unsafe_allow_html=True)
 
 # Carregar uma planilha Excel
 desafioFile = st.file_uploader("Informe o caminho da planilha em Excel com as respostas dos decisores. Dados_decisores.xlsx.", type="xlsx")
