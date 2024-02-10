@@ -16,6 +16,7 @@ layout="wide",
 html_temp = """
 <div style ="background-color:cornflowerblue;">
 <h2 style ="color:black;text-align:center;">PROJETO PARA PATENTE - MCDM DEI PUC</h2></div>
+<img src="http://www.puc-rio.br/brasao-puc-novo-cinza-2.png" alt="Descrição da imagem">
 <h3 style ="color:black;text-align:center;">Metodologia de apoio à decisão para manutenção inteligente </h3></div>
 <h3 style ="color:black;text-align:center;">combinando abordagens multicritério</h3></div>
 
@@ -88,7 +89,6 @@ def NormalizingAll(dataListP):
 
 
 #05
-
 def ReadSheetByNr(fileP, sheetsNrP):
   sheetP = desafioSeets[sheetsNrP]
   return pd.read_excel(fileP,sheet_name=sheetP,index_col=0)
@@ -126,11 +126,11 @@ desafioLabels = ['Par_criterios_gerente','Cr01_Falhas_gerente','Cr02_Seguranca_g
 #<h3 style ="color:black;text-align:center;">Abrindo dados dos decisores </h3></div>
 
 with st.container():
-  st.subheader("Carregando o Projeto")
-  st.markdown("<h3 style='text-align: center;'>00 - Carregando o Projeto</h3>", unsafe_allow_html=True)
+  #st.subheader("Carregando o Projeto")
+  st.markdown("<h3 style='text-align: center;'>--- Carregando o Projeto --- </h3>", unsafe_allow_html=True)
 
 # Carregar uma planilha Excel
-desafioFile = st.file_uploader("Informe o caminho da planilha em Excel com as respostas dos decisores. Dados_decisores.xlsx.", type="xlsx")
+desafioFile = st.file_uploader("Informe o caminho da planilha em Excel com as respostas Par a Par dos decisores. Dados_decisores.xlsx.", type="xlsx")
 
 if desafioFile is not None:
     try:
