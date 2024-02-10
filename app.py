@@ -9,8 +9,8 @@ sns.set(style="whitegrid")
 backgroundColor = "#ADD8E6"
 
 # set page configuration
-st.set_page_config(
-page_title= "MESTRADO",
+#st.set_page_config(
+#page_title= "MESTRADO",
 #layout="wide",
 #initial_sidebar_state="auto",  # Pode ser "auto", "expanded" ou "collapsed"
 )
