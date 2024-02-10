@@ -13,7 +13,6 @@ st.set_page_config(
 page_title= "MESTRADO",
 layout="wide",
 initial_sidebar_state="expanded",  # Pode ser "auto", "expanded" ou "collapsed"
-
 )
 
 html_temp = """
@@ -28,8 +27,7 @@ html_temp = """
 """
 
 st.markdown(html_temp, unsafe_allow_html=True)
-st.write('Mestrado acadêmico em Engenharia de Produção | DEI - Departamento de Engenharia Industrial')
-st.write("2023 - Todos os direitos reservados")
+st.write('Mestrado acadêmico em Engenharia de Produção | DEI - Departamento de Engenharia Industrial - 2023 - Todos os direitos reservados')
 st.caption("by Jackeline Alves, Rodrigo Caiado, Renan Santos")
 st.write("---- Para interagir com o Framework vá na seção 2.1 do MOORA.")
 
