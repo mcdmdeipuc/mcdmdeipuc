@@ -497,7 +497,7 @@ if "Consistente" in result:
 
 
 st.subheader("1.29  Finalizando Matriz de pesos locais - Priorização das alternativas - Decisor Gerente")
-st.write("2.14.1 PARA ENVIAR AO MOORA DADOS GERENTE")
+st.write("PARA ENVIAR AO MOORA DADOS GERENTE")
 #25
 
 # Criando Matriz de Priorização das alternativas
@@ -578,7 +578,7 @@ normalizandocriterio
 
 
 #09
-st.subheader("1.33 - - Consistencia (01) dos dados de critério vs objetivo (LOCAL) onde é comparado os 6 critérios par a par - Decisor Gerente")
+st.subheader("1.33 - Consistencia (01) dos dados de critério vs objetivo (LOCAL) onde é comparado os 6 critérios par a par - Decisor Gerente")
 Consistencia1 = normalizandocriterio.to_numpy()
 Consistencia1
 
