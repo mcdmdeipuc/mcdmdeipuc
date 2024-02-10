@@ -8,9 +8,10 @@ import seaborn as sns
 sns.set(style="whitegrid")
 
 # set page configuration
-#st.set_page_config(
-#page_title= "MESTRADO",
-#layout="wide")
+st.set_page_config(
+page_title= "MESTRADO",
+layout="wide",
+)
 
 html_temp = """
 <div style ="background-color:cornflowerblue;">
