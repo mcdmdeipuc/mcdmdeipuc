@@ -6,7 +6,7 @@ from sklearn.preprocessing import Normalizer
 import matplotlib.pyplot as plt
 import seaborn as sns
 sns.set(style="whitegrid")
-backgroundColor = "#ADD8E6"
+
 
 set page configuration
 st.set_page_config(
@@ -22,7 +22,6 @@ html_temp = """
 <h2 style ="color:black;text-align:center;">PROJETO PARA PATENTE - MCDM DEI PUC</h2></div>
 <h3 style ="color:black;text-align:center;">Metodologia de apoio à decisão para manutenção inteligente </h3></div>
 <h3 style ="color:black;text-align:center;">combinando abordagens multicritério</h3></div>
-
 """
 
 st.markdown(html_temp, unsafe_allow_html=True)
@@ -149,6 +148,7 @@ else:
 
 with st.container():
     st.markdown("<h2 style='text-align: center;'>01 - Método AHP</h2>", unsafe_allow_html=True)
+    
 #07
 st.subheader("1.1 - Gerando a Matriz de comparação dos 5 critérios - Decisor Gerente:")
 
