@@ -11,8 +11,8 @@ sns.set(style="whitegrid")
 st.set_page_config(
 page_title= "MESTRADO",
 layout="wide",
-initial_sidebar_state="auto",  # Pode ser "auto", "expanded" ou "collapsed"
-
+initial_sidebar_state="expanded",  # Pode ser "auto", "expanded" ou "collapsed"
+page_icon="📚",  # Ícone da página (pode ser emoji)
 )
 
 html_temp = """
