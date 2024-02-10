@@ -121,9 +121,9 @@ desafioLabels = ['Par_criterios_gerente','Cr01_Falhas_gerente','Cr02_Seguranca_g
 
 #........................
 
-html_temp = """
-<h3 style ="color:black;text-align:center;">Abrindo dados dos decisores </h3></div>
-"""
+
+#<h3 style ="color:black;text-align:center;">Abrindo dados dos decisores </h3></div>
+
 with st.container():
   st.subheader("Abrindo dados dos decisores")
 
