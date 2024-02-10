@@ -126,7 +126,8 @@ desafioLabels = ['Par_criterios_gerente','Cr01_Falhas_gerente','Cr02_Seguranca_g
 #<h3 style ="color:black;text-align:center;">Abrindo dados dos decisores </h3></div>
 
 with st.container():
-  st.subheader("Abrindo dados dos decisores")
+  st.subheader("Carregando o Projeto")
+  st.markdown("<h2 style='text-align: center;'>Carregando o Projeto</h2>", unsafe_allow_html=True)
 
 # Carregar uma planilha Excel
 desafioFile = st.file_uploader("Informe o caminho da planilha em Excel com as respostas dos decisores. Dados_decisores.xlsx.", type="xlsx")
