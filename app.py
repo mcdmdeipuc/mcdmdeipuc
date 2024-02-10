@@ -154,9 +154,6 @@ with st.container():
     st.markdown("<h2 style='text-align: center;'>01 - Método AHP</h2>", unsafe_allow_html=True)
     
 #07
-# st.write("Esta linha será executada")
-# sys.exit("Encerrando aqui, o código abaixo não será executado")
-# st.write("Esta linha não será executada")
 
 st.subheader("1.1 - Gerando a Matriz de comparação dos 5 critérios - Decisor Gerente:")
 
