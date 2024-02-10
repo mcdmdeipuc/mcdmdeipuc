@@ -8,9 +8,9 @@ import seaborn as sns
 sns.set(style="whitegrid")
 backgroundColor = "#ADD8E6"
 
-# set page configuration
+set page configuration
 #st.set_page_config(
-#page_title= "MESTRADO",
+page_title= "MESTRADO",
 #layout="wide",
 #initial_sidebar_state="auto",  # Pode ser "auto", "expanded" ou "collapsed"
 )
