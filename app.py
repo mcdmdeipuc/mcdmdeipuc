@@ -1,4 +1,10 @@
 # 1° importa a biblioteca pandas
+
+import sys
+
+
+
+
 import streamlit as st
 import numpy as np
 import pandas as pd
@@ -30,6 +36,14 @@ st.write('Mestrado acadêmico em Engenharia de Produção | DEI - Departamento d
 st.caption("by Jackeline Alves, Rodrigo Caiado, Renan Santos")
 st.write("---- Para interagir com o Framework vá na seção 2.1 do MOORA.")
 
+# Código que será executado antes do ponto de encerramento
+print("Esta linha será executada")
+
+# Ponto de encerramento
+sys.exit("Encerrando aqui, o código abaixo não será executado")
+
+# Código que não será executado após o ponto de encerramento
+print("Esta linha não será executada")
 
 #02 FUNCAO SAATY
 def DadosSaaty(lamb, N):
