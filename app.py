@@ -12,8 +12,6 @@ st.set_page_config(
 page_title= "MESTRADO",
 layout="wide",
 initial_sidebar_state="expanded",  # Pode ser "auto", "expanded" ou "collapsed"
-page_icon="📚",  # Ícone da página
-theme="dark",  # Pode ser "light" ou "dark"         
 )
 
 html_temp = """
