@@ -6,13 +6,13 @@ from sklearn.preprocessing import Normalizer
 import matplotlib.pyplot as plt
 import seaborn as sns
 sns.set(style="whitegrid")
-
+backgroundColor = "#F0F0F0"
 # set page configuration
 st.set_page_config(
 page_title= "MESTRADO",
 layout="wide",
 initial_sidebar_state="expanded",  # Pode ser "auto", "expanded" ou "collapsed"
-backgroundColor = "#F0F0F0"
+
 )
 
 html_temp = """
