@@ -1,10 +1,6 @@
 # 1° importa a biblioteca pandas
 
 import sys
-
-
-
-
 import streamlit as st
 import numpy as np
 import pandas as pd
@@ -35,15 +31,6 @@ st.markdown(html_temp, unsafe_allow_html=True)
 st.write('Mestrado acadêmico em Engenharia de Produção | DEI - Departamento de Engenharia Industrial - 2023 - Todos os direitos reservados')
 st.caption("by Jackeline Alves, Rodrigo Caiado, Renan Santos")
 st.write("---- Para interagir com o Framework vá na seção 2.1 do MOORA.")
-
-# Código que será executado antes do ponto de encerramento
-print("Esta linha será executada")
-
-# Ponto de encerramento
-sys.exit("Encerrando aqui, o código abaixo não será executado")
-
-# Código que não será executado após o ponto de encerramento
-print("Esta linha não será executada")
 
 #02 FUNCAO SAATY
 def DadosSaaty(lamb, N):
@@ -166,6 +153,9 @@ with st.container():
     st.markdown("<h2 style='text-align: center;'>01 - Método AHP</h2>", unsafe_allow_html=True)
     
 #07
+
+sys.exit("Encerrando aqui, o código abaixo não será executado")
+
 st.subheader("1.1 - Gerando a Matriz de comparação dos 5 critérios - Decisor Gerente:")
 
 sheetNr = 0
