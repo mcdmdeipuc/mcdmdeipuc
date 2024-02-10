@@ -16,7 +16,7 @@ layout="wide",
 html_temp = """
 <div style ="background-color:cornflowerblue;">
 <h2 style ="color:black;text-align:center;">PROJETO PARA PATENTE - MCDM DEI PUC</h2></div>
-<img src="http://www.puc-rio.br/brasao-puc-novo-cinza-2.png" alt="Descrição da imagem">
+<img src="https://lappis.org.br/site/wp-content/uploads/2018/08/PUC-RIO-LOGO.gif" alt="Descrição da imagem">
 <h3 style ="color:black;text-align:center;">Metodologia de apoio à decisão para manutenção inteligente </h3></div>
 <h3 style ="color:black;text-align:center;">combinando abordagens multicritério</h3></div>
 
