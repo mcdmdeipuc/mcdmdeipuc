@@ -15,20 +15,20 @@ layout="wide",
 
 html_temp = """
 <div style ="background-color:cornflowerblue;">
-<h2 style ="color:black;text-align:center;">PROJETO PARA PATENTE - MCDM DEI PUC</h2></div>
 <img src="https://lappis.org.br/site/wp-content/uploads/2018/08/PUC-RIO-LOGO.gif" 
          alt="Descrição da imagem"
-         style="width: 100px; height: auto;">
+         style="width: 50px; height: auto;">
+<h2 style ="color:black;text-align:center;">PROJETO PARA PATENTE - MCDM DEI PUC</h2></div>
 <h3 style ="color:black;text-align:center;">Metodologia de apoio à decisão para manutenção inteligente </h3></div>
 <h3 style ="color:black;text-align:center;">combinando abordagens multicritério</h3></div>
 
 """
 
 st.markdown(html_temp, unsafe_allow_html=True)
-st.write('Mestrado acadêmico em Engenharia de Produção - PUC - Rio | DEI - Departamento de Engenharia Industrial')
+st.write('Mestrado acadêmico em Engenharia de Produção | DEI - Departamento de Engenharia Industrial')
 st.write("2023 - Todos os direitos reservados")
 st.caption("by Jackeline Alves, Rodrigo Caiado, Renan Santos")
-st.write("---- A interação com usuário encontrasse no MOORA, seção 2.1, com seleçao dos Critérios de Maximização ou Minimização---")
+st.write("---- Para interagir com o Framework vá na seção 2.1 do MOORA.")
 
 #02 FUNCAO SAATY
 def DadosSaaty(lamb, N):
