@@ -9,17 +9,16 @@ sns.set(style="whitegrid")
 backgroundColor = "#ADD8E6"
 
 set page configuration
-#st.set_page_config(
+st.set_page_config(
 page_title= "MESTRADO",
 #layout="wide",
 #initial_sidebar_state="auto",  # Pode ser "auto", "expanded" ou "collapsed"
 )
 
 html_temp = """
-<img src="https://lappis.org.br/site/wp-content/uploads/2018/08/PUC-RIO-LOGO.gif" 
-         alt="Descrição da imagem"
-         style="width: 50px; height: auto;">
-<div style ="background-color:cornflowerblue;">
+#<img src="https://lappis.org.br/site/wp-content/uploads/2018/08/PUC-RIO-LOGO.gif" 
+#         alt="Descrição da imagem"
+#         style="width: 50px; height: auto;">
 <h2 style ="color:black;text-align:center;">PROJETO PARA PATENTE - MCDM DEI PUC</h2></div>
 <h3 style ="color:black;text-align:center;">Metodologia de apoio à decisão para manutenção inteligente </h3></div>
 <h3 style ="color:black;text-align:center;">combinando abordagens multicritério</h3></div>
