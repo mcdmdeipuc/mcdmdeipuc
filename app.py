@@ -136,10 +136,10 @@ desafioLabels = ['Par_criterios_gerente','Cr01_Falhas_gerente','Cr02_Seguranca_g
 
 with st.container():
   #st.subheader("Carregando o Projeto")
-  st.markdown("<h3 style='text-align: center;'>--- Iniciando o sistema para tomada de decisões gerenciais --- </h3>", unsafe_allow_html=True)
+#  st.markdown("<h2 style='text-align: left;'>--- Iniciando o sistema para tomada de decisões gerenciais --- </h3>", unsafe_allow_html=True)
 
 # Carregar uma planilha Excel
-desafioFile = st.file_uploader("Informe o caminho da planilha em Excel com as respostas Par a Par dos decisores. Dados_decisores.xlsx.", type="xlsx")
+desafioFile = st.file_uploader("Para iniciar, clique no botão Browse files para carregar a planilha em Excel com as respostas Par a Par dos decisores. ", type="xlsx")
 
 if desafioFile is not None:
     try:
