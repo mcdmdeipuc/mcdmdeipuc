@@ -19,17 +19,18 @@ initial_sidebar_state="expanded",  # Pode ser "auto", "expanded" ou "collapsed"
 
 
 html_temp = """
-<img src="https://lappis.org.br/site/wp-content/uploads/2018/08/PUC-RIO-LOGO.gif" 
+<img src="https://www.casadamoeda.gov.br/portal/imgs/logo-cmb-4.png" 
          alt="Descrição da imagem"
          style="width: 50px; height: auto;">
-<h2 style ="color:black;text-align:center;">PROJETO PARA PATENTE - MCDM DEI PUC</h2></div>
+
 <h3 style ="color:black;text-align:center;">Metodologia de apoio à decisão para manutenção inteligente </h3></div>
 <h3 style ="color:black;text-align:center;">combinando abordagens multicritério</h3></div>
 """
 
 st.markdown(html_temp, unsafe_allow_html=True)
-st.write('Mestrado acadêmico em Engenharia de Produção | DEI - Departamento de Engenharia Industrial - 2023 - Todos os direitos reservados')
-st.caption("by Jackeline Alves, Rodrigo Caiado, Renan Santos")
+st.write('Projeto desenvolvido no Mestrado acadêmico em Engenharia de Produção | DEI - Departamento de Engenharia Industrial - 2023')
+st.caption("by Jackeline Alves do Nascimento")
+st.write("---- Aplique-o para escolha entre 8 quaisquer alternativas e 6 critérios")
 st.write("---- Para interagir com o Framework vá na seção 2.1 do MOORA.")
 
 #02 FUNCAO SAATY
@@ -131,7 +132,7 @@ desafioLabels = ['Par_criterios_gerente','Cr01_Falhas_gerente','Cr02_Seguranca_g
 
 with st.container():
   #st.subheader("Carregando o Projeto")
-  st.markdown("<h3 style='text-align: center;'>--- Carregando o Projeto --- </h3>", unsafe_allow_html=True)
+  st.markdown("<h3 style='text-align: center;'>--- Carregando o sistema para tomada de decisões gerenciais --- </h3>", unsafe_allow_html=True)
 
 # Carregar uma planilha Excel
 desafioFile = st.file_uploader("Informe o caminho da planilha em Excel com as respostas Par a Par dos decisores. Dados_decisores.xlsx.", type="xlsx")
