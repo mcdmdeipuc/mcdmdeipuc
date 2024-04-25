@@ -21,18 +21,18 @@ initial_sidebar_state="expanded",  # Pode ser "auto", "expanded" ou "collapsed"
 html_temp = """
 <img src="https://www.casadamoeda.gov.br/portal/imgs/logo-cmb-4.png" 
          alt="Descrição da imagem"
-         style="width: 400px; height: auto;">
+         style="width: 250px; height: auto;">
 
-<h3 style ="color:black;text-align:center;">Metodologia de apoio à decisão para manutenção inteligente </h3></div>
 <div style="text-align:center; background-color: #f0f0f0; border: 1px solid #ccc; padding: 10px;">
-    <h3 style="color: black;">Metodologia de apoio à decisão para manutenção inteligente</h3>
+    <h3 style="color: black; margin-bottom: 10px;">Metodologia de apoio à decisão para manutenção inteligente</h3>
+    <p style="color: black;">Combinando abordagens multicritério</p>
 </div>
 <h3 style ="color:black;text-align:center;">combinando abordagens multicritério</h3></div>
 """
 
 st.markdown(html_temp, unsafe_allow_html=True)
 st.write('Projeto desenvolvido no Mestrado acadêmico em Engenharia de Produção | DEI - Departamento de Engenharia Industrial - 2023')
-st.caption("by Jackeline Alves do Nascimento")
+st.caption("Jackeline Alves do Nascimento")
 st.write("---- Aplique-o para escolha entre 8 quaisquer alternativas e 6 critérios")
 st.write("---- Para interagir com o Framework vá na seção 2.1 do MOORA.")
 
