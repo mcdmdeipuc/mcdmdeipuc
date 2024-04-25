@@ -28,8 +28,6 @@ html_temp = """
     <p style="color: black; margin-bottom: 10px;"">Projeto desenvolvido no Mestrado acadêmico em Engenharia de Produção | DEI - Departamento de Engenharia Industrial - 2023</p>
     <p style="color: black; margin-bottom: 10px;"">Modo de uso: Aplique-o para escolha entre 8 quaisquer alternativas e 6 critérios</p>
     <p style="color: black; margin-bottom: 10px;"">Após o upload da planilha dos decisores, para interação com o Framework vá na seção 2.1 do MOORA</p>
-
-
 </div>
 
 """
@@ -157,6 +155,10 @@ else:
 
 with st.container():
     st.markdown("<h2 style='text-align: center;'>01 - Método AHP</h2>", unsafe_allow_html=True)
+
+<div style="text-align:center; background-color: #B0E0E6; border: 1px solid #ccc; padding: 10px;">
+    <h3 style="color: black; margin-bottom: 10px;">01 - Método AHP</h3>
+
     
 #07
 
@@ -1774,7 +1776,7 @@ for coluna in colunas_esperadas:
 
 
 st.subheader('2.1 - Critérios de Maximização ou Minimização')
-st.write("Esco.lha se o objetivo é Minimizar ou Maximizar Falha e Custo Minimizar")
+st.write("Informe ao sistema se o objetivo deve ser Minimixado ou Maximizado")
 
 # Criando uma lista para armazenar as opções de maximização/minimização
 opcoes = {}
