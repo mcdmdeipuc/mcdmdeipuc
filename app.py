@@ -26,15 +26,16 @@ html_temp = """
 <div style="text-align:center; background-color: #f0f0f0; border: 1px solid #ccc; padding: 10px;">
     <h3 style="color: black; margin-bottom: 10px;">Metodologia de apoio à decisão para manutenção inteligente, combinando abordagens multicritério</h3>
     <p style="color: black; margin-bottom: 10px;"">Projeto desenvolvido no Mestrado acadêmico em Engenharia de Produção | DEI - Departamento de Engenharia Industrial - 2023</p>
+    <p style="color: black; margin-bottom: 10px;"">Modo de uso: Aplique-o para escolha entre 8 quaisquer alternativas e 6 critérios</p>
+    <p style="color: black; margin-bottom: 10px;"">Após o upload da planilha dos decisores, para interação com o Framework vá na seção 2.1 do MOORA</p>
+
+
 </div>
 
 """
 
 st.markdown(html_temp, unsafe_allow_html=True)
-st.write('Projeto desenvolvido no Mestrado acadêmico em Engenharia de Produção | DEI - Departamento de Engenharia Industrial - 2023')
-st.caption("Jackeline Alves do Nascimento")
-st.write("---- Aplique-o para escolha entre 8 quaisquer alternativas e 6 critérios")
-st.write("---- Para interagir com o Framework vá na seção 2.1 do MOORA.")
+
 
 #02 FUNCAO SAATY
 def DadosSaaty(lamb, N):
@@ -2416,3 +2417,4 @@ borda_inicio_df = borda_inicio_df.iloc[:, [0, -1]]
 borda_inicio_df = borda_inicio_df.rename(columns={'Ranking_Borda': 'Ranking_Final'})
 st.write(borda_inicio_df)
 
+st.caption("Desenvolvido pela empregada Jackeline Alves do Nascimento")
