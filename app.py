@@ -1,4 +1,4 @@
-# 1° importa a biblioteca pandas
+# 1° importa a biblioteca pandass
 
 import sys
 import streamlit as st
