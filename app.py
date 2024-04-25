@@ -155,7 +155,7 @@ else:
     sys.exit()
 
 with st.container():
-    st.markdown("<h2 style='text-align: center; background-color: #E6E6FA;'>01 - Método AHP</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center; background-color: #6495ED;'>01 - Método AHP</h2>", unsafe_allow_html=True)
 
 
 #07
@@ -1774,7 +1774,7 @@ for coluna in colunas_esperadas:
 
 
 st.subheader('2.1 - Critérios de Maximização ou Minimização')
-st.write("Informe ao sistema se o objetivo deve ser Minimixado ou Maximizado")
+st.write("Informe ao sistema se o objetivo deve ser Minimizado ou Maximizado")
 
 # Criando uma lista para armazenar as opções de maximização/minimização
 opcoes = {}
