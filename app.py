@@ -154,13 +154,9 @@ else:
     sys.exit()
 
 with st.container():
-    st.markdown("<h2 style='text-align: center;'>01 - Método AHP</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style="text-align:center; background-color: #f0f0f0; border: 1px solid #ccc; padding: 10px;'>01 - Método AHP</h2>", unsafe_allow_html=True)
 
-html_temp = """
-<div style="text-align:center; background-color: #f0f0f0; border: 1px solid #ccc; padding: 10px;">
-    <h3 style="color: black; margin-bottom: 10px;">01 Método AHP</h3>
-</div>
- """   
+
 #07
 
 st.subheader("1.1 - Gerando a Matriz de comparação dos 5 critérios - Decisor Gerente:")
