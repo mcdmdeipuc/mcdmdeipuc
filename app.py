@@ -27,6 +27,7 @@ html_temp = """
     <h3 style="color: black; margin-bottom: 10px;">Metodologia de apoio à decisão para manutenção inteligente, combinando abordagens multicritério</h3>
     <p style="color: black; margin-bottom: 10px;"">Projeto desenvolvido no Mestrado acadêmico em Engenharia de Produção | DEI - Departamento de Engenharia Industrial - 2023</p>
     <p style="color: black; margin-bottom: 10px;"">Modo de uso: Aplique-o para escolha entre 8 quaisquer alternativas e 6 critérios</p>
+    <p style="color: black; margin-bottom: 10px;"">Todos os métodos funcionarão automaticamente</p>
     <p style="color: black; margin-bottom: 10px;"">Após o upload da planilha dos decisores, caso queira interagir com o Framework vá na seção 2.1 - MOORA</p>
 </div>
 
@@ -1991,7 +1992,7 @@ st.write(Ranking_Moora, width=800, height=400)
 
 ################
 with st.container():
-    st.markdown("<h2 style='text-align: center; background-color: #4169E1;'>03 Método Tchebycheff</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center; background-color: #6495ED;'>03 Método Tchebycheff</h2>", unsafe_allow_html=True)
     st.subheader('3.1 Iniciando com a matriz original do AHP.')
 st.write(matriz_Tchebycheff)
 
@@ -2010,7 +2011,7 @@ st.write(matriz_Tchebycheff)
 #    st.write("O DataFrame está vazio ou sem colunas")
 #st.write("..............................TESTE.................................")
 
-st.subheader('3.2 Achando o ponto de referencia')
+st.subheader('3.2 Achando o ponto de referência')
 # Função para calcular o ponto de referência com base nos critérios
 def calcular_ponto_referencia(df):
     ponto_referencia = []
@@ -2107,7 +2108,7 @@ st.write(Ranking_tchebycheff)
 
 ################
 with st.container():
-    st.markdown("<h2 style='text-align: center; background-color: #FFE4C4;'>4 - MULTIMOORA<</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center; background-color: #6495ED;'>4 - MULTIMOORA</h2>", unsafe_allow_html=True)
     st.subheader('4.1 Iniciando com a matriz original do AHP.')
     st.write(" MULTIMOORA é a sequência adicional do método MOORA e da forma multiplicativa completa de múltiplos objetivos")
     matriz_multimoora = matriz_Tchebycheff.copy()
@@ -2258,7 +2259,7 @@ st.write(Ranking_Multimoora)
 
 ################
 with st.container():
-    st.markdown("<h2 style='text-align: center; background-color: #D8BFD8;'>5 BORDA/h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center; background-color: #6495ED;'>5 BORDA", unsafe_allow_html=True)
     st.write(" Nesse método, se houver t alternativas, a primeira colocada recebe t votos e a segunda recebe um voto a menos, e assim por diante.")
     st.subheader('5.1 Recebendo todos os rankings ')
     st.write("Ranking_final_AHP, Ranking_Moora, Ranking_tchebycheff, Ranking_Multimoora")
@@ -2352,7 +2353,7 @@ Ranking_Multimoora= Ranking_Multimoora.rename_axis('Alternativas')
 
 
 st.subheader('5.6 Unindo os rankings Ranking_final_AHP, Ranking_tchebycheff, Ranking_Multimoora, Ranking_Moora')
-st.markdown("<h2 style='text-align: center; background-color: #E6E6FA;'>FINAL</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center; background-color: #6495ED;'>RANQUEAMENTO FINAL</h2>", unsafe_allow_html=True)
 # Unindo os DataFrames com base na coluna 'Alternativas'
 borda_inicio_df = pd.merge(Ranking_final_AHP, Ranking_tchebycheff, on='Alternativas')
 borda_inicio_df = pd.merge(borda_inicio_df, Ranking_Moora, on='Alternativas')
