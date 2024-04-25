@@ -21,9 +21,12 @@ initial_sidebar_state="expanded",  # Pode ser "auto", "expanded" ou "collapsed"
 html_temp = """
 <img src="https://www.casadamoeda.gov.br/portal/imgs/logo-cmb-4.png" 
          alt="Descrição da imagem"
-         style="width: 50px; height: auto;">
+         style="width: 400px; height: auto;">
 
 <h3 style ="color:black;text-align:center;">Metodologia de apoio à decisão para manutenção inteligente </h3></div>
+<div style="text-align:center; background-color: #f0f0f0; border: 1px solid #ccc; padding: 10px;">
+    <h3 style="color: black;">Metodologia de apoio à decisão para manutenção inteligente</h3>
+</div>
 <h3 style ="color:black;text-align:center;">combinando abordagens multicritério</h3></div>
 """
 
