@@ -24,10 +24,10 @@ html_temp = """
          style="width: 250px; height: auto;">
 
 <div style="text-align:center; background-color: #f0f0f0; border: 1px solid #ccc; padding: 10px;">
-    <h3 style="color: black; margin-bottom: 10px;">Metodologia de apoio à decisão para manutenção inteligente</h3>
-    <p style="color: black;">Combinando abordagens multicritério</p>
+    <h3 style="color: black; margin-bottom: 10px;">Metodologia de apoio à decisão para manutenção inteligente, combinando abordagens multicritério</h3>
+    <p style="color: black; margin-bottom: 10px;"">Projeto desenvolvido no Mestrado acadêmico em Engenharia de Produção | DEI - Departamento de Engenharia Industrial - 2023</p>
 </div>
-<h3 style ="color:black;text-align:center;">combinando abordagens multicritério</h3></div>
+
 """
 
 st.markdown(html_temp, unsafe_allow_html=True)
@@ -135,7 +135,7 @@ desafioLabels = ['Par_criterios_gerente','Cr01_Falhas_gerente','Cr02_Seguranca_g
 
 with st.container():
   #st.subheader("Carregando o Projeto")
-  st.markdown("<h3 style='text-align: center;'>--- Carregando o sistema para tomada de decisões gerenciais --- </h3>", unsafe_allow_html=True)
+  st.markdown("<h3 style='text-align: center;'>--- Iniciando o sistema para tomada de decisões gerenciais --- </h3>", unsafe_allow_html=True)
 
 # Carregar uma planilha Excel
 desafioFile = st.file_uploader("Informe o caminho da planilha em Excel com as respostas Par a Par dos decisores. Dados_decisores.xlsx.", type="xlsx")
