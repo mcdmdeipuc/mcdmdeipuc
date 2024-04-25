@@ -139,7 +139,7 @@ with st.container():
 #  st.markdown("<h2 style='text-align: left;'>--- Iniciando o sistema para tomada de decisões gerenciais --- </h3>", unsafe_allow_html=True)
 
 # Carregar uma planilha Excel
-desafioFile = st.file_uploader("Para iniciar, clique no botão Browse files para carregar a planilha em Excel com as respostas Par a Par dos decisores. ", type="xlsx")
+         desafioFile = st.file_uploader("Para iniciar, clique no botão Browse files para carregar a planilha em Excel com as respostas Par a Par dos decisores. ", type="xlsx")
 
 if desafioFile is not None:
     try:
