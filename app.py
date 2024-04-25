@@ -154,7 +154,7 @@ else:
     sys.exit()
 
 with st.container():
-    st.markdown("<h2 style='text-align: center; background-color: #f0f0f0;'>01 - Método AHP</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center; background-color: #E6E6FA;'>01 - Método AHP</h2>", unsafe_allow_html=True)
 
 
 #07
@@ -2416,4 +2416,4 @@ borda_inicio_df = borda_inicio_df.iloc[:, [0, -1]]
 borda_inicio_df = borda_inicio_df.rename(columns={'Ranking_Borda': 'Ranking_Final'})
 st.write(borda_inicio_df)
 
-st.caption("Desenvolvido pela empregada Jackeline Alves do Nascimento")
+st.caption("Desenvolvido pela empregada Jaqueline Alves do Nascimento")
